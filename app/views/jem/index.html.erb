@@ -1,0 +1,7 @@
+<ul>
+<% @jems.each do |jem| %>
+<li><%= jem.name %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Create Gem', new_jem_path %>
