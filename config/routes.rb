@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root to: 'static#index'
 
-  get 'jem/:id' => 'jem#show', as: 'jem'
-  get 'jem' => 'jem#index', as: 'jems'
-  get 'jem/new' => 'jem#new', as: 'new_jem'
-  post 'jem' => 'jem#create'
-  get 'jem/:id/edit' => 'jem#edit', as: 'edit_jem'
-  patch 'jem/:id' => 'jem#update'
-  delete 'jem/:id' => 'jem#destroy', as: 'delete_jem'
+  get 'jems/new' => 'jem#new', as: 'new_jem'
+  get 'jems/:id' => 'jem#show', as: 'jem'
+  get 'jems' => 'jem#index', as: 'jems'
+  post 'jems' => 'jem#create'
+  get 'jems/:id/edit' => 'jem#edit', as: 'edit_jem'
+  patch 'jems/:id' => 'jem#update'
+  delete 'jems/:id' => 'jem#destroy', as: 'delete_jem'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

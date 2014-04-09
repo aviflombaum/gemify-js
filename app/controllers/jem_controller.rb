@@ -28,6 +28,10 @@ class JemController < ApplicationController
     @jems = Jem.all
   end
 
+  # def show
+  # end
+
+
   private
 
   def jem_params

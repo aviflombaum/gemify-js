@@ -1,0 +1,12 @@
+<%= form_for @jem do |f| %>
+  
+  <%= f.label :name, 'Name' %>
+  </br>
+  <%= f.text_field :name %>
+  </br>
+  <%= f.label :github, 'Github Repository' %>
+  </br>
+  <%= f.text_field :github %>
+  </br>
+  <%= f.submit 'Create Gem'%>
+<% end %>
