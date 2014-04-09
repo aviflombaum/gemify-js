@@ -57,3 +57,5 @@ end
 gem "bootstrap-sass", "~> 3.1.1"
 gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
+gem "jquery-fileupload-rails"
+gem 'carrierwave'
