@@ -28,13 +28,14 @@ class JemController < ApplicationController
     @jems = Jem.all
   end
 
-  # def show
-  # end
+  def show
+    @jem = Jem.find(params[:id])
+  end
 
 
   private
 
   def jem_params
-    params.require(:jem).permit(:github_link, :name)
+    params.require(:jem).permit(:github, :name)
   end
 end
