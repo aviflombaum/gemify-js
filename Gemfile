@@ -46,6 +46,7 @@ group :test, :development do
   gem "database_cleaner"
   gem "sqlite3"
   gem "pry"
+  gem 'quiet_assets'
 end
 
 group :production do
@@ -59,4 +60,3 @@ gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 gem "jquery-fileupload-rails"
 gem 'carrierwave'
-
