@@ -59,3 +59,4 @@ gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 gem "jquery-fileupload-rails"
 gem 'carrierwave'
+
