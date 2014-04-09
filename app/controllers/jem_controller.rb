@@ -1,4 +1,4 @@
-class JemsController < ApplicationController
+class JemController < ApplicationController
 
   def new
     @jem = Jem.new
