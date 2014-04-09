@@ -23,6 +23,7 @@ class JemController < ApplicationController
   end
 
   def show
+    @script = Script.new
     @jem = Jem.find(params[:id])
   end
 
