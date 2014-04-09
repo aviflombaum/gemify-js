@@ -1,2 +1,13 @@
 <%= @jem.name %>
 <%= @jem.github %>
+
+
+
+<form action="<%= jem_path(@jem) %>" id="media-dropzone" class="dropzone" enctype="multipart/form-data" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <input name="_method" type="hidden" value="PATCH" />
+
+  <div class="fallback">
+    <input name="jem[script]" type="file" multiple />
+  </div>
+</form>

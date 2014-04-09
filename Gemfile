@@ -60,8 +60,5 @@ gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 # gem "jquery-fileupload-rails"
 gem 'carrierwave'
-<<<<<<< HEAD
-gem 'dropzonejs-rails'
+gem 'dropzonejs-rails', git: "git@github.com:wontaeyang/dropzonejs-rails.git"
 
-=======
->>>>>>> f1515f3ec4c332d2771547859c900ec4f6a91e6b
