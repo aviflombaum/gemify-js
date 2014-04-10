@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'jems/:id/scripts/:script_id' => 'scripts#show', as: 'script'
 
 
-  post 'create_gem' => 'jem#gemify_jem', as: 'jemify_gem'
+  post 'create_gem' => 'jems#gemify_jem', as: 'jemify_gem'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
