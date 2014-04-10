@@ -26,6 +26,8 @@ class JemsController < ApplicationController
 
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
+
+    if @jem.scripts. # NOT DONE
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{@jem.id}`
     redirect_to @jem
   end
@@ -42,6 +44,6 @@ class JemsController < ApplicationController
   private
 
   def jem_params
-    params.require(:jem).permit(:github, :name, :description, :author, :summary, :homepage, :base_name, :email)
+    params.require(:jem).permit(:github, :name, :description, :author, :summary, :homepage, :version_number, :email)
   end
 end
