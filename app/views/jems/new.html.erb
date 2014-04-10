@@ -1,25 +1,31 @@
-<%= form_for(@jem, :html => { :multipart => true }) do |f| %>
-
-  <%= f.label :name, 'Name' %></br>
-  <%= f.text_field :name %></br>
-
+<%= form_for(@jem, :html => { :multipart => true, :role => "form" }) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Name' %></br>
+    <%= f.text_field :name, class: "form-control" %></br>
+  </div>
+  <div class="form-group">
   <%= f.label :author, 'Author' %></br>
-  <%= f.text_field :author %></br>
-
-  <%= f.label :base_name, 'Base Name' %></br>
-  <%= f.text_field :base_name %></br>
-
-  <%= f.label :description, 'Description' %></br>
-  <%= f.text_field :description %></br>
-
-  <%= f.label :homepage, 'Homepage' %></br>
-  <%= f.text_field :homepage %></br>
-
-  <%= f.label :email, 'Email Address' %></br>
-  <%= f.text_field :email %></br>
-
-  <%= f.label :github, 'Github Repository' %></br>
-  <%= f.text_field :github %></br>
-
-  <%= f.submit 'Create Gem'%>
+  <%= f.text_field :author, class: "form-control"  %></br>
+  </div>
+  <div class="form-group">
+    <%= f.label :base_name, 'Base Name' %></br>
+    <%= f.text_field :base_name, class: "form-control"  %></br>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, 'Description' %></br>
+    <%= f.text_field :description, class: "form-control"  %></br>
+  </div>
+  <div class="form-group">
+    <%= f.label :homepage, 'Homepage' %></br>
+    <%= f.text_field :homepage, class: "form-control"  %></br>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, 'Email Address' %></br>
+    <%= f.text_field :email, class: "form-control"  %></br>
+  </div>
+  <div class="form-group">
+    <%= f.label :github, 'Github Repository' %></br>
+    <%= f.text_field :github, class: "form-control"  %></br>
+  </div>
+  <%= f.submit 'Create Gem', class: "btn btn-primary"%>
 <% end %>
