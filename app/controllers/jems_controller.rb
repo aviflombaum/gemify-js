@@ -7,12 +7,12 @@ class JemsController < ApplicationController
   def create
     @jem = Jem.new(jem_params)
     respond_to do |format|
-     if @jem.save
-       format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
-     else
-       format.html { render action: 'new' }
-     end
-   end
+      if @jem.save
+        format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
+    end
   end
 
   def index
@@ -27,9 +27,18 @@ class JemsController < ApplicationController
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
 
-    if @jem.scripts. # NOT DONE
-    `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{@jem.id}`
-    redirect_to @jem
+    files = @jem.scripts.map do |script|
+      script.file.file.extension
+    end
+
+    respond_to do |format|
+      if files.include?('js')
+        `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{@jem.id}`
+        format.js
+      else
+        render :index
+      end
+    end
   end
 
   def update

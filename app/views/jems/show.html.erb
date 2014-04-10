@@ -1,7 +1,7 @@
 <div class="page-header">
-<h1><%= @jem.name.capitalize %>
-<small>// <%= @jem.github %></small>
-</h1>
+  <h1><%= @jem.name.capitalize %>
+  <small>// <%= @jem.github %></small>
+  </h1>
 </div>
 
 <ol id="file-list">
@@ -18,15 +18,14 @@
   <input name="script[file]" type="file" multiple />
 </form>
 
-<%= form_tag '/create_gem', :method => :post do %>
+<%= form_tag '/create_gem', :method => :post, :remote => :true do %>
   <input type="hidden" name="id" value="<%= @jem.id %>"/>
   <%= submit_tag 'Create Gem', class: "btn btn-primary" %>
 <% end %>
 
-
 <script id="template-upload" type="text/x-tmpl">
-<div class="upload">
-  {%=o.name%}
-  <div class="progress"><div class="bar" style="width: 0%;"></div></div>
-</div>
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress"><div class="bar" style="width: 0%;"></div></div>
+  </div>
 </script>
