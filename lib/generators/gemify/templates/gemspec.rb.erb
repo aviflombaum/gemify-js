@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require '<%= jem.name %>/version'
+require '<%= @jem.name %>/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "<%= jem.name %>"
+  gem.name          = "<%= @jem.name %>"
   gem.version       = <%= "#{name_for_class}::Rails::VERSION" %>
-  gem.authors       = "<%= jem.author %>"
-  gem.email         = "<%= jem.email %>"
-  gem.description   = "<%= jem.description %>"
-  gem.summary       = "<%= jem.summary %>"
-  gem.homepage      = "<%= jem.homepage %>"
+  gem.authors       = "<%= @jem.author %>"
+  gem.email         = "<%= @jem.email %>"
+  gem.description   = "<%= @jem.description %>"
+  gem.summary       = "<%= @jem.summary %>"
+  gem.homepage      = "<%= @jem.homepage %>"
   gem.license       = "MIT"
-  
+
   gem.add_dependency "railties"
   gem.add_dependency "thor"
 

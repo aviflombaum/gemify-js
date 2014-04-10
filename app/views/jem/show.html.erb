@@ -1,11 +1,30 @@
-<%= @jem.name %>
-<%= @jem.github %>
+<%= @jem.name %><br>
+<%= @jem.github %><br>
+<%= @jem.scripts.each do |script| %>
+  <%= script %><br>
+<% end %>
 
+author:
+<%= @jem.author %><br>
 
+base_name:
+<%= @jem.base_name %><br>
+
+<%= @jem.description %><br>
+
+<%= @jem.homepage %><br>
+
+<%= @jem.email %><br>
 
 <%= form_for(@jem, :html => { :multipart => true }) do |f| %>
   <%= f.file_field :script, multiple: true, name: 'jem[script]' %>
   <%= f.submit 'Add File' %>
+<% end %>
+
+
+<%= form_tag '/create_gem', :method => :post do %>
+  <input type="hidden" name="id" value="<%= @jem.id %>"/>
+  <%= submit_tag 'Create Gem' %>
 <% end %>
 
 

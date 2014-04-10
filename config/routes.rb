@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   patch 'jems/:id' => 'jem#update'
   delete 'jems/:id' => 'jem#destroy', as: 'delete_jem'
 
+  post 'create_gem' => 'jem#gemify_jem', as: 'jemify_gem'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

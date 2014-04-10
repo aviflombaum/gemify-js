@@ -1,12 +1,12 @@
-# <%= jem.name %>
+# <%= @jem.name %>
 
-<%= jem.description %>
+<%= @jem.description %>
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem '<%= jem.name %>'
+    gem '<%= @jem.name %>'
 
 And then execute:
 
@@ -14,13 +14,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install <%= jem.name %>
+    $ gem install <%= @jem.name %>
 
 ## Usage
 
 Add this line to your `application.js` file:
 
-    //= require <%= jem.js.file.filename.split('.')[0] %>
+    //= require <%= @jem.scripts[0].file_url.split('/').last.split('.')[0] %>
 
 ## Contributing
 

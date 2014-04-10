@@ -1,35 +1,39 @@
 class GemifyGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
+  # argument :jem_id, :type => :string
 
-  def source_paths
-    [File.expand_path('../templates', __FILE__), Dir.pwd]
-  end
+  # def source_paths
+  #   [File.expand_path('../templates', __FILE__), Dir.pwd]
+  # end
 
   def generate_files
-    target = File.join(Dir.pwd, "jems/#{jem.name}")
-    template "engine.rb.erb", File.join(target, "lib/#{jem.name}/engine.rb")
-    template "version.rb.erb", File.join(target, "lib/#{jem.name}/version.rb")
-    template "railtie.rb.erb", File.join(target, "lib/#{jem.name}/railtie.rb")
-    template "railsloader.rb.erb", File.join(target, "lib/#{jem.name}.rb")
-    template "gemspec.rb.erb", File.join(target, "#{jem.name}.gemspec")
+    @jem = Jem.find(name.to_i)
+    target = File.join(Dir.pwd, "jems/#{@jem.name}")
+    template "engine.rb.erb", File.join(target, "lib/#{@jem.name}/engine.rb")
+    template "version.rb.erb", File.join(target, "lib/#{@jem.name}/version.rb")
+    template "railtie.rb.erb", File.join(target, "lib/#{@jem.name}/railtie.rb")
+    template "railsloader.rb.erb", File.join(target, "lib/#{@jem.name}.rb")
+    template "gemspec.rb.erb", File.join(target, "#{@jem.name}.gemspec")
     template "README.md.tt", File.join(target, "README.md")
 
-    repo = GithubService.create_repository(jem.name)
-    GithubService.add_collaborator(repo.full_name, jem.creator.login)
-    GithubService.push_local_repo("jems/#{jem.name}", repo.ssh_url)
-
-    Dir.chdir(target) do
-      version = "0.0.1"
-      RubyGemService.create_gem(jem.name, "#{target}/#{jem.name}-#{version}.gem")
-    end
+    # repo = GithubService.create_repository(@jem.name)
+    # GithubService.add_collaborator(repo.full_name, @jem.creator.login)
+    # GithubService.push_local_repo("jems/#{@jem.name}", repo.ssh_url)
+    #
+    # Dir.chdir(target) do
+    #   version = "0.0.1"
+    #   RubyGemService.create_gem(jem.name, "#{target}/#{@jem.name}-#{version}.gem")
+    # end
   end
 
   private
   def name_for_class
+    jem = Jem.find(name.to_i)
+    binding.pry
     jem.base_name.capitalize
   end
 
-  def jem
-    Jem.find(name.to_i)
-  end
+  # def jem
+  #   Jem.find(name.to_i)
+  # end
 end

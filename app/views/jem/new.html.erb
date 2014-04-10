@@ -1,17 +1,30 @@
 <%= form_for(@jem, :html => { :multipart => true }) do |f| %>
-  
-  <%= f.label :name, 'Name' %>
-  </br>
-  <%= f.text_field :name %>
-  </br>
-  <%= f.label :github, 'Github Repository' %>
-  </br>
-  <%= f.text_field :github %>
-  </br>
+
+  <%= f.label :name, 'Name' %></br>
+  <%= f.text_field :name %></br>
+
+  <%= f.label :author, 'Author' %></br>
+  <%= f.text_field :author %></br>
+
+  <%= f.label :base_name, 'Base Name' %></br>
+  <%= f.text_field :base_name %></br>
+
+  <%= f.label :description, 'Description' %></br>
+  <%= f.text_field :description %></br>
+
+  <%= f.label :homepage, 'Homepage' %></br>
+  <%= f.text_field :homepage %></br>
+
+  <%= f.label :email, 'Email Address' %></br>
+  <%= f.text_field :email %></br>
+
+  <%= f.label :github, 'Github Repository' %></br>
+  <%= f.text_field :github %></br>
+
   <%= f.fields_for :scripts do |p| %>
     <%= p.label :file %><br>
     <%= p.file_field :file, :multiple => true, name: "scripts[file][]" %>
-  <% end %>
-  </br>
+  <% end %></br>
+
   <%= f.submit 'Create Gem'%>
 <% end %>

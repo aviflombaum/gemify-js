@@ -26,6 +26,15 @@ class JemController < ApplicationController
     @jem = Jem.find(params[:id])
   end
 
+  def gemify_jem
+    binding.pry
+    @jem = Jem.find(params[:id].to_i)
+    binding.pry
+    `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{@jem.id}`
+    binding.pry
+    redirect_to @jem
+  end
+
   def update
     @jem = Jem.find(params[:id])
     if @jem.update_attributes(jem_params)
@@ -38,6 +47,6 @@ class JemController < ApplicationController
   private
 
   def jem_params
-    params.require(:jem).permit(:github, :name)
+    params.require(:jem).permit(:github, :name, :description, :author, :summary, :homepage, :base_name, :email)
   end
 end

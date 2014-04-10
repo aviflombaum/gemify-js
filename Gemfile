@@ -61,4 +61,3 @@ gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 # gem "jquery-fileupload-rails"
 gem 'carrierwave'
 gem 'dropzonejs-rails', git: "git@github.com:wontaeyang/dropzonejs-rails.git"
-

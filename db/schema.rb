@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409212909) do
+ActiveRecord::Schema.define(version: 20140409222838) do
 
   create_table "jems", force: true do |t|
     t.string   "name"
     t.string   "github"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "author"
+    t.string   "base_name"
+    t.text     "description"
+    t.string   "email"
+    t.text     "summary"
+    t.string   "homepage"
   end
 
   create_table "scripts", force: true do |t|
