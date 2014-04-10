@@ -40,16 +40,11 @@
   </tbody>
 </table>
 
-<%= form_tag '/create_gem', :method => :post do %>
-  <input type="hidden" name="id" value="<%= @jem.id %>"/>
-  <%= submit_tag 'Create Gem', class: "btn btn-primary" %>
-<% end %>
-
 <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <input name="_method" type="hidden" value="POST" />
 
-  <input name="script[file]" type="file" multiple />
+  <input name="script[file]" type="file" multiple style="display:none;" />
 </form>
 
 <%= form_tag '/create_gem', :method => :post, :remote => :true do %>

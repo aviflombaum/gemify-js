@@ -26,19 +26,7 @@ class JemsController < ApplicationController
 
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
-
-    files = @jem.scripts.map do |script|
-      script.file.file.extension
-    end
-
-    respond_to do |format|
-      if files.include?('js')
-        `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{@jem.id}`
-        format.js
-      else
-        render :index
-      end
-    end
+    @jem.create_gem_directory
   end
 
   def update

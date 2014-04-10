@@ -1,13 +1,8 @@
 class Jem < ActiveRecord::Base
   has_many :scripts
 
-  # validates :name, presence: true, uniqueness: true
-  # validates :version_number, presence: true
-  # validates :github, presence: true
-  # validates :author, presence: true
-  # validates :description, presence: true
-  # validates :email, presence: true
-  # validates :summary, presence: true
-  # validates :homepage, presence: true
-
+  def create_gem_directory
+    `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
+  end
+  
 end
