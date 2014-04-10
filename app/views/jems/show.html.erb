@@ -1,0 +1,25 @@
+<%= @jem.name %>
+</br>
+<%= @jem.github %>
+</br>
+<ol id="file-list">
+<% @jem.scripts.each do |script| %>
+  </br>
+  <li><%= script.file.url %></li>
+<% end %>
+</ol>
+
+<form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <input name="_method" type="hidden" value="POST" />
+
+    <input name="script[file]" type="file" multiple />
+</form>
+
+
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%;"></div></div>
+</div>
+</script>

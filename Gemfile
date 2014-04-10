@@ -58,7 +58,7 @@ end
 gem "bootstrap-sass", "~> 3.1.1"
 gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
-# gem "jquery-fileupload-rails", git: "git@github.com:wontaeyang/jquery-fileupload-rails.git"
+gem "jquery-fileupload-rails", git: "git@github.com:wontaeyang/jquery-fileupload-rails.git"
 gem 'carrierwave'
-gem 'dropzonejs-rails', git: "git@github.com:wontaeyang/dropzonejs-rails.git"
+# gem 'dropzonejs-rails', git: "git@github.com:wontaeyang/dropzonejs-rails.git"
 

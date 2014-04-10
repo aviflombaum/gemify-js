@@ -8,10 +8,5 @@
   </br>
   <%= f.text_field :github %>
   </br>
-  <%= f.fields_for :scripts do |p| %>
-    <%= p.label :file %><br>
-    <%= p.file_field :file, :multiple => true, name: "scripts[file][]" %>
-  <% end %>
-  </br>
   <%= f.submit 'Create Gem'%>
 <% end %>
