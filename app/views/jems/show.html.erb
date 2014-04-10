@@ -40,7 +40,7 @@
   </tbody>
 </table>
 
-<form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post">
+<form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" style="display:none;">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <input name="_method" type="hidden" value="POST" />
 
