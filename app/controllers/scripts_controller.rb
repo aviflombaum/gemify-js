@@ -1,13 +1,4 @@
 class ScriptsController < ApplicationController
-  # def create
-  #   binding.pry
-  #   @script = Jem.find(params[:id]).scripts.new(file: params[:file])
-  #   if @script.save!
-  #   respond_to do |format|
-  #     format.json{ render :json => @script }
-  #   end
-  #   end
-  # end
 
   def create
     @script = Jem.find(params[:id]).scripts.create(file: params[:script][:file])
@@ -20,5 +11,15 @@ class ScriptsController < ApplicationController
   def show
     @script = Jem.find(params[:id]).scripts.find(params[:script_id])
   end
+
+  def destroy
+    @script = Script.find(params[:id])
+    @jem = Jem.find(@script.jem_id)
+    @script.destroy
+    respond_to do |f|
+      f.js
+    end
+  end
+
 
 end

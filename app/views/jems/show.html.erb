@@ -4,12 +4,46 @@
 </h1>
 </div>
 
-<ol id="file-list">
-<% @jem.scripts.each do |script| %>
-  </br>
-  <li><%= File.basename(script.file.url) %></li>
+<blockquote>
+<h4> Drag and drop your files anywhere in the browser to upload </h4>
+</blockquote>
+
+<table class="table table-hover" id="file-list">
+  <thead>
+    <tr>
+      <th>FILE NAME</td>
+      <th>FILE TYPE</td> 
+      <th>DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jem.scripts.each do |script| %>
+      <tr data-id="<%= script.id%>">
+        <td><%= File.basename(script.file.url) %></td>
+        <% if script.file.file.extension == 'js' %>
+          <td>Javascript</td>
+        <% else %>
+          <td>CSS</td>
+        <% end %>
+        <td>
+          <%=
+            link_to 'Remove',
+            delete_script_path(script),
+            remote: :true,
+            method: :delete,
+            :data => { confirm: "Are you sure? "},
+            :class => "btn btn-danger btn-xs delete-script"
+           %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_tag '/create_gem', :method => :post do %>
+  <input type="hidden" name="id" value="<%= @jem.id %>"/>
+  <%= submit_tag 'Create Gem', class: "btn btn-primary" %>
 <% end %>
-</ol>
 
 <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
@@ -17,12 +51,6 @@
 
     <input name="script[file]" type="file" multiple style="display: none;" />
 </form>
-
-<%= form_tag '/create_gem', :method => :post do %>
-  <input type="hidden" name="id" value="<%= @jem.id %>"/>
-  <%= submit_tag 'Create Gem', class: "btn btn-primary" %>
-<% end %>
-
 
 <script id="template-upload" type="text/x-tmpl">
 <div class="upload">

@@ -1,1 +1,9 @@
-<li><%= File.basename(script.file.url) %></li>
+<tr data-id="<%= script.id%>">
+  <td><%= File.basename(script.file.url) %></td>
+  <% if script.file.file.extension == 'js' %>
+    <td>Javascript</td>
+  <% else %>
+    <td>CSS</td>
+  <% end %>
+  <td><%= link_to 'Remove', delete_script_path(script), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs" %></td>
+</tr>

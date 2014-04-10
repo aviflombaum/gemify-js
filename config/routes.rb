@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   post 'jems/:id/scripts' => 'scripts#create', as: 'new_script'
   get 'jems/:id/scripts/:script_id' => 'scripts#show', as: 'script'
+  delete 'script/:id' => 'scripts#destroy', as: 'delete_script'
 
 
   post 'create_gem' => 'jems#gemify_jem', as: 'jemify_gem'
