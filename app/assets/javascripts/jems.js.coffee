@@ -7,10 +7,14 @@ jQuery ->
   $('#new-script').fileupload
     dataType: "script"
     add: (e, data) ->
+      types = /(\.|\/)(js|css)$/i
       file = data.files[0]
-      data.context = $(tmpl("template-upload", file))
-      $('#new-script').append(data.context)
-      data.submit()
+      if types.test(file.type) || types.test(file.name)
+        data.context = $(tmpl("template-upload", file))
+        $('#new-script').append(data.context)
+        data.submit()
+      else
+        alert("#{file.name} is not a Javascript or CSS file")
     progress: (e, data) ->
       if data.context
         progress = parseInt(data.loaded / data.total * 100, 10)
