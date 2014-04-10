@@ -1,4 +1,4 @@
-module Gasdgasdg
+module Asdf
   module Rails
     class Railtie < ::Rails::Railtie
     end

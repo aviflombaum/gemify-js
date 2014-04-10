@@ -25,11 +25,8 @@ class JemsController < ApplicationController
   end
 
   def gemify_jem
-    binding.pry
     @jem = Jem.find(params[:id].to_i)
-    binding.pry
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{@jem.id}`
-    binding.pry
     redirect_to @jem
   end
 

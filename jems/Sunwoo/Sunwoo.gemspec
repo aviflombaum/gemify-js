@@ -1,16 +1,16 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'asdgasd/version'
+require 'Sunwoo/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "asdgasd"
-  gem.version       = Gasdgasdg::Rails::VERSION
-  gem.authors       = "asdgasd"
-  gem.email         = "asdgasdg"
-  gem.description   = "asdgasdg"
-  gem.summary       = "cheese"
-  gem.homepage      = "asdgasdg"
+  gem.name          = "Sunwoo"
+  gem.version       = Asdf::Rails::VERSION
+  gem.authors       = "Wontae"
+  gem.email         = "l;ksjdfiow"
+  gem.description   = "wojfls"
+  gem.summary       = ""
+  gem.homepage      = "lkjwoilkdfj"
   gem.license       = "MIT"
 
   gem.add_dependency "railties"

@@ -1,7 +1,9 @@
+<h1>Gems Index</h1>
+
 <ul>
 <% @jems.each do |jem| %>
-<li><%= jem.name %></li>
+<li><%= link_to jem.name, jem_path(jem) %></li>
 <% end %>
 </ul>
 
-<%= link_to 'Create Gem', new_jem_path %>
+<%= link_to 'Create Gem', new_jem_path, class: "btn btn-primary" %>
