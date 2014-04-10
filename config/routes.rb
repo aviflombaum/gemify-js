@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   root to: 'static#index'
 
-  get 'jems/new' => 'jem#new', as: 'new_jem'
-  get 'jems/:id' => 'jem#show', as: 'jem'
-  get 'jems' => 'jem#index', as: 'jems'
-  post 'jems' => 'jem#create'
-  get 'jems/:id/edit' => 'jem#edit', as: 'edit_jem'
-  patch 'jems/:id' => 'jem#update'
-  delete 'jems/:id' => 'jem#destroy', as: 'delete_jem'
+  get 'jems/new' => 'jems#new', as: 'new_jem'
+  get 'jems/:id' => 'jems#show', as: 'jem'
+  get 'jems' => 'jems#index', as: 'jems'
+  post 'jems' => 'jems#create'
+  get 'jems/:id/edit' => 'jems#edit', as: 'edit_jem'
+  patch 'jems/:id' => 'jems#update'
+  delete 'jems/:id' => 'jems#destroy', as: 'delete_jem'
+
+  post 'jems/:id/scripts' => 'scripts#create', as: 'new_script'
+  get 'jems/:id/scripts/:script_id' => 'scripts#show', as: 'script'
+
 
   post 'create_gem' => 'jem#gemify_jem', as: 'jemify_gem'
 

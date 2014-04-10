@@ -1,4 +1,4 @@
-class JemController < ApplicationController
+class JemsController < ApplicationController
 
   def new
     @jem = Jem.new
@@ -8,9 +8,6 @@ class JemController < ApplicationController
     @jem = Jem.new(jem_params)
     respond_to do |format|
      if @jem.save
-       params[:scripts]['file'].each do |a|
-          @scripts = @jem.scripts.create!(:file => a, :jem_id => @jem.id)
-       end
        format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
      else
        format.html { render action: 'new' }
@@ -23,6 +20,7 @@ class JemController < ApplicationController
   end
 
   def show
+    @script = Script.new
     @jem = Jem.find(params[:id])
   end
 

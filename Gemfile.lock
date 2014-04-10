@@ -1,9 +1,10 @@
 GIT
-  remote: git@github.com:wontaeyang/dropzonejs-rails.git
-  revision: 064e3e60d5a91afb71bf273f261e93f1f93340be
+  remote: git@github.com:wontaeyang/jquery-fileupload-rails.git
+  revision: e89f7ea6daa3267517edbb75016522bc0bbe9637
   specs:
-    dropzonejs-rails (0.4.14)
-      rails (> 3.1)
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
 
 GIT
   remote: https://github.com/laserlemon/figaro.git
@@ -219,11 +220,11 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   database_cleaner
-  dropzonejs-rails!
   factory_girl_rails
   figaro!
   google-analytics-rails
   jbuilder (~> 2.0)
+  jquery-fileupload-rails!
   jquery-rails
   octokit
   pg
