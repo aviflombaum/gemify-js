@@ -19,8 +19,9 @@ Or install it yourself as:
 ## Usage
 
 Add this line to your `application.js` file:
-
-    //= require <%= @jem.scripts[0].file_url.split('/').last.split('.')[0] %>
+  <% @jem.scripts.each do |script| %>
+    //= require <%= File.basename(script.file.url)  %>
+  <% end %>
 
 ## Contributing
 

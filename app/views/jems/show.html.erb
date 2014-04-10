@@ -15,7 +15,7 @@
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <input name="_method" type="hidden" value="POST" />
 
-    <input name="script[file]" type="file" multiple style="display: none;" />
+  <input name="script[file]" type="file" multiple />
 </form>
 
 <%= form_tag '/create_gem', :method => :post do %>
