@@ -1,10 +1,5 @@
 class GemifyGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
-  # argument :jem_id, :type => :string
-
-  # def source_paths
-  #   [File.expand_path('../templates', __FILE__), Dir.pwd]
-  # end
 
   def generate_files
     @jem = Jem.find(name.to_i)
@@ -25,15 +20,5 @@ class GemifyGenerator < Rails::Generators::NamedBase
     #   RubyGemService.create_gem(jem.name, "#{target}/#{@jem.name}-#{version}.gem")
     # end
   end
-
-  private
-  def name_for_class
-    jem = Jem.find(name.to_i)
-    binding.pry
-    jem.base_name.capitalize
-  end
-
-  # def jem
-  #   Jem.find(name.to_i)
-  # end
+  
 end
