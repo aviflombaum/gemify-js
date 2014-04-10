@@ -2,18 +2,11 @@
 <%= @jem.github %>
 
 
-
-<%= form_for(@jem, :html => { :multipart => true }) do |f| %>
-  <%= f.file_field :script, multiple: true, name: 'jem[script]' %>
-  <%= f.submit 'Add File' %>
-<% end %>
-
-
-<!-- <form action="<%= jem_path(@jem) %>" id="media-dropzone" class="dropzone" enctype="multipart/form-data" method="post">
+<form action="/jems/<%= @jem.id %>/scripts" id="media-dropzone" class="dropzone" enctype="multipart/form-data" method="post">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-  <input name="_method" type="hidden" value="PATCH" />
+  <input name="_method" type="hidden" value="POST" />
 
   <div class="fallback">
-    <input name="jem[script]" type="file" multiple />
+    <input name="script[file]" type="file" multiple />
   </div>
-</form> -->
+</form>
