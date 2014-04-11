@@ -46,9 +46,9 @@ class Jem < ActiveRecord::Base
     end
 
     Dir.chdir(target) do
+      binding.pry
       `gem build #{self.name}.gemspec`
-      `curl -H 'Authorization:#{Gems.api_key}' https://rubygems.org/api/v1/some_api_call.json`
-      Gems.push File.new "#{self.name}-#{version_number}.gem"
+      `gem push "#{self.name}-#{version_number}.gem"`
     end
   end
 
