@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -60,3 +61,4 @@ gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 gem "jquery-fileupload-rails", git: "git@github.com:wontaeyang/jquery-fileupload-rails.git"
 gem 'carrierwave'
+gem 'rugged'
