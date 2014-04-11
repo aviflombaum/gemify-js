@@ -1,6 +1,6 @@
 require "<%= @jem.name %>/version"
 
-module <%= @jem.name.capitalize %>
+module <%= module_name %>
   module Rails
     if ::Rails.version < "3.1"
       require "<%= @jem.name %>/railtie"

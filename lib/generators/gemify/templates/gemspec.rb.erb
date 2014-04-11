@@ -5,12 +5,12 @@ require '<%= @jem.name %>/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "<%= @jem.name %>"
-  gem.version       = <%= @jem.version_number %>
+  gem.version       = "<%= @jem.version_number %>"
   gem.authors       = "<%= @jem.author %>"
   gem.email         = "<%= @jem.email %>"
   gem.description   = "<%= @jem.description %>"
   gem.summary       = "<%= @jem.summary %>"
-  gem.homepage      = "<%= @jem.homepage %>"
+  gem.homepage      = "<%= @jem.github %>"
   gem.license       = "MIT"
 
   gem.add_dependency "railties"

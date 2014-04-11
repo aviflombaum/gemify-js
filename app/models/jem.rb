@@ -3,11 +3,10 @@ class Jem < ActiveRecord::Base
   belongs_to :user
 
   def create_gem_directory
-    
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
   end
 
-  def create_git_repository
+  def create_github_repository
     client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
 
     repository = client.create_repository(self.name, { 
@@ -21,21 +20,34 @@ class Jem < ActiveRecord::Base
 
     client.add_collaborator(repository.full_name, 'sunwooz')
 
+    self.github = repository.html_url
+    repository.ssh_url
+  end
+
+  def push_to_github(ssh_url)
     target = find_directory
 
     Dir.chdir(target) do
       g = Git.init('.')
       g.add
       g.commit('initial commit')
-      g.add_remote(self.name, repository.ssh_url)
+      g.add_remote(self.name, ssh_url)
       g.push(g.remote(self.name))
       g.remote(self.name).remove
-      # `git init`
-      # `git add .`
-      # `git commit -m "first commit"`
-      # `git remote add #{self.name} #{repository.ssh_url}`
-      # `git push #{self.name} master`
-      # `git remote remove #{self.name}`
+    end
+  end
+
+  def build_gem
+    target = find_directory
+
+    Gems.configure do |config|
+      config.username = ENV['RUBYGEM_EMAIL']
+      config.password = ENV['RUBYGEM_PASSWORD']
+    end
+
+    Dir.chdir(target) do
+      `gem build #{self.name}.gemspec`
+      Gem.push File.new "#{self.name}-#{version_number}.gem"
     end
   end
 

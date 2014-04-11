@@ -28,8 +28,13 @@ class JemsController < ApplicationController
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
     if @jem.has_files?
+      binding.pry
+      ssh_url = @jem.create_github_repository
       @jem.create_gem_directory
-      @jem.create_git_repository
+      @jem.push_to_github(ssh_url)
+      binding.pry
+      @jem.build_gem
+      binding.pry
     end
   end
 
