@@ -61,4 +61,6 @@ gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 gem "jquery-fileupload-rails", git: "git@github.com:wontaeyang/jquery-fileupload-rails.git"
 gem 'carrierwave'
-gem 'rugged'
+gem 'devise'
+gem "omniauth"
+gem "omniauth-github"

@@ -6,6 +6,7 @@ class JemsController < ApplicationController
 
   def create
     @jem = Jem.new(jem_params)
+    @jem.user_id = current_user.id
     respond_to do |format|
       if @jem.save
         format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
@@ -16,7 +17,7 @@ class JemsController < ApplicationController
   end
 
   def index
-    @jems = Jem.all
+    @jems = current_user.jems
   end
 
   def show

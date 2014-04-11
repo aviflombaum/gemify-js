@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
+  devise_scope :user do 
+    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
   root to: 'static#index'
 
   get 'jems/new' => 'jems#new', as: 'new_jem'
@@ -12,6 +16,9 @@ Rails.application.routes.draw do
   post 'jems/:id/scripts' => 'scripts#create', as: 'new_script'
   get 'jems/:id/scripts/:script_id' => 'scripts#show', as: 'script'
   delete 'script/:id' => 'scripts#destroy', as: 'delete_script'
+
+  get '/auth/github' => 'auth#github', as: 'github_login'
+  get '/auth/github/callback' => 'sessions#create', as: 'github_callback'
 
 
   post 'create_gem' => 'jems#gemify_jem', as: 'jemify_gem'
