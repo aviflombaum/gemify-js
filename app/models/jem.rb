@@ -23,18 +23,19 @@ class Jem < ActiveRecord::Base
     target = find_directory
 
     Dir.chdir(target) do
-      `git init`
-      `git add .`
-      `git commit -m "first commit"`
-      `git remote add #{self.name} #{repository.ssh_url}`
-      `git push #{self.name} master`
-      `git remote remove #{self.name}`
+      g = Git.init('.')
+      g.add
+      g.commit('initial commit')
+      g.add_remote(self.name, repository.ssh_url)
+      g.push(g.remote(self.name))
+      g.remote(self.name).remove
+      # `git init`
+      # `git add .`
+      # `git commit -m "first commit"`
+      # `git remote add #{self.name} #{repository.ssh_url}`
+      # `git push #{self.name} master`
+      # `git remote remove #{self.name}`
     end
-
-    # Dir.chdir(target) do
-    #   Rugged::Repository.init_at('.', :bare)
-    #   repo = Rugged::Repository.new('.')
-    # end
   end
 
   private
