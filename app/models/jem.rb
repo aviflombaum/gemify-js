@@ -3,6 +3,7 @@ class Jem < ActiveRecord::Base
   belongs_to :user
 
   def create_gem_directory
+    
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
   end
 
@@ -37,6 +38,10 @@ class Jem < ActiveRecord::Base
     # end
   end
 
+  def has_files?
+    self.scripts.empty? ? false : true
+  end
+
   private
 
     def find_directory
@@ -46,5 +51,6 @@ class Jem < ActiveRecord::Base
     def all_repoes
       @client.repositories
     end
+
   
 end

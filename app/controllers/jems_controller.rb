@@ -27,8 +27,10 @@ class JemsController < ApplicationController
 
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
-    @jem.create_gem_directory
-    @jem.create_git_repository
+    if @jem.has_files?
+      @jem.create_gem_directory
+      @jem.create_git_repository
+    end
   end
 
   def update
