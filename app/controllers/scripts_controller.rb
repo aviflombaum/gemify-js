@@ -8,16 +8,12 @@ class ScriptsController < ApplicationController
     end
   end
 
-  def show
-    @script = Jem.find(params[:id]).scripts.find(params[:script_id])
-  end
-
   def destroy
     @script = Script.find(params[:id])
     @jem = Jem.find(@script.jem_id)
     @script.destroy
-    respond_to do |f|
-      f.js
+    respond_to do |format|
+      format.js
     end
   end
 
