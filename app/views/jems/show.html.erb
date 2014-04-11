@@ -1,44 +1,86 @@
-<div class="page-header">
+<div class="title-group">
   <h1><%= @jem.name.capitalize %>
-  <small>// <%= @jem.github %></small>
+   <small><%= @jem.description %></small> 
   </h1>
 </div>
+<!-- <h5> Drag and drop your files anywhere in the browser to upload </h5> -->
 
-<blockquote>
-<h4> Drag and drop your files anywhere in the browser to upload </h4>
-</blockquote>
+<div class="row">
+  <div class="col-md-3">
+    <div class="list-group">
+       <div class="list-group-item">
+        <h5 class="list-group-item-heading">Author:</h5>
+        <p class="list-group-item-text"><small><%= @jem.author %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Email:</h5>
+        <p class="list-group-item-text"><small><%= @jem.email %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Homepage:</h5>
+        <p class="list-group-item-text"><small><%= @jem.homepage %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Name:</h5>
+        <p class="list-group-item-text"><small><%= @jem.name %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Github:</h5>
+        <p class="list-group-item-text"><small><%= link_to @jem.github, "http://" + @jem.github.to_s %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Version:</h5>
+        <p class="list-group-item-text"><small><%= @jem.version_number %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Description:</h5>
+        <p class="list-group-item-text"><small><%= @jem.description %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Created:</h5>
+        <p class="list-group-item-text"><small><%= @jem.created_at %></small></p>
+      </div>
+      <div class="list-group-item">
+        <h5 class="list-group-item-heading">Update:</h5>
+        <p class="list-group-item-text"><small><%= @jem.updated_at %></small></p>
+      </div>
+    </div>
+  </div>
 
-<table class="table table-hover" id="file-list">
-  <thead>
-    <tr>
-      <th>FILE NAME</td>
-      <th>FILE TYPE</td> 
-      <th>DELETE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @jem.scripts.each do |script| %>
-      <tr data-id="<%= script.id%>">
-        <td><%= File.basename(script.file.url) %></td>
-        <% if script.file.file.extension == 'js' %>
-          <td>Javascript</td>
-        <% else %>
-          <td>CSS</td>
+  <div class="col-md-7 col-md-offset-1">
+    <table class="table table-hover" id="file-list">
+      <thead>
+        <tr>
+          <th>FILE NAME</td>
+          <th>FILE TYPE</td> 
+          <th>DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @jem.scripts.each do |script| %>
+          <tr data-id="<%= script.id %>">
+            <td><%= File.basename(script.file.url) %></td>
+            <td><%= script.file.file.extension.upcase %></td>
+            <td>
+              <%=
+                link_to 'Remove',
+                delete_script_path(script),
+                remote: :true,
+                method: :delete,
+                :data => { confirm: "Are you sure? "},
+                :class => "btn btn-danger btn-xs delete-script"
+               %>
+            </td>
+          </tr>
         <% end %>
-        <td>
-          <%=
-            link_to 'Remove',
-            delete_script_path(script),
-            remote: :true,
-            method: :delete,
-            :data => { confirm: "Are you sure? "},
-            :class => "btn btn-danger btn-xs delete-script"
-           %>
-        </td>
-      </tr>
+      </tbody>
+    </table>
+    <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
+    <input type="hidden" name="id" value="<%= @jem.id %>"/>
+    <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" style="display:none;">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
@@ -47,10 +89,7 @@
   <input name="script[file]" type="file" multiple style="display:none;" />
 </form>
 
-<%= form_tag '/create_gem', :method => :post, :remote => :true do %>
-  <input type="hidden" name="id" value="<%= @jem.id %>"/>
-  <%= submit_tag 'Create Gem', class: "btn btn-primary" %>
-<% end %>
+
 
 <script id="template-upload" type="text/x-tmpl">
   <div class="upload">

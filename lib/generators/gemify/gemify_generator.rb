@@ -21,10 +21,13 @@ class GemifyGenerator < Rails::Generators::NamedBase
 
     @jem.scripts.each do |script|
         script_url = script.file.url
-        if script.file.file.extension == 'js'
+        extension = script.file.file.extension
+        if extension == 'js'
             copy_file(File.join(script_target, "#{script_url}"), javascript_dir + "/" + File.basename(script_url))
-        elsif script.file.file.extension == 'css'
+        elsif extension == 'css'
             copy_file(File.join(script_target, "#{script_url}"), css_dir + "/" + File.basename(script_url))
+        else
+            copy_file(File.join(script_target, "#{script_url}"), image_dir + "/" + File.basename(script_url))
         end
     end
 
