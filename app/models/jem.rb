@@ -18,7 +18,7 @@ class Jem < ActiveRecord::Base
       :has_downloads => true
     })
 
-    client.add_collaborator(repository.full_name, 'sunwooz')
+    client.add_collaborator(repository.full_name, ENV['COLLAB_NAME'])
 
     self.github = repository.html_url
     repository.ssh_url
