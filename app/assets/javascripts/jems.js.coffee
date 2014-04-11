@@ -14,7 +14,7 @@ jQuery ->
         $('#new-script').append(data.context)
         data.submit()
       else
-        alert("#{file.name} is not a Javascript or CSS file")
+        alert("#{file.name} is not a javascript, CSS, or image file")
     progress: (e, data) ->
       if data.context
         progress = parseInt(data.loaded / data.total * 100, 10)
