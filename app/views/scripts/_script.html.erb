@@ -1,12 +1,6 @@
-<tr data-id="<%= script.id%>">
+<tr data-id="<%= script.id %>">
   <td><%= File.basename(script.file.url) %></td>
-  <% if script.file.file.extension == 'js' %>
-    <td>Javascript</td>
-  <% elsif script.file.file.extension == 'css' %>
-    <td>CSS</td>
-  <% else %>
-    <td><%= script.file.file.extension.upcase %></td>
-  <% end %>
+  <td class="text-center"><%= script.file.file.extension.upcase %></td>
   <td>
     <%=
     link_to 'Remove',
@@ -14,7 +8,7 @@
     remote: :true,
     method: :delete,
     :data => { confirm: "Are you sure? "},
-    :class => "btn btn-danger btn-xs delete-script"
+    :class => "btn btn-danger btn-xs center-block"
     %>
   </td>
 </tr>
