@@ -53,3 +53,4 @@ gem 'devise'
 gem "omniauth"
 gem "omniauth-github"
 gem 'git'
+gem 'gems'
