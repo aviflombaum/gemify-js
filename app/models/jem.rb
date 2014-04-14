@@ -62,6 +62,13 @@ class Jem < ActiveRecord::Base
     self.scripts.empty? ? false : true
   end
 
+  def log_rubygems
+    Gems.configure do |config|
+      config.username = ENV['RUBYGEM_EMAIL']
+      config.password = ENV['RUBYGEM_PASSWORD']
+    end
+  end
+
   private
 
     def find_directory

@@ -12,7 +12,7 @@ class Script < ActiveRecord::Base
 
   private
   def validate_file_name_is_unique
-    if Script.where(:file => file.file.original_filename).count > 0
+    if Jem.find(jem_id).scripts.where(:file => file.file.original_filename).count > 0
          errors.add :file, "'#{file.file.original_filename}' already exists"
     end
   end

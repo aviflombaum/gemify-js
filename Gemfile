@@ -44,7 +44,7 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "bootstrap-sass", "~> 3.1.1"
+gem "bootstrap-sass", git: "git@github.com:wontaeyang/bootstrap-sass.git"
 gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 gem "jquery-fileupload-rails", git: "git@github.com:wontaeyang/jquery-fileupload-rails.git"
@@ -57,4 +57,5 @@ gem 'gems'
 gem 'sidekiq'
 gem 'sidekiq-status'
 gem 'sinatra', '>= 1.3.0', :require => nil
-
+gem 'jquery-ui-rails'
+gem "font-awesome-rails"
