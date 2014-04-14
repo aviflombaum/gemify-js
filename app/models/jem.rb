@@ -46,7 +46,6 @@ class Jem < ActiveRecord::Base
     end
 
     Dir.chdir(target) do
-      binding.pry
       `gem build #{self.name}.gemspec`
       `gem push "#{self.name}-#{version_number}.gem"`
     end
@@ -54,6 +53,13 @@ class Jem < ActiveRecord::Base
 
   def has_files?
     self.scripts.empty? ? false : true
+  end
+
+  def log_rubygems
+    Gems.configure do |config|
+      config.username = ENV['RUBYGEM_EMAIL']
+      config.password = ENV['RUBYGEM_PASSWORD']
+    end
   end
 
   private

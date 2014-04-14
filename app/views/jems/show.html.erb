@@ -1,82 +1,96 @@
-<div class="title-group">
+<!-- <div class="title-group">
   <h1><%= @jem.name.capitalize %>
    <small><%= @jem.description %></small> 
   </h1>
-</div>
+</div> -->
 <!-- <h5> Drag and drop your files anywhere in the browser to upload </h5> -->
 
 <div class="row">
-  <div class="col-md-3 info-pane">
-    <dl>
-        <dt>Author:</dt>
-        <dd><%= @jem.author %></dd>
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <dl>
+            <dt><i class="fa fa-user"></i> Author:</dt>
+            <dd><%= @jem.author %></dd>
 
-        <dt>Email:</dt>
-        <dd><%= @jem.email %></dd>
+            <dt><i class="fa fa-inbox"></i> Email:</dt>
+            <dd><%= @jem.email %></dd>
 
-        <dt>Homepage:</dt>
-        <dd><%= @jem.homepage %></dd>
+            <dt><i class="fa fa-home"></i> Homepage:</dt>
+            <dd><%= @jem.homepage %></dd>
 
-        <dt>Name:</dt>
-        <dd><%= @jem.name %></dd>
+            <dt><i class="fa fa-align-left"></i> Name:</dt>
+            <dd><%= @jem.name %></dd>
 
-        <dt>Github:</dt>
-        <% if URI.parse(@jem.github).scheme == nil %>
-          <dd><%= link_to "github/" + @jem.name, "http://" + @jem.github.to_s %></dd>
-        <% else %>
-          <dd><%= link_to "github/" + @jem.name, @jem.github.to_s %></dd>
-        <% end %>
+            <dt><i class="fa fa-github"></i> Github:</dt>
+            <% if URI.parse(@jem.github).scheme == nil %>
+              <dd><%= link_to "github/" + @jem.name, "http://" + @jem.github.to_s %></dd>
+            <% else %>
+              <dd><%= link_to "github/" + @jem.name, @jem.github.to_s %></dd>
+            <% end %>
 
-        <dt>Version:</dt>
-        <dd><%= @jem.version_number %></dd>
+            <dt><i class="fa fa-arrow-circle-up"></i> Version:</dt>
+            <dd><%= @jem.version_number %></dd>
 
-        <dt>Description:</dt>
-        <dd><%= @jem.description %></dd>
+            <dt><i class="fa fa-align-justify"></i> Description:</dt>
+            <dd><%= @jem.description %></dd>
 
-        <dt>Created:</dt>
-        <dd><%= @jem.created_at %></dd>
+            <dt><i class="fa fa-clock-o"></i> Created:</dt>
+            <dd><%= @jem.created_at %></dd>
 
-        <dt>Update:</dt>
-        <dd><%= @jem.updated_at %></dd>
+            <dt><i class="fa fa-arrow-up"></i> Update:</dt>
+            <dd><%= @jem.updated_at %></dd>
 
-    </dl>
+        </dl>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-7 col-md-offset-1">
-    <h3>Gem files</h3>
-    <table class="table table-hover" id="file-list">
-      <thead>
-        <tr>
-          <th>FILE NAME</td>
-          <th class="text-center">FILE TYPE</td> 
-          <th class="text-center" width="80">DELETE</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @jem.scripts.each do |script| %>
-          <tr data-id="<%= script.id %>">
-            <td><%= File.basename(script.file.url) %></td>
-            <td class="text-center"><%= script.file.file.extension.upcase %></td>
-            <td>
-              <%=
-                link_to 'Remove',
-                delete_script_path(script),
-                remote: :true,
-                method: :delete,
-                :data => { confirm: "Are you sure? "},
-                :class => "btn btn-danger btn-xs center-block"
-               %>
-            </td>
-          </tr>
+
+  <div class="col-md-9">
+  <% @jem.log_rubygems %>
+  <%= Gems.downloads @jem.name, @jem.version_number %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2><i class="fa fa-align-justify"></i><span class="break"></span>Condensed Table</h2>
+      </div>
+      <div class="panel-body">
+        <table id="file-list" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>FILE NAME</td>
+              <th class="text-center">FILE TYPE</td> 
+              <th class="text-center" width="80">DELETE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @jem.scripts.each do |script| %>
+              <tr data-id="<%= script.id %>">
+                <td><%= File.basename(script.file.url) %></td>
+                <td class="text-center"><%= script.file.file.extension.upcase %></td>
+                <td>
+                  <%=
+                    link_to 'Remove',
+                    delete_script_path(script),
+                    remote: :true,
+                    method: :delete,
+                    :data => { confirm: "Are you sure? "},
+                    :class => "btn btn-danger btn-xs center-block"
+                   %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
+        <input type="hidden" name="id" value="<%= @jem.id %>"/>
+        <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
         <% end %>
-      </tbody>
-    </table>
-    <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
-    <input type="hidden" name="id" value="<%= @jem.id %>"/>
-    <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
-    <% end %>
+    </div>
   </div>
-</div>
+</div><!--/col-->
+  
+
 
 <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" style="display:none;">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
@@ -86,669 +100,3 @@
 </form>
 
 
-
-<script id="template-upload" type="text/x-tmpl">
-  <div class="upload">
-    {%=o.name%}
-    <div class="progress"><div class="bar" style="width: 0%;"></div></div>
-  </div>
-</script>
-
-
-<div class="row">   
-        <div class="col-lg-12">
-          <div class="panel panel-default">
-            <div class="panel-heading" data-original-title>
-              <h2><i class="fa fa-user"></i><span class="break"></span>Members</h2>
-              <div class="panel-actions">
-                <a href="table.html#" class="btn-setting"><i class="fa fa-wrench"></i></a>
-                <a href="table.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
-                <a href="table.html#" class="btn-close"><i class="fa fa-times"></i></a>
-              </div>
-            </div>
-            <div class="panel-body">
-              <table class="table table-striped table-bordered bootstrap-datatable datatable">
-                <thead>
-                  <tr>
-                    <th>Username</th>
-                    <th>Date registered</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>   
-                <tbody>
-                <tr>
-                  <td>Anton Phunihel</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>  
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>  
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Alphonse Ivo</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>  
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>  
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Thancmar Theophanes</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>  
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>  
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Walerian Khwaja</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Clemens Janko</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-danger">Banned</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Chidubem Gottlob</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-danger">Banned</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Hristofor Sergio</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tadhg Griogair</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Pollux Beaumont</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Adam Alister</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Carlito Roffe</td>
-                  <td>2012/08/23</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-danger">Banned</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Sana Amrin</td>
-                  <td>2012/08/23</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-danger">Banned</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Adinah Ralph</td>
-                  <td>2012/06/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="label label-default">Inactive</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Dederick Mihail</td>
-                  <td>2012/06/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="label label-default">Inactive</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Hipólito András</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Fricis Arieh</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Scottie Maximilian</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Bao Gaspar</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tullio Luka</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-danger">Banned</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Felice Arseniy</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="label label-default">Inactive</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Finlay Alf</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="label label-default">Inactive</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Theophilus Nala</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Sullivan Robert</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Kristóf Filiberto</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Kuzma Edvard</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-success">Active</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Bünyamin Kasper</td>
-                  <td>2012/08/23</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-danger">Banned</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Crofton Arran</td>
-                  <td>2012/08/23</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="label label-danger">Banned</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Bernhard Shelah</td>
-                  <td>2012/06/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="label label-default">Inactive</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Grahame Miodrag</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Innokentiy Celio</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Kostandin Warinhari</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Ajith Hristijan</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="label label-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a class="btn btn-success" href="table.html#">
-                      <i class="fa fa-search-plus "></i>                                            
-                    </a>
-                    <a class="btn btn-info" href="table.html#">
-                      <i class="fa fa-edit "></i>                                            
-                    </a>
-                    <a class="btn btn-danger" href="table.html#">
-                      <i class="fa fa-trash-o "></i> 
-
-                    </a>
-                  </td>
-                </tr>
-                </tbody>
-              </table>            
-            </div>
-          </div>
-        </div><!--/col-->
-      
-      </div><!--/row-->
