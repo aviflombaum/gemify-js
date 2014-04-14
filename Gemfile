@@ -54,3 +54,4 @@ gem "omniauth"
 gem "omniauth-github"
 gem 'git'
 gem 'gems'
+gem 'jquery-ui-rails'
