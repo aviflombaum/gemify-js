@@ -28,10 +28,21 @@ class JemsController < ApplicationController
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
     if @jem.has_files?
-      ssh_url = @jem.create_github_repository
-      @jem.create_gem_directory
-      @jem.push_to_github(ssh_url)
-      @jem.build_gem
+      @job_id = JemWorker.perform_async(@jem.id)
+      binding.pry
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def percentage_done
+    job_id = params[:job_id]
+
+    @pct_complete = Sidekiq::Status::pct_complete(job_id)
+
+    respond_to do |format|
+      format.json { render json: @pct_complete }
     end
   end
 

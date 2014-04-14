@@ -46,9 +46,15 @@ class Jem < ActiveRecord::Base
     end
 
     Dir.chdir(target) do
-      binding.pry
       `gem build #{self.name}.gemspec`
       `gem push "#{self.name}-#{version_number}.gem"`
+    end
+  end
+
+  def delete_jem_from_directory
+    target = File.join(Dir.pwd, "jems")
+    Dir.chdir(target) do
+      `rm -rf #{self.name}`
     end
   end
 

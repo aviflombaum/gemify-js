@@ -54,3 +54,7 @@ gem "omniauth"
 gem "omniauth-github"
 gem 'git'
 gem 'gems'
+gem 'sidekiq'
+gem 'sidekiq-status'
+gem 'sinatra', '>= 1.3.0', :require => nil
+

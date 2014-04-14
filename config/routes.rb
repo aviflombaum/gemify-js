@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
   devise_scope :user do 
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
+
   root to: 'static#index'
 
   get 'jems/new' => 'jems#new', as: 'new_jem'
@@ -22,6 +28,7 @@ Rails.application.routes.draw do
 
 
   post 'create_gem' => 'jems#gemify_jem', as: 'jemify_gem'
+  get 'percentage_done' => 'jems#percentage_done', as: 'percentage_done'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

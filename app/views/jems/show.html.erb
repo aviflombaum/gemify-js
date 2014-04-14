@@ -73,7 +73,7 @@
     </table>
     <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
     <input type="hidden" name="id" value="<%= @jem.id %>"/>
-    <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
+    <%= submit_tag 'Generate Gem', class: "btn btn-primary btn-sm pull-right" %>
     <% end %>
   </div>
 </div>
@@ -84,8 +84,6 @@
 
   <input name="script[file]" type="file" multiple style="display:none;" />
 </form>
-
-
 
 <script id="template-upload" type="text/x-tmpl">
   <div class="upload">

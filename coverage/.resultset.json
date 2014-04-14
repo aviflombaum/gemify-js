@@ -1,0 +1,114 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/models/user.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/helpers/jems_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/helpers/script_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/helpers/script_contents_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/helpers/static_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/controllers/jems_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/Sunwoo/Desktop/Programming/Projects/rails/ilovejs/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1397487159
+  }
+}
