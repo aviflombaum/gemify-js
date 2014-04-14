@@ -44,7 +44,7 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "bootstrap-sass", "~> 3.1.1"
+gem "bootstrap-sass", git: "git@github.com:wontaeyang/bootstrap-sass.git"
 gem "octokit"
 gem "figaro", git: "https://github.com/laserlemon/figaro.git"
 gem "jquery-fileupload-rails", git: "git@github.com:wontaeyang/jquery-fileupload-rails.git"
@@ -54,3 +54,5 @@ gem "omniauth"
 gem "omniauth-github"
 gem 'git'
 gem 'gems'
+gem 'jquery-ui-rails'
+gem "font-awesome-rails"
