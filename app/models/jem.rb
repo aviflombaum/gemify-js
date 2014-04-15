@@ -55,7 +55,7 @@ class Jem < ActiveRecord::Base
   end
 
   def delete_jem_from_directory
-    target = File.join(Dir.pwd, "jems")
+    target = File.join(Dir.pwd, "jems_tmp")
     Dir.chdir(target) do
       `rm -rf #{self.name}`
     end
@@ -85,7 +85,7 @@ class Jem < ActiveRecord::Base
   private
 
     def find_directory
-      File.join(Dir.pwd, "jems/#{self.name}")
+      File.join(Dir.pwd, "jems_tmp/#{self.name}")
     end
 
     def all_repoes
