@@ -1,0 +1,17 @@
+<li>
+  <% if @activity.action == "create" %>
+  <i class="fa fa-plus" style="color: #36a9e1;"></i>
+  <% elsif @activity.action == "destroy" %>
+  <i class="fa fa-minus" style="color: #ff5454;"></i>
+  <% elsif @activity.action == "update" %>
+  <i class="fa fa-arrow-up" style="color: #bdea74;"></i>
+  <% end %>
+  <%= User.find(@activity.user_id).name %>
+  <%= @activity.action.sub(/e?$/, "ed") %>
+  <% if @activity.trackable_type == "Jem" %>
+  <%= @jem.name %>
+  <% else %>
+  <%= @activity.trackable_name %>
+  <% end %>
+  <%= time_ago_in_words(@activity.created_at) %> ago
+</li>

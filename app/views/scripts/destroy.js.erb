@@ -1,3 +1,4 @@
 $("tr[data-id=<%= @script.id %>]").fadeOut(function(){
-  $(this).remove()
+  $(this).remove();
+  $("#activity-list").prepend("<%=j render :partial => 'activity' %>");
 });
