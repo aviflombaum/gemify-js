@@ -20,6 +20,6 @@
 
 uploads/
 
-jems/
+jems_temp/
 vendor/
 /gemfile.lock
