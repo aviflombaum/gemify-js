@@ -1,5 +1,6 @@
 class Jem < ActiveRecord::Base
   has_many :scripts
+  has_many :activities
   belongs_to :user
 
   def create_gem_directory

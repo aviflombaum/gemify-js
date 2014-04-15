@@ -9,6 +9,7 @@ class JemsController < ApplicationController
     @jem.user_id = current_user.id
     respond_to do |format|
       if @jem.save
+        track_activity(@jem, @jem, current_user)
         format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
       else
         format.html { render action: 'new' }
@@ -23,13 +24,14 @@ class JemsController < ApplicationController
   def show
     @script = Script.new
     @jem = Jem.find(params[:id])
+    @activities = @jem.activities.all.order("created_at desc").limit(10)
   end
 
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
     if @jem.has_files?
       @job_id = JemWorker.perform_async(@jem.id)
-
+      track_activity(@jem, @jem, current_user)
       respond_to do |format|
         format.js
       end
@@ -57,6 +59,7 @@ class JemsController < ApplicationController
   def update
     @jem = Jem.find(params[:id])
     if @jem.update_attributes(jem_params)
+      track_activity(@jem, @jem, current_user)
       redirect_to jem_path(@jem)
     else
       render :new
