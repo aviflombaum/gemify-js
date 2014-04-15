@@ -102,6 +102,38 @@
   </div>
 </div><!--/col-->
 
+<div id="activity-list" class="col-md-9">
+  <div class="panel panel-default">
+    <div class="panel-heading" id="job_messages">
+      <h2><i class="fa fa-align-justify"></i><span class="break"></span>Activity</h2>
+    </div>
+    <div class="panel-body">
+      <ul class="dashboard-list" id="activity-list">
+        <% @activities.each do |activity| %>
+        <li>
+          <% if activity.action == "create" %>
+            <i class="fa fa-plus" style="color: #36a9e1;"></i>
+          <% elsif activity.action == "destroy" %>
+            <i class="fa fa-minus" style="color: #ff5454;"></i>
+          <% elsif activity.action == "update" %>
+            <i class="fa fa-arrow-up" style="color: #bdea74;"></i>
+          <% end %>
+          <%= User.find(activity.user_id).name %>
+          <%= activity.action.sub(/e?$/, "ed") %>
+          <% if activity.trackable_type == "Jem" %>
+            <%= @jem.name %>
+          <% else %>
+            <%= activity.trackable_name %>
+          <% end %>
+          <%= time_ago_in_words(activity.created_at) %> ago
+        </li>
+        <% end %>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div style="display:none" id="progress-bar" class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading" id="job_messages">

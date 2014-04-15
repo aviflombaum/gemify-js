@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
 
+  private
+
+  def track_activity(jem, trackable, user, action = params[:action])
+    jem.activities.create! action: params[:action], trackable: trackable, trackable_name: trackable.class == Script ? File.basename(trackable.file.url) : trackable.name, user_id: user.id
+  end
+
+
+
   protected
 
   def after_sign_in_path_for(resource)
