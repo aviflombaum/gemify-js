@@ -1,9 +1,4 @@
-<!-- <div class="title-group">
-  <h1><%= @jem.name.capitalize %>
-   <small><%= @jem.description %></small> 
-  </h1>
-</div> -->
-<!-- <h5> Drag and drop your files anywhere in the browser to upload </h5> -->
+
 <div class="row">
   <div style="display:none" id="progress-bar" class="col-md-12">
     <div class="panel panel-default">
@@ -80,7 +75,7 @@
   <%#= Gems.downloads @jem.name, @jem.version_number %>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2><i class="fa fa-align-justify"></i><span class="break"></span>Condensed Table</h2>
+        <h2><i class="fa fa-align-justify"></i><span class="break"></span>Gem Files</h2>
       </div>
       <div class="panel-body">
         <table id="file-list" class="table table-bordered">
@@ -128,14 +123,14 @@
         <% @activities.each do |activity| %>
         <li>
           <% if activity.action == "create" %>
-            <i class="fa fa-plus" style="color: #36a9e1;"></i>
+            <i class="fa fa-plus" style="color: #36a9e1;"></i> <%= User.find(activity.user_id).name %> added
           <% elsif activity.action == "destroy" %>
-            <i class="fa fa-minus" style="color: #ff5454;"></i>
+            <i class="fa fa-minus" style="color: #ff5454;"></i> <%= User.find(activity.user_id).name %> deleted
           <% elsif activity.action == "update" %>
-            <i class="fa fa-arrow-up" style="color: #bdea74;"></i>
+            <i class="fa fa-arrow-up" style="color: #bdea74;"></i> <%= User.find(activity.user_id).name %> <%= activity.action.sub(/e?$/, "ed") %>
+          <% elsif activity.action == "gemify_jem" %>
+            <i class="fa fa-heart" style="color: #e84c8a;"></i> <%= User.find(activity.user_id).name %> gemmed
           <% end %>
-          <%= User.find(activity.user_id).name %>
-          <%= activity.action.sub(/e?$/, "ed") %>
           <% if activity.trackable_type == "Jem" %>
             <%= @jem.name %>
           <% else %>
