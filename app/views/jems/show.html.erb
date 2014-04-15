@@ -110,9 +110,10 @@
             <% end %>
           </tbody>
         </table>
+        
         <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
-        <input type="hidden" name="id" value="<%= @jem.id %>"/>
-        <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
+          <input type="hidden" name="id" value="<%= @jem.id %>"/>
+          <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
         <% end %>
     </div>
   </div>
