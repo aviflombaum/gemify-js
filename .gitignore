@@ -22,3 +22,4 @@ uploads/
 
 jems/
 vendor/
+/gemfile.lock
