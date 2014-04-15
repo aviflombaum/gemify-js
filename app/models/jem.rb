@@ -21,7 +21,7 @@ class Jem < ActiveRecord::Base
 
     client.add_collaborator(repository.full_name, ENV['COLLAB_NAME'])
 
-    self.gem_repo = repository.rels[:html].href
+    self.gem_repo = 'http://www.github.com/gemifyjs/' + self.name
     self.save
 
     repository.ssh_url
@@ -73,7 +73,7 @@ class Jem < ActiveRecord::Base
   end
 
   def self.get_message(pct_complete)
-    messages = ['Solving World Hunger...', 'Milking Goats...', 'Breeding Corgis...', 'Whipping Developers...', 'Pretending To Gemify...', 'Fermenting Cheese...', 'Asking Logan For Help', 'Crying On Friday', 'Arel Readying Boat']
+    messages = ['Initializing Hamsters', 'Calculating Mass of Moon', 'Solving World Hunger...', 'Milking Goats...', 'Breeding Corgis...', 'Whipping Developers...', 'Pretending To Gemify...', 'Fermenting Cheese...', 'Asking Logan For Help', 'Crying On Friday', 'Arel Readying Boat']
     if pct_complete == 100
       job_message = 'Gemified!'
     else
