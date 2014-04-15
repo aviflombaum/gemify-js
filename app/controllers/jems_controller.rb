@@ -29,7 +29,7 @@ class JemsController < ApplicationController
     @jem = Jem.find(params[:id].to_i)
     if @jem.has_files?
       @job_id = JemWorker.perform_async(@jem.id)
-      binding.pry
+
       respond_to do |format|
         format.js
       end
@@ -39,10 +39,18 @@ class JemsController < ApplicationController
   def percentage_done
     job_id = params[:job_id]
 
-    @pct_complete = Sidekiq::Status::pct_complete(job_id)
+    container = SidekiqStatus::Container.load(job_id)
+
+    @pct_complete = container.pct_complete
+    @job_message = Jem.get_message(@pct_complete)
 
     respond_to do |format|
-      format.json { render json: @pct_complete }
+      format.json { 
+        render :json => {
+          :percentage_done => @pct_complete,
+          :job_message => @job_message
+        }
+      }
     end
   end
 

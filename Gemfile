@@ -1,4 +1,3 @@
-
 source 'http://rubygems.org'
 
 
@@ -55,7 +54,7 @@ gem "omniauth-github"
 gem 'git'
 gem 'gems'
 gem 'sidekiq'
-gem 'sidekiq-status'
+gem 'sidekiq_status'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'jquery-ui-rails'
 gem "font-awesome-rails"

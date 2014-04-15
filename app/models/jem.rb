@@ -69,6 +69,16 @@ class Jem < ActiveRecord::Base
     end
   end
 
+  def self.get_message(pct_complete)
+    messages = ['Solving World Hunger...', 'Milking Goats...', 'Breeding Corgis...', 'Whipping Developers...', 'Pretending To Gemify...', 'Fermenting Cheese...', 'Asking Logan For Help', 'Crying On Friday', 'Arel Readying Boat']
+    if pct_complete == 100
+      job_message = 'Finally Purchased Corgi!'
+    else
+      job_message = messages[rand(0..messages.size-1)]
+    end
+    job_message
+  end
+
   private
 
     def find_directory
