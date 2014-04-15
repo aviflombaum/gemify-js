@@ -25,6 +25,15 @@ class JemsController < ApplicationController
     @jem = Jem.find(params[:id])
   end
 
+  def update
+    @jem = Jem.find(params[:id])
+    if @jem.update_attributes(jem_params)
+      redirect_to jem_path(@jem)
+    else
+      render :new
+    end
+  end
+
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
     if @jem.has_files?
@@ -54,12 +63,15 @@ class JemsController < ApplicationController
     end
   end
 
-  def update
-    @jem = Jem.find(params[:id])
-    if @jem.update_attributes(jem_params)
-      redirect_to jem_path(@jem)
-    else
-      render :new
+  def get_gem_repo
+    jem = Jem.find(params[:jem_id])
+
+    @gem_repo = jem.gem_repo
+
+    respond_to do |format|
+      format.json { 
+        render :json => @gem_repo
+      }
     end
   end
 

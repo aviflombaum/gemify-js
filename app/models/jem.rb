@@ -9,9 +9,9 @@ class Jem < ActiveRecord::Base
   def create_github_repository
     client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
 
-    repository = client.create_repository(self.name, { 
-      :description => self.description, 
-      :homepage => self.homepage,
+    repository = client.create_repository(jem.name, { 
+      :description => jem.description, 
+      :homepage => jem.homepage,
       :private => false,
       :has_issues => true,
       :has_wiki => true,
@@ -20,7 +20,9 @@ class Jem < ActiveRecord::Base
 
     client.add_collaborator(repository.full_name, ENV['COLLAB_NAME'])
 
-    self.github = repository.html_url
+    self.gem_repo = repository.rels[:html].href
+    self.save
+
     repository.ssh_url
   end
 
@@ -72,7 +74,7 @@ class Jem < ActiveRecord::Base
   def self.get_message(pct_complete)
     messages = ['Solving World Hunger...', 'Milking Goats...', 'Breeding Corgis...', 'Whipping Developers...', 'Pretending To Gemify...', 'Fermenting Cheese...', 'Asking Logan For Help', 'Crying On Friday', 'Arel Readying Boat']
     if pct_complete == 100
-      job_message = 'Finally Purchased Corgi!'
+      job_message = 'Gemified!'
     else
       job_message = messages[rand(0..messages.size-1)]
     end

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   post 'create_gem' => 'jems#gemify_jem', as: 'jemify_gem'
   get 'percentage_done' => 'jems#percentage_done', as: 'percentage_done'
+  get 'get_gem_repo' => 'jems#get_gem_repo'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

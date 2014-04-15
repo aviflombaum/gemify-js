@@ -22,11 +22,11 @@
             <dt><i class="fa fa-align-left"></i> Name:</dt>
             <dd><%= @jem.name %></dd>
 
-            <dt><i class="fa fa-github"></i> Github:</dt>
+            <dt><i class="fa fa-github"></i> Original JS Github:</dt>
             <% if URI.parse(@jem.github).scheme == nil %>
-              <dd><%= link_to "github/" + @jem.name, "http://" + @jem.github.to_s %></dd>
+              <dd><%= link_to @jem.github.to_s, "http://" + @jem.github.to_s %></dd>
             <% else %>
-              <dd><%= link_to "github/" + @jem.name, @jem.github.to_s %></dd>
+              <dd><%= link_to @jem.github, @jem.github.to_s %></dd>
             <% end %>
 
             <dt><i class="fa fa-arrow-circle-up"></i> Version:</dt>
@@ -40,6 +40,18 @@
 
             <dt><i class="fa fa-arrow-up"></i> Update:</dt>
             <dd><%= @jem.updated_at %></dd>
+
+            <div id="rubygem_link_container" class="left-panel hidden">
+              <dt><i class="fa fa-arrow-up"></i> Rubygems:</dt>
+              <dd id="rubygem_link"><%= @jem.rubygem_link %></dd>
+            </div>
+
+            <div id="gem_repo" class="left-panel hidden">
+              <dt><i class="fa fa-arrow-up"></i> Gem Repository:</dt>
+              <dd><%= @jem.gem_repo %></dd>
+            </div>
+
+            <div class="hidden" id="jem_id"><%= @jem.id %></div>
 
         </dl>
       </div>

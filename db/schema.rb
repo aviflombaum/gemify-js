@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411000941) do
+ActiveRecord::Schema.define(version: 20140415175054) do
 
   create_table "jems", force: true do |t|
     t.string   "name"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20140411000941) do
     t.text     "summary"
     t.string   "homepage"
     t.integer  "user_id"
+    t.string   "gem_repo"
+    t.string   "rubygem_link"
   end
 
   create_table "scripts", force: true do |t|
