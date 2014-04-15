@@ -30,8 +30,8 @@ class JemsController < ApplicationController
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
     if @jem.has_files?
+      @activity = track_activity(@jem, @jem, current_user)
       @job_id = JemWorker.perform_async(@jem.id)
-      track_activity(@jem, @jem, current_user)
       respond_to do |format|
         format.js
       end
