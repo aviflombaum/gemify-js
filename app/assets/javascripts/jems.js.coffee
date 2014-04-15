@@ -1,3 +1,17 @@
+grabGemRepo = () ->
+  jem_id = $('#jem_id').text()
+
+  $.ajax({
+    url: '/get_gem_repo'
+    data: jem_id: jem_id
+    success: (data) ->
+      console.log('grabGemRepo function called')
+      console.log(data)
+      $('#gem_repo dd').text(data)
+      $('#gem_repo').removeClass('hidden')
+      $('#gem_repo').fadeIn()
+  })
+
 $('document').ready () ->
   $('#new-script').fileupload
     dataType: "script"
@@ -9,19 +23,6 @@ $('document').ready () ->
         data.submit()
       else
         alert("#{file.name} is not a javascript, CSS, or image file")
-
-  grabGemRepo = () ->
-    jem_id = $('#jem_id').text()
-
-    $.ajax({
-      url: '/get_gem_repo'
-      data: jem_id: jem_id
-      success: (data) ->
-        console.log('grabGemRepo function called')
-        console.log(data)
-        $('#gem_repo dd').text(data)
-        $('#gem_repo').fadeIn()
-    })
 
   $('#job-id-container').bind('DOMSubtreeModified', queryForPercentage = () ->
     job_id = $('#job_id').text()
@@ -36,7 +37,7 @@ $('document').ready () ->
         if $('#job-progress').text() != '100%'
           setTimeout(queryForPercentage, 1500)
         console.log(data['percentage_done'])
-        if data['percentage_done'] == 30
+        if data['percentage_done'] == 100
           grabGemRepo()
     }) 
   )

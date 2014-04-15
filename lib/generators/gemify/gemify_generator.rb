@@ -3,7 +3,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
 
   def generate_files
     @jem = Jem.find(name.to_i)
-    target = File.join(Dir.pwd, "jems/#{@jem.name}")
+    target = File.join(Dir.pwd, "jems_tmp/#{@jem.name}")
     script_target = File.join(Dir.pwd, "public")
     template "engine.rb.erb", File.join(target, "lib/#{@jem.name}/engine.rb")
     template "version.rb.erb", File.join(target, "lib/#{@jem.name}/version.rb")
