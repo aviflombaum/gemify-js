@@ -1,18 +1,22 @@
 grabGemRepo = () ->
-  jem_id = $('#jem_id').text()
+  jem_id = parseInt( $('#jem_id').text() )
 
   $.ajax({
     url: '/get_gem_repo'
+    dataType: "json"
     data: jem_id: jem_id
     success: (data) ->
-      console.log('grabGemRepo function called')
+      console.log('success grabGemRepo')
       console.log(data)
-      $('#gem_repo dd').text(data)
-      $('#gem_repo').removeClass('hidden')
-      $('#gem_repo').fadeIn()
+      $('#gem_repo_link').html("<a target='_blank' href='" + data['gem_repo_link'] + "'>Gem Repository</a>")
+      $('#rubygem_link').html("<a target='_blank' href='" + data['rubygem_link'] + "'>Rubygem Link</a>")
+    error: (data) ->
+      console.log 'error with grabGemRepo'
+      console.log(data)
   })
 
-$('document').ready () ->
+$(document).ready () ->
+
   $('#new-script').fileupload
     dataType: "script"
     add: (e, data) ->
@@ -40,6 +44,24 @@ $('document').ready () ->
         if data['percentage_done'] == 100
           grabGemRepo()
     }) 
+  )
+
+  $('#update_version').click( () -> 
+    console.log 'Update version button clicked'
+    new_version_number = $('#new_version_number').val()
+    jem_id = $('#jem_id').text()
+    $.ajax({
+      url: '/update_version'
+      type: "POST"
+      data:
+        new_jem_version: new_version_number
+        id: jem_id
+      success: (data) ->
+        #activate generate button
+        alert('version updated!')
+      error: (data) ->
+        alert('failed to update!')
+    })
   )
 
 

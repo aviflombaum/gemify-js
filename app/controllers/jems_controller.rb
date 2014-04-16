@@ -38,6 +38,17 @@ class JemsController < ApplicationController
     end
   end
 
+  def gemify_updated_jem
+    @jem = Jem.find(params[:id].to_i)
+    @activity = track_activity(@jem, @jem, current_user)
+    if @jem.has_files?
+      @job_id = JemWorker.perform_async(@jem.id)
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   def percentage_done
     job_id = params[:job_id]
 
@@ -57,14 +68,33 @@ class JemsController < ApplicationController
   end
 
   def get_gem_repo
-    jem = Jem.find(params[:jem_id])
+    jem = Jem.find(params[:jem_id].to_i)
 
-    @gem_repo = jem.gem_repo
+    jem.rubygem_link = "https://rubygems.org/gems/" + jem.name
+    jem.save
+
+    @gem_repo_link = jem.gem_repo
+    @rubygem_link = jem.rubygem_link
 
     respond_to do |format|
       format.json { 
-        render :json => @gem_repo
+        render :json => {
+          :rubygem_link => @rubygem_link,
+          :gem_repo_link => @gem_repo_link
+        }
       }
+    end
+  end
+
+  def update_version
+    jem = Jem.find(params[:id])
+
+    jem.version_number = params[:new_jem_version]
+    if jem.save
+      @version = jem.version_number
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

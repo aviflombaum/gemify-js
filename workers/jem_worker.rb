@@ -13,9 +13,9 @@ class JemWorker
     jem.create_gem_directory
     at 45
     jem.push_to_github(ssh_url)
-    at 55
+    at 85
     jem.build_gem
-    at 80
+    at 95
     jem.delete_jem_from_directory
     at 100
   end
