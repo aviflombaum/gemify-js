@@ -6,51 +6,33 @@
     <div class="panel-body">
 
       <%= form_for @jem do |f| %>
-
-        <div class="form-group">
+        
           <%= f.label :name, 'Name' %></br>
           <%= f.text_field :name, class: "form-control" %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.label :author, 'Author' %></br>
           <%= f.text_field :author, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.label :version_number, 'Version Number' %></br>
           <%= f.text_field :version_number, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.label :description, 'Description' %></br>
           <%= f.text_field :description, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.label :summary, 'Gem Summary' %></br>
           <%= f.text_field :summary, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.label :homepage, 'Homepage' %></br>
           <%= f.text_field :homepage, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.label :email, 'Email Address' %></br>
           <%= f.text_field :email, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.label :github, 'Github Repository' %></br>
           <%= f.text_field :github, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
+        
           <%= f.submit 'Create Gem', :class => 'btn btn-primary full-width-button' %>
-        </div>
-      <% end %>
+          <% end %>
     </div>
   </div>
 </div>

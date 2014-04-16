@@ -10,9 +10,9 @@ class Jem < ActiveRecord::Base
   def create_github_repository
     client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
 
-    repository = client.create_repository(jem.name, { 
-      :description => jem.description, 
-      :homepage => jem.homepage,
+    repository = client.create_repository(self.name, { 
+      :description => self.description, 
+      :homepage => self.homepage,
       :private => false,
       :has_issues => true,
       :has_wiki => true,
@@ -29,7 +29,7 @@ class Jem < ActiveRecord::Base
 
   def push_to_github(ssh_url)
     target = find_directory
-
+    binding.pry
     Dir.chdir(target) do
       g = Git.init('.')
       g.add
