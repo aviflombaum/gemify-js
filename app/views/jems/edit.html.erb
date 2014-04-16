@@ -1,25 +1,15 @@
 <div class="col-md-4 col-md-offset-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2><i class="fa fa-files-o"></i><span class="break"></span>Create a new gem</h2>
+      <h2><i class="fa fa-files-o"></i><span class="break"></span>Edit gem information</h2>
     </div>
     <div class="panel-body">
 
       <%= form_for @jem do |f| %>
 
         <div class="form-group">
-          <%= f.label :name, 'Name' %></br>
-          <%= f.text_field :name, class: "form-control" %></br>
-        </div>
-
-        <div class="form-group">
           <%= f.label :author, 'Author' %></br>
           <%= f.text_field :author, class: "form-control"  %></br>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :version_number, 'Version Number' %></br>
-          <%= f.text_field :version_number, class: "form-control"  %></br>
         </div>
 
         <div class="form-group">
@@ -48,7 +38,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit 'Create Gem', :class => 'btn btn-primary full-width-button' %>
+          <%= f.submit 'Update Gem', :class => 'btn btn-primary full-width-button' %>
         </div>
       <% end %>
     </div>

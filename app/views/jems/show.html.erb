@@ -88,7 +88,14 @@
           </div>
           <% end %>
 
-          <div class="hidden info-item" id="jem_id"><%= @jem.id %></div>
+          <div class="hidden info-item" id="jem_id">
+            <%= @jem.id %>
+          </div>
+
+          <div class="info-item">
+            <%= link_to 'Edit Gem', edit_jem_path(@jem), class: "btn btn-success full-width-button" %>
+          </div>
+
         </div>
       </div>
     </div>

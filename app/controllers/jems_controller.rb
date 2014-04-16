@@ -24,7 +24,7 @@ class JemsController < ApplicationController
   def show
     @script = Script.new
     @jem = Jem.find(params[:id])
-    @activities = @jem.activities.all.order("created_at desc").limit(10)
+    @activities = @jem.activities.all.order("created_at desc").limit(5)
   end
 
   def gemify_jem
@@ -106,6 +106,11 @@ class JemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @jem = Jem.find(params[:id])
+
   end
 
   private
