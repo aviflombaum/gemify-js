@@ -3,6 +3,15 @@ class Jem < ActiveRecord::Base
   has_many :activities
   belongs_to :user
 
+  validates :name, presence: true, uniqueness: true
+  # validates :github, :presence: true
+  validates :author, presence: true
+  validates :version_number, presence: true #add number validation
+  validates :description, presence: true
+  validates :email, presence: true
+  validates :summary, presence: true
+  validates :homepage, presence: true
+
   def create_gem_directory
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
   end
@@ -21,7 +30,7 @@ class Jem < ActiveRecord::Base
 
     client.add_collaborator(repository.full_name, ENV['COLLAB_NAME'])
 
-    self.gem_repo = 'http://www.github.com/gemifyjs/' + self.name
+    self.gem_repo = 'http://www.github.com/gemify-js/' + self.name
     self.save
 
     repository.ssh_url
@@ -42,7 +51,7 @@ class Jem < ActiveRecord::Base
 
   def build_gem
     target = find_directory
-
+    
     Gems.configure do |config|
       config.username = ENV['RUBYGEM_EMAIL']
       config.password = ENV['RUBYGEM_PASSWORD']
@@ -73,7 +82,7 @@ class Jem < ActiveRecord::Base
   end
 
   def self.get_message(pct_complete)
-    messages = ['Initializing Hamsters', 'Calculating Mass of Moon', 'Solving World Hunger...', 'Milking Goats...', 'Breeding Corgis...', 'Whipping Developers...', 'Pretending To Gemify...', 'Fermenting Cheese...', 'Asking Logan For Help', 'Crying On Friday', 'Arel Readying Boat']
+    messages = ['Injecting Redbull Into Bloodstream', 'Initializing Hamsters', 'Calculating Mass of Moon', 'Solving World Hunger...', 'Milking Goats...', 'Breeding Corgis...', 'Whipping Developers...', 'Pretending To Gemify...', 'Fermenting Cheese...', 'Asking Logan For Help', 'Crying On Friday', 'Arel Readying Boat']
     if pct_complete == 100
       job_message = 'Gemified!'
     else
