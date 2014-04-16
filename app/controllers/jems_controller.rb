@@ -42,7 +42,7 @@ class JemsController < ApplicationController
     @jem = Jem.find(params[:id].to_i)
     @activity = track_activity(@jem, @jem, current_user)
     if @jem.has_files?
-      @job_id = JemWorker.perform_async(@jem.id)
+      @job_id = UpdateJemWorker.perform_async(@jem.id)
       respond_to do |format|
         format.js
       end

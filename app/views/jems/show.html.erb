@@ -88,9 +88,7 @@
           </div>
           <% end %>
 
-          <div class="hidden info-item" id="jem_id">
-            <%= @jem.id %>
-          </div>
+          <div class="hidden info-item" id="jem_id"><%= @jem.id %></div>
 
           <div class="info-item">
             <%= link_to 'Edit Gem', edit_jem_path(@jem), class: "btn btn-success full-width-button" %>
@@ -179,7 +177,7 @@
                     <%= form_tag '/update_gem', :method => :post, :remote => true do %>
                       <%= token_tag %>
                       <input type="hidden" name="id" value="<%= @jem.id %>"/>
-                      <%= submit_tag 'Generate Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
+                      <%= submit_tag 'Update Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
                     <% end %>
 
                     <input id="update_version" type="submit" class="btn btn-primary btn-sm pull-right" value="Update Version"/>
