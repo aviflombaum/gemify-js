@@ -78,6 +78,11 @@ class JemsController < ApplicationController
     end
   end
 
+  def edit
+    @jem = Jem.find(params[:id])
+
+  end
+
   private
 
   def jem_params
