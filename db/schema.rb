@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415183111) do
+ActiveRecord::Schema.define(version: 20140416230403) do
 
   create_table "activities", force: true do |t|
     t.integer  "jem_id"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20140415183111) do
     t.integer  "user_id"
     t.string   "gem_repo"
     t.string   "rubygem_link"
+    t.string   "ssh_url"
+    t.string   "commit_message"
   end
 
   create_table "scripts", force: true do |t|
