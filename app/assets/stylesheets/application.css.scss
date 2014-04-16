@@ -23,16 +23,6 @@ body {
   // padding-bottom: 30px;
 }
 
-
-dt{
-  font-size: 1.2em;
-  font-weight: 30;
-}
-
-dd{
-  margin-bottom: 15px;
-}
-
 .navbar{
   margin-bottom: 30px;
 }
@@ -48,4 +38,56 @@ dd{
       margin: 10px;
     }
   }
+}
+
+.info-item{
+  .info-title{
+    margin-top: 20px;
+  }
+  span{
+    display: block;
+    margin: 10px;
+    @media (max-width: 991px) {
+      margin: 0 0 0 15px;
+      display: inline-block;
+      width: 40%;
+    }
+  }
+}
+
+.fileinput-button{
+  margin-right: 10px;
+    input {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      opacity: 0;
+      -ms-filter: 'alpha(opacity=0)';
+      font-size: 200px;
+      direction: ltr;
+      cursor: pointer;
+    }
+
+}
+
+.submit-container{
+  margin: 30px 0 15px 0;
+}
+
+.gem-name{
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 10px 0 10px 0;
+  width: 100%;
+  background-color: #36a9e1;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.panel-padding{
+  padding: 15px;
 }

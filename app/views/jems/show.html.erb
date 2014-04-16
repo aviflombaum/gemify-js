@@ -17,54 +17,77 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3" id="info-panel">
     <div class="panel panel-default">
-      <div class="panel-body">
-        <dl>
-            <dt><i class="fa fa-user"></i> Author:</dt>
-            <dd><%= @jem.author %></dd>
+      <div class="panel-body no-padding">
+        <div class="gem-name">
+          <%= @jem.name.upcase %>
+        </div>
 
-            <dt><i class="fa fa-inbox"></i> Email:</dt>
-            <dd><%= @jem.email %></dd>
+        <div class="panel-padding">
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-user"></i> Author:</span>
+            <span><%= @jem.author %></span>
+          </div>
 
-            <dt><i class="fa fa-home"></i> Homepage:</dt>
-            <dd><%= @jem.homepage %></dd>
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-inbox"></i> Email:</span>
+            <span><%= @jem.email %></span>
+          </div>
 
-            <dt><i class="fa fa-align-left"></i> Name:</dt>
-            <dd><%= @jem.name %></dd>
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-home"></i> Homepage:</span>
+            <span><%= @jem.homepage %></span>
+          </div>
 
-            <dt><i class="fa fa-github"></i> Original JS Github:</dt>
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-align-left"></i> Name:</span>
+            <span><%= @jem.name %></span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-github"></i> Original JS Github:</span>
             <% if URI.parse(@jem.github).scheme == nil %>
-              <dd><%= link_to @jem.github.to_s, "http://" + @jem.github.to_s %></dd>
+              <span><%= link_to @jem.github.to_s, "http://" + @jem.github.to_s %></span>
             <% else %>
-              <dd><%= link_to @jem.github, @jem.github.to_s %></dd>
+              <span><%= link_to @jem.github, @jem.github.to_s %></span>
             <% end %>
+          </div>
 
-            <dt><i class="fa fa-arrow-circle-up"></i> Version:</dt>
-            <dd><%= @jem.version_number %></dd>
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-arrow-circle-up"></i> Version:</span>
+            <span><%= @jem.version_number %></span>
+          </div>
 
-            <dt><i class="fa fa-align-justify"></i> Description:</dt>
-            <dd><%= @jem.description %></dd>
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-align-justify"></i> Description:</span>
+            <span><%= @jem.description %></span>
+          </div>
 
-            <dt><i class="fa fa-clock-o"></i> Created:</dt>
-            <dd><%= @jem.created_at %></dd>
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-clock-o"></i> Created:</span>
+            <span><%= @jem.created_at %></span>
+          </div>
 
-            <dt><i class="fa fa-arrow-up"></i> Update:</dt>
-            <dd><%= @jem.updated_at %></dd>
+          <div class="info-item">
+            <span class="info-title"><i class="fa fa-arrow-up"></i> Update:</span>
+            <span><%= @jem.updated_at %></span>
+          </div>
 
-            <div id="rubygem_link_container" class="left-panel hidden">
-              <dt><i class="fa fa-arrow-up"></i> Rubygems:</dt>
-              <dd id="rubygem_link"><%= @jem.rubygem_link %></dd>
-            </div>
+          <div id="rubygem_link_container" class="left-panel hidden info-item">
+            <span class="info-title"><i class="fa fa-arrow-up"></i> Rubygems:</span>
+            <span id="rubygem_link"><%= @jem.rubygem_link %></span>
+          </div>
 
-            <div id="gem_repo" class="left-panel hidden">
-              <dt><i class="fa fa-arrow-up"></i> Gem Repository:</dt>
-              <dd><%= @jem.gem_repo %></dd>
-            </div>
+          <div id="gem_repo" class="left-panel hidden info-item">
+            <span class="info-title"><i class="fa fa-arrow-up"></i> Gem Repository:</span>
+            <span><%= @jem.gem_repo %></span>
+          </div>
 
-            <div class="hidden" id="jem_id"><%= @jem.id %></div>
-
-        </dl>
+          <div class="hidden info-item" id="jem_id">
+            <%= @jem.id %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -75,21 +98,22 @@
   <%#= Gems.downloads @jem.name, @jem.version_number %>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2><i class="fa fa-align-justify"></i><span class="break"></span>Gem Files</h2>
+        <h2><i class="fa fa-files-o"></i><span class="break"></span>Gem Files</h2>
       </div>
       <div class="panel-body">
+        <h3>Drag and drop files anywhere on screen to upload :)</h3>
         <table id="file-list" class="table table-bordered">
           <thead>
             <tr>
               <th>FILE NAME</td>
-              <th class="text-center">FILE TYPE</td> 
-              <th class="text-center" width="80">DELETE</th>
+              <th class="text-center" width="150">FILE TYPE</td> 
+              <th class="text-center" width="80">ACTION</th>
             </tr>
           </thead>
           <tbody>
             <% @jem.scripts.each do |script| %>
               <tr data-id="<%= script.id %>">
-                <td><%= File.basename(script.file.url) %></td>
+                <td><i class="fa fa-file-o"></i> <%= File.basename(script.file.url) %></td>
                 <td class="text-center"><%= script.file.file.extension.upcase %></td>
                 <td>
                   <%=
@@ -105,11 +129,21 @@
             <% end %>
           </tbody>
         </table>
-        
-        <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
-          <input type="hidden" name="id" value="<%= @jem.id %>"/>
-          <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
-        <% end %>
+        <div class="submit-container">
+          <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
+            <input type="hidden" name="id" value="<%= @jem.id %>"/>
+            <%= submit_tag 'Create Gem', class: "btn btn-primary btn-sm pull-right" %>
+          <% end %>
+
+          <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" >
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+            <input name="_method" type="hidden" value="POST" />
+            <span class="btn btn-success btn-sm pull-right fileinput-button">
+              <span>Add Files</span>
+              <input name="script[file]" type="file" multiple  />
+            </span>
+          </form>
+        </div>
     </div>
   </div>
 </div><!--/col-->
@@ -117,7 +151,7 @@
 <div class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading" >
-      <h2><i class="fa fa-align-justify"></i><span class="break"></span>Activity</h2>
+      <h2><i class="fa fa-check"></i><span class="break"></span>Recent Activity</h2>
     </div>
     <div class="panel-body">
       <ul class="dashboard-list" id="activity-list">
@@ -149,9 +183,4 @@
 <div id="job-id-container"></div>
 
 
-<form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" style="display:none;">
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-  <input name="_method" type="hidden" value="POST" />
 
-  <input name="script[file]" type="file" multiple style="display:none;" />
-</form>
