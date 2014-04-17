@@ -76,6 +76,7 @@ class Jem < ActiveRecord::Base
       puts "CLONED"
       sleep(4)
       `cd #{self.name}/`
+      `pwd`
       puts "LINE 78 PWD IS #{Dir.pwd}"
       puts "MOVED TO #{self.name}"
       `git add .`

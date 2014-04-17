@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ilovejs
 
 ## Description
@@ -61,6 +62,9 @@ My Spiffy App is MIT Licensed. See LICENSE for details.
 =======
 # this-is-tfSADSFA
 >>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
+=======
+# this-is-tfSADSsdfA
+>>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
 
 This is a test gem for the testjs jquery plugin.
 
@@ -68,6 +72,7 @@ This is a test gem for the testjs jquery plugin.
 
 Add this line to your application's Gemfile:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -89,6 +94,9 @@ Add this line to your application's Gemfile:
 =======
     gem 'this-is-tfSADSFA'
 >>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
+=======
+    gem 'this-is-tfSADSsdfA'
+>>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
 
 And then execute:
 
@@ -96,6 +104,7 @@ And then execute:
 
 Or install it yourself as:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -117,11 +126,15 @@ Or install it yourself as:
 =======
     $ gem install this-is-tfSADSFA
 >>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
+=======
+    $ gem install this-is-tfSADSsdfA
+>>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
 
 ## Usage
 
 Add this line to your `application.js` file:
   
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -145,6 +158,9 @@ Add this line to your `application.js` file:
 =======
     //= require asdgasdg.js
 >>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
+=======
+    //= require asdgasdg_2.png
+>>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
   
 
 ## Contributing
@@ -154,6 +170,7 @@ Add this line to your `application.js` file:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -170,3 +187,5 @@ Add this line to your `application.js` file:
 >>>>>>> 6b0296aa0f6fe48e9083c639b2af1893cfd40367
 =======
 >>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
+=======
+>>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
