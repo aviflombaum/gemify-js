@@ -16,7 +16,7 @@ class UpdateJemWorker
     at 60
     jem.build_gem
     at 80
-    jem.delete_jem_from_directory
+    # jem.delete_jem_from_directory
     at 100
   end
 

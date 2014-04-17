@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ilovejs
 
 ## Description
@@ -45,6 +46,9 @@ My Spiffy App is MIT Licensed. See LICENSE for details.
 =======
 # this-is-the-last-test-i-hope112f
 >>>>>>> cc3a09696a0b44e3b8c2005865a4376ba7d7b533
+=======
+# this-is-the-last-test-i-hope112fs
+>>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
 
 This is a test gem for the testjs jquery plugin.
 
@@ -53,10 +57,14 @@ This is a test gem for the testjs jquery plugin.
 Add this line to your application's Gemfile:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     gem 'this-is-the-last-test-i-hope'
 =======
     gem 'this-is-the-last-test-i-hope112f'
 >>>>>>> cc3a09696a0b44e3b8c2005865a4376ba7d7b533
+=======
+    gem 'this-is-the-last-test-i-hope112fs'
+>>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
 
 And then execute:
 
@@ -65,20 +73,30 @@ And then execute:
 Or install it yourself as:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     $ gem install this-is-the-last-test-i-hope
 =======
     $ gem install this-is-the-last-test-i-hope112f
 >>>>>>> cc3a09696a0b44e3b8c2005865a4376ba7d7b533
+=======
+    $ gem install this-is-the-last-test-i-hope112fs
+>>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
 
 ## Usage
 
 Add this line to your `application.js` file:
   
 <<<<<<< HEAD
+<<<<<<< HEAD
     //= require asdgasdg.js
 =======
     //= require asdgasdg.css
 >>>>>>> cc3a09696a0b44e3b8c2005865a4376ba7d7b533
+=======
+    //= require asdgasdg.js
+  
+    //= require asdgasdg_2.css
+>>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
   
 
 ## Contributing
@@ -89,6 +107,9 @@ Add this line to your `application.js` file:
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> a9678b9d7308bb691e3caf5c77f0db8db84eafb0
 =======
 >>>>>>> cc3a09696a0b44e3b8c2005865a4376ba7d7b533
+=======
+>>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
