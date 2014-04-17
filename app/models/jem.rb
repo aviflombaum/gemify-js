@@ -48,11 +48,11 @@ class Jem < ActiveRecord::Base
   def initial_push_to_github(ssh_url)
     target = find_directory
     Dir.chdir(target) do
-      `git init .`
+      `git init`
       `git add .`
-      `git commit -am "#{self.commit_message}"`
+      `git commit -am "Initial Commit"`
       `git remote add #{self.name} #{ssh_url}`
-      `git push #{self.name} master --force`
+      `git push #{self.name} master`
       `git remote remove #{self.name}`
     end
   end
@@ -62,21 +62,46 @@ class Jem < ActiveRecord::Base
     Dir.chdir(target) do
       `git add .`
       `git commit -am "#{self.commit_message}"`
-      `git remote add #{self.name} #{ssh_url}`
+      # `git remote add #{self.name} #{ssh_url}`
       `git push #{self.name} master`
       `git remote remove #{self.name}`
     end
   end
 
-  def grab_git_file_from_clone
+  def clone_remove_and_regenerate_files
     copy_target = File.join(Dir.pwd, "jems_tmp/")
     paste_target = File.join(Dir.pwd, "jems_tmp/#{self.name}")
 
     Dir.chdir(copy_target) do
-      `git clone #{ssh_url} tmp_clone`
-      `cd tmp_clone`
-      `cp -r .git #{paste_target}`
+      puts "LINE 74 PWD IS #{Dir.pwd}"
+      `git clone #{self.ssh_url} #{self.name}`
+      sleep(4)
     end
+
+    puts "BETWEEN TWO DIRCHDIR"
+
+    Dir.chdir(paste_target) do
+      puts "LINE 78 PWD IS #{Dir.pwd}"
+      puts "MOVED TO #{self.name}"
+      `git add .`
+      `git commit -am "hi"`
+      `git remote add #{self.name} #{ssh_url}`
+      `git pull #{self.name} master`
+      puts "PULLED"
+      sleep(5)
+      puts "LINE 86 PWD IS #{Dir.pwd}"
+      `rm -rf lib/`
+      puts "REMOVED LIB/"
+      `rm -rf vendor/`
+      puts "REMOVED VENDOR/"
+      puts "PWD IS #{Dir.pwd}"
+      puts "LINE 92 PWD IS #{Dir.pwd}"
+      `rm README.md`
+      `rm #{self.name}.gemspec`
+      `cd ../..`
+      self.create_gem_directory
+    end
+
   end
 
   def build_gem
