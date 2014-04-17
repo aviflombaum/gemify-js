@@ -17,8 +17,7 @@ class Jem < ActiveRecord::Base
   end
 
   def create_github_repository
-    client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
-
+    client = github_login
     repository = client.create_repository(self.name, { 
       :description => self.description, 
       :homepage => self.homepage,
@@ -37,8 +36,7 @@ class Jem < ActiveRecord::Base
   end
 
   def get_ssh_url
-    client = Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
-
+    client = github_login
     repository = client.repository("gemify-js/#{self.name}")
 
     self.ssh_url = repository.ssh_url
@@ -48,7 +46,6 @@ class Jem < ActiveRecord::Base
 
   def initial_push_to_github(ssh_url)
     target = find_directory
-    binding.pry
     Dir.chdir(target) do
       g = Git.init('.')
       g.add
@@ -95,6 +92,15 @@ class Jem < ActiveRecord::Base
 
   def has_files?
     self.scripts.empty? ? false : true
+  end
+
+  def has_repo?
+    client = github_login
+    client.repository?("gemify-js/#{self.name}")
+  end
+
+  def github_login
+    Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
   end
 
   def log_rubygems
