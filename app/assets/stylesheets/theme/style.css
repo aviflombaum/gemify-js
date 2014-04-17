@@ -1,4 +1,4 @@
-@import "chosen.css";
+/*@import "chosen.css";
 
 @import "select2.css";
 
@@ -18,9 +18,7 @@
 
 @import "jquery.easy-pie-chart.css";
 
-@import "icheck/all.css";
-
-@import "bootstrap-editable.css";
+@import "icheck/all.css";*/
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300);
 
@@ -257,7 +255,7 @@ blockquote.pull-right {
 }
 /* Header Section
 =================================================================== */
-.navbar {
+/*.navbar {
   margin: 0;
   padding: 0;
   height: 60px;
@@ -485,10 +483,10 @@ blockquote.pull-right {
 }
 .navbar .navbar-form {
   margin: 0;
-}
+}*/
 /* Sidebar
 =================================================================== */
-.sidebar {
+/*.sidebar {
   background: #384042;
   color: #677679;
   position: relative;
@@ -647,7 +645,7 @@ blockquote.pull-right {
   -moz-border-radius: 50em;
   border-radius: 50em;
   text-align: center;
-}
+}*/
 /* Buttons
 =================================================================== */
 .btn {
@@ -5630,10 +5628,6 @@ ul.profile-details li div i {
     padding-bottom: 0;
     overflow: visible !important;
   }
-  a.navbar-brand {
-    position: absolute;
-    width: 16.66666667%;
-  }
 }
 @media (max-width: 767px) {
   .container-fluid.content {
@@ -5641,22 +5635,6 @@ ul.profile-details li div i {
   }
   .main {
     padding: 10px;
-  }
-  .navbar {
-    background: #20a8d8;
-    border-bottom: 1px solid #1985ac;
-  }
-  .navbar a.navbar-brand {
-    width: 50%;
-  }
-  .navbar .navbar-nav {
-    display: none;
-  }
-  .navbar .navbar-toggle {
-    margin-top: 12px;
-  }
-  .navbar .navbar-toggle .icon-bar {
-    background-color: white;
   }
   .sidebar {
     padding-top: 1px;

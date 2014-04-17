@@ -19,6 +19,7 @@ class JemsController < ApplicationController
 
   def index
     @jems = Jem.all
+    @activities = Activity.all.order("created_at desc").limit(30)
   end
 
   def show
