@@ -99,3 +99,40 @@ body {
   margin-top: 20px;
   width: 100%;
 }
+
+.form-error{
+  padding: 0;
+  margin: 0;
+  color: #ff5454;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  color: #ff5454;
+ }
+
+div.field_with_errors {
+  display: inline;
+  input{
+    border-color: #ff5454;
+  }
+}
+
+.alert{
+  margin: 0;
+}

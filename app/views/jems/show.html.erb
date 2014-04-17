@@ -47,11 +47,7 @@
 
           <div class="info-item">
             <span class="info-title"><i class="fa fa-github"></i> Original JS Github:</span>
-            <% if URI.parse(@jem.github).scheme == nil %>
-              <span><%= link_to @jem.github.to_s, "http://" + @jem.github.to_s %></span>
-            <% else %>
-              <span><%= link_to @jem.github, @jem.github.to_s %></span>
-            <% end %>
+            <span><%= link_to 'github/' + @jem.github.split('/').last, @jem.github.to_s %></span>
           </div>
 
           <div class="info-item">
@@ -90,10 +86,11 @@
 
           <div class="hidden info-item" id="jem_id"><%= @jem.id %></div>
 
-          <div class="info-item">
-            <%= link_to 'Edit Gem', edit_jem_path(@jem), class: "btn btn-success full-width-button" %>
-          </div>
-
+          <% if @jem.user_id == current_user.id %>
+            <div class="info-item">
+              <%= link_to 'Edit Gem', edit_jem_path(@jem), class: "btn btn-success full-width-button" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -123,6 +120,7 @@
                 <td><i class="fa fa-file-o"></i> <%= File.basename(script.file.url) %></td>
                 <td class="text-center"><%= script.file.file.extension.upcase %></td>
                 <td>
+                <% if @jem.user_id == current_user.id %>
                   <%=
                     link_to 'Remove',
                     delete_script_path(script),
@@ -131,65 +129,67 @@
                     :data => { confirm: "Are you sure? "},
                     :class => "btn btn-danger btn-xs center-block"
                    %>
+                <% end %>
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
+        <% if @jem.user_id == current_user.id %>
         <div class="submit-container">
           <% if @jem.rubygem_link && @jem.gem_repo %>
 
-            <input type="submit" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#versionModal" value="Update Gem"/>
+              <input type="submit" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#versionModal" value="Update Gem"/>
 
-          <% else %>
+            <% else %>
 
-            <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
-              <input type="hidden" name="id" value="<%= @jem.id %>"/>
-              <%= submit_tag 'Generate Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
+              <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
+                <input type="hidden" name="id" value="<%= @jem.id %>"/>
+                <%= submit_tag 'Generate Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
+              <% end %>
+
             <% end %>
 
-          <% end %>
+            <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" >
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+              <input name="_method" type="hidden" value="POST" />
+              <span class="btn btn-success btn-sm pull-right fileinput-button">
+                <span>Add Files</span>
+                <input name="script[file]" type="file" multiple  />
+              </span>
+            </form>
 
-          <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" >
-            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-            <input name="_method" type="hidden" value="POST" />
-            <span class="btn btn-success btn-sm pull-right fileinput-button">
-              <span>Add Files</span>
-              <input name="script[file]" type="file" multiple  />
-            </span>
-          </form>
+            <!-- Modal -->
+            <div class="modal fade" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Update Version Number</h4>
+                  </div>
+                  <div class="modal-body">
+                    <h3>Old Version: <%= @jem.version_number %></h3>
+                    <label>New Version Number: </label>
+                    <input id="new_version_number" name="new_jem_version" type="text" placeholder="<%= @jem.version_number %>"/><br>
+                    <label>New Commit Message</label>
+                    <input id="new_commit_message" name="new_commit_message" type="text" placeholder="Add new commit message"/>
+                    <br><br><br>
+                    <div class="modal-footer">
 
-          <!-- Modal -->
-          <div class="modal fade" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel">Update Version Number</h4>
-                </div>
-                <div class="modal-body">
-                  <h3>Old Version: <%= @jem.version_number %></h3>
-                  <label>New Version Number: </label>
-                  <input id="new_version_number" name="new_jem_version" type="text" placeholder="<%= @jem.version_number %>"/><br>
-                  <label>New Commit Message</label>
-                  <input id="new_commit_message" name="new_commit_message" type="text" placeholder="Add new commit message"/>
-                  <br><br><br>
-                  <div class="modal-footer">
+                      <%= form_tag '/update_gem', :method => :post, :remote => true do %>
+                        <%= token_tag %>
+                        <input type="hidden" name="id" value="<%= @jem.id %>"/>
+                        <%= submit_tag 'Update Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
+                      <% end %>
 
-                    <%= form_tag '/update_gem', :method => :post, :remote => true do %>
-                      <%= token_tag %>
-                      <input type="hidden" name="id" value="<%= @jem.id %>"/>
-                      <%= submit_tag 'Update Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
-                    <% end %>
-
-                    <input id="update_version" type="submit" class="btn btn-primary btn-sm pull-right" value="Update Version"/>
+                      <input id="update_version" type="submit" class="btn btn-primary btn-sm pull-right" value="Update Version"/>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-        </div>
+        <% end %>
     </div>
   </div>
 </div><!--/col-->

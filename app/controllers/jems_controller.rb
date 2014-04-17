@@ -18,7 +18,7 @@ class JemsController < ApplicationController
   end
 
   def index
-    @jems = current_user.jems
+    @jems = Jem.all
   end
 
   def show

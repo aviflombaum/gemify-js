@@ -6,11 +6,12 @@ class Jem < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   # validates :github, :presence: true
   validates :author, presence: true
-  validates :version_number, presence: true #add number validation
+  validates :version_number, presence: true, version: true
   validates :description, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, format:{with: /@/}
   validates :summary, presence: true
-  validates :homepage, presence: true
+  validates :homepage, presence: true, url: true
+  validates :github, presence: true, url: true
 
   def create_gem_directory
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
@@ -131,9 +132,9 @@ class Jem < ActiveRecord::Base
   end
 
   def has_rubygems?
-    if Gems.info '#{self.name}' == "This rubygem could not be found."
+    if (Gems.info self.name).class == String
       return false
-    else
+    elsif (Gems.info self.name).class == Hash
       return true
     end
   end
@@ -160,7 +161,7 @@ class Jem < ActiveRecord::Base
   end
 
   private
-
+  
     def find_directory
       File.join(Dir.pwd, "jems_tmp/#{self.name}")
     end
@@ -168,6 +169,4 @@ class Jem < ActiveRecord::Base
     def all_repoes
       @client.repositories
     end
-
-  
 end

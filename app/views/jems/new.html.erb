@@ -6,7 +6,7 @@
     <div class="panel-body">
 
       <%= form_for @jem do |f| %>
-        
+          <%= render 'shared/error_messages' %>
           <%= f.label :name, 'Name' %></br>
           <%= f.text_field :name, class: "form-control" %></br>
         
@@ -14,7 +14,7 @@
           <%= f.text_field :author, class: "form-control"  %></br>
         
           <%= f.label :version_number, 'Version Number' %></br>
-          <%= f.text_field :version_number, class: "form-control"  %></br>
+          <%= f.text_field :version_number, :placeholder => '0.0.1', class: "form-control"  %></br>
         
           <%= f.label :description, 'Description' %></br>
           <%= f.text_field :description, class: "form-control"  %></br>
@@ -23,13 +23,13 @@
           <%= f.text_field :summary, class: "form-control"  %></br>
         
           <%= f.label :homepage, 'Homepage' %></br>
-          <%= f.text_field :homepage, class: "form-control"  %></br>
+          <%= f.text_field :homepage,:placeholder => 'http://', class: "form-control"  %></br>
         
           <%= f.label :email, 'Email Address' %></br>
           <%= f.text_field :email, class: "form-control"  %></br>
         
           <%= f.label :github, 'Github Repository' %></br>
-          <%= f.text_field :github, class: "form-control"  %></br>
+          <%= f.text_field :github,:placeholder => 'http://', class: "form-control"  %></br>
         
           <%= f.submit 'Create Gem', :class => 'btn btn-primary full-width-button' %>
           <% end %>
