@@ -76,7 +76,7 @@ class Jem < ActiveRecord::Base
       `cd #{self.name}`
       puts "MOVED TO #{self.name}"
       `git add .`
-      `git commit -a`
+      `git commit -am "hi"`
       `git remote add #{self.name} #{ssh_url}`
       `git pull #{self.name} master`
       puts "PULLED"
