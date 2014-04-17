@@ -47,22 +47,25 @@ class Jem < ActiveRecord::Base
   def push_to_github(ssh_url)
     target = find_directory
     Dir.chdir(target) do
-      g = Git.init('.')
-      g.add
-      g.commit('Initial Commit')
-      g.add_remote(self.name, ssh_url)
-      g.push(g.remote(self.name), 'master', :force => true)
-      g.remote(self.name).remove
+      `git init .`
+      `git add .`
+      `git commit -am "#{self.commit_message}"`
+      `git remote add #{self.name} #{ssh_url}`
+      `git push #{self.name} master --force`
+      `git remote remove #{self.name}`
+      # g = Git.init('.')
+      # g.add
+      # g.commit('Initial Commit')
+      # g.add_remote(self.name, ssh_url)
+      # g.push(g.remote(self.name), 'testing-testing', {:force => true, :f => 'true'})
+      # g.remote(self.name).remove
     end
   end
 
   def build_gem
     target = find_directory
     
-    Gems.configure do |config|
-      config.username = ENV['RUBYGEM_EMAIL']
-      config.password = ENV['RUBYGEM_PASSWORD']
-    end
+    Jem.rubygem_login
 
     Dir.chdir(target) do
       `gem build #{self.name}.gemspec`
@@ -90,7 +93,7 @@ class Jem < ActiveRecord::Base
     Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
   end
 
-  def log_rubygems
+  def self.rubygem_login
     Gems.configure do |config|
       config.username = ENV['RUBYGEM_EMAIL']
       config.password = ENV['RUBYGEM_PASSWORD']

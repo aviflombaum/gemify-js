@@ -18,10 +18,17 @@ describe Jem do
     end
   end
 
+  describe ".rubygem_login" do
+    it "should log into rubygem" do
+      pending "don't know how to test this yet!"
+      Jem.rubygem_login.should eq('wontae.yang@flatironschool.com')
+    end
+  end
+
   describe "#find_directory" do
     it "should return the jem's directory in jems_tmp folder" do
-      correct_directory = Dir.pwd
-      puts Dir.pwd
+      correct_directory = Dir.pwd + "/jems_tmp/#{jem.name}"
+      correct_directory.should eq(jem.send(:find_directory))
     end
   end
 
