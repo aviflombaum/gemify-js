@@ -48,7 +48,7 @@ class Jem < ActiveRecord::Base
 
   def push_to_github(ssh_url)
     target = find_directory
-
+    binding.pry
     Dir.chdir(target) do
       g = Git.init('.')
       g.add
