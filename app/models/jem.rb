@@ -44,7 +44,7 @@ class Jem < ActiveRecord::Base
     self.ssh_url
   end
 
-  def push_to_github(ssh_url)
+  def initial_push_to_github(ssh_url)
     target = find_directory
     Dir.chdir(target) do
       `git init .`
@@ -53,12 +53,28 @@ class Jem < ActiveRecord::Base
       `git remote add #{self.name} #{ssh_url}`
       `git push #{self.name} master --force`
       `git remote remove #{self.name}`
-      # g = Git.init('.')
-      # g.add
-      # g.commit('Initial Commit')
-      # g.add_remote(self.name, ssh_url)
-      # g.push(g.remote(self.name), 'testing-testing', {:force => true, :f => 'true'})
-      # g.remote(self.name).remove
+    end
+  end
+
+  def update_push_to_github(ssh_url)
+    target = find_directory
+    Dir.chdir(target) do
+      `git add .`
+      `git commit -am "#{self.commit_message}"`
+      `git remote add #{self.name} #{ssh_url}`
+      `git push #{self.name} master`
+      `git remote remove #{self.name}`
+    end
+  end
+
+  def grab_git_file_from_clone
+    copy_target = File.join(Dir.pwd, "jems_tmp/")
+    paste_target = File.join(Dir.pwd, "jems_tmp/#{self.name}")
+
+    Dir.chdir(copy_target) do
+      `git clone #{ssh_url} tmp_clone`
+      `cd tmp_clone`
+      `cp -r .git #{paste_target}`
     end
   end
 
