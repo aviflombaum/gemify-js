@@ -71,9 +71,11 @@ class Jem < ActiveRecord::Base
     copy_target = File.join(Dir.pwd, "jems_tmp/")
     paste_target = File.join(Dir.pwd, "jems_tmp/#{self.name}")
     Dir.chdir(copy_target) do
+      puts "LINE 74 PWD IS #{Dir.pwd}"
       `git clone #{self.ssh_url} #{self.name}`
       puts "CLONED"
       `cd #{self.name}`
+      puts "LINE 78 PWD IS #{Dir.pwd}"
       puts "MOVED TO #{self.name}"
       `git add .`
       `git commit -am "hi"`
@@ -81,11 +83,13 @@ class Jem < ActiveRecord::Base
       `git pull #{self.name} master`
       puts "PULLED"
       sleep(5)
+      puts "LINE 86 PWD IS #{Dir.pwd}"
       `rm -rf lib/`
       puts "REMOVED LIB/"
       `rm -rf vendor/`
       puts "REMOVED VENDOR/"
       puts "PWD IS #{Dir.pwd}"
+      puts "LINE 92 PWD IS #{Dir.pwd}"
       `rm README.md`
       `rm #{self.name}.gemspec`
       `cd ../..`
