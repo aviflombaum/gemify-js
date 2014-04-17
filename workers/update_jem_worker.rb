@@ -8,7 +8,7 @@ class UpdateJemWorker
     at 0
     jem = Jem.find(jem_id)
     at 5
-    ssh_url = jem.ssh_url
+    ssh_url = jem.ssh_url.nil? ? jem.get_ssh_url : jem.ssh_url
     at 30
     jem.create_gem_directory
     at 45

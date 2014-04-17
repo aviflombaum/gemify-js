@@ -70,11 +70,12 @@ class Jem < ActiveRecord::Base
   def grab_git_file_from_clone
     copy_target = File.join(Dir.pwd, "jems_tmp/")
     paste_target = File.join(Dir.pwd, "jems_tmp/#{self.name}")
-
+    
     Dir.chdir(copy_target) do
-      `git clone #{ssh_url} tmp_clone`
+      `git clone #{self.ssh_url} tmp_clone`
       `cd tmp_clone`
       `cp -r .git #{paste_target}`
+      `rm -rf tmp_clone/`
     end
   end
 
