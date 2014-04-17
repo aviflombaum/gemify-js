@@ -6,7 +6,7 @@
     <div class="panel-body">
 
       <%= form_for @jem do |f| %>
-
+        <%= render 'shared/error_messages' %>
         <%= f.label :author, 'Author' %></br>
         <%= f.text_field :author, class: "form-control"  %></br>
 
