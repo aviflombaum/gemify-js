@@ -73,10 +73,9 @@ class Jem < ActiveRecord::Base
     Dir.chdir(copy_target) do
       puts "LINE 74 PWD IS #{Dir.pwd}"
       `git clone #{self.ssh_url} #{self.name}`
-      puts "CLONED"
-      sleep(4)
-      `cd #{self.name}/`
-      `pwd`
+    end
+
+    Dir.chdir(paste_target) do
       puts "LINE 78 PWD IS #{Dir.pwd}"
       puts "MOVED TO #{self.name}"
       `git add .`
@@ -97,6 +96,7 @@ class Jem < ActiveRecord::Base
       `cd ../..`
       self.create_gem_directory
     end
+
   end
 
   def build_gem

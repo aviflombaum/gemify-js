@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ilovejs
 
 ## Description
@@ -65,6 +66,9 @@ My Spiffy App is MIT Licensed. See LICENSE for details.
 =======
 # this-is-tfSADSsdfA
 >>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
+=======
+# this-is-tfSADSsdfAdf
+>>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
 
 This is a test gem for the testjs jquery plugin.
 
@@ -72,6 +76,7 @@ This is a test gem for the testjs jquery plugin.
 
 Add this line to your application's Gemfile:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -97,6 +102,9 @@ Add this line to your application's Gemfile:
 =======
     gem 'this-is-tfSADSsdfA'
 >>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
+=======
+    gem 'this-is-tfSADSsdfAdf'
+>>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
 
 And then execute:
 
@@ -104,6 +112,7 @@ And then execute:
 
 Or install it yourself as:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -129,11 +138,15 @@ Or install it yourself as:
 =======
     $ gem install this-is-tfSADSsdfA
 >>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
+=======
+    $ gem install this-is-tfSADSsdfAdf
+>>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
 
 ## Usage
 
 Add this line to your `application.js` file:
   
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -161,6 +174,9 @@ Add this line to your `application.js` file:
 =======
     //= require asdgasdg_2.png
 >>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
+=======
+    //= require asdgasdg.js
+>>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
   
 
 ## Contributing
@@ -170,6 +186,7 @@ Add this line to your `application.js` file:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -189,3 +206,5 @@ Add this line to your `application.js` file:
 >>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
 =======
 >>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
+=======
+>>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
