@@ -1,3 +1,6 @@
+require_relative '../validators/url_validator'
+require_relative '../validators/version_validator'
+
 class Jem < ActiveRecord::Base
   has_many :scripts
   has_many :activities
