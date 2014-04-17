@@ -9,15 +9,13 @@ class UpdateJemWorker
     jem = Jem.find(jem_id)
     at 5
     ssh_url = jem.ssh_url.nil? ? jem.get_ssh_url : jem.ssh_url
-    at 30
-    jem.create_gem_directory
-    at 45
-    jem.grab_git_file_from_clone
-    at 55
+    at 10
+    jem.clone_remove_and_regenerate_files
+    at 40
     jem.update_push_to_github(ssh_url)
-    at 85
+    at 60
     jem.build_gem
-    at 95
+    at 80
     jem.delete_jem_from_directory
     at 100
   end

@@ -61,21 +61,31 @@ class Jem < ActiveRecord::Base
     Dir.chdir(target) do
       `git add .`
       `git commit -am "#{self.commit_message}"`
-      `git remote add #{self.name} #{ssh_url}`
+      # `git remote add #{self.name} #{ssh_url}`
       `git push #{self.name} master`
       `git remote remove #{self.name}`
     end
   end
 
-  def grab_git_file_from_clone
+  def clone_remove_and_regenerate_files
     copy_target = File.join(Dir.pwd, "jems_tmp/")
     paste_target = File.join(Dir.pwd, "jems_tmp/#{self.name}")
-    
     Dir.chdir(copy_target) do
-      `git clone #{self.ssh_url} tmp_clone`
-      `cd tmp_clone`
-      `cp -r .git #{paste_target}`
-      `rm -rf tmp_clone/`
+      `git clone #{self.ssh_url} #{self.name}`
+      puts "CLONED"
+      `cd #{self.name}`
+      puts "MOVED TO #{self.name}"
+      `git add .`
+      `git commit -a`
+      `git remote add #{self.name} #{ssh_url}`
+      `git pull #{self.name} master`
+      puts "PULLED"
+      `rm -rf lib/`
+      `rm -rf vendor/`
+      `rm README.md`
+      `rm #{self.name}.gemspec`
+      `cd ../..`
+      self.create_gem_directory
     end
   end
 
