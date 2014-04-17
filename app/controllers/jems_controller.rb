@@ -90,6 +90,8 @@ class JemsController < ApplicationController
     jem = Jem.find(params[:id])
 
     jem.version_number = params[:new_jem_version]
+    jem.commit_message = params[:new_commit_message]
+    
     if jem.save
       @version = jem.version_number
       respond_to do |format|

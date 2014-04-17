@@ -46,7 +46,7 @@ class Jem < ActiveRecord::Base
     self.ssh_url
   end
 
-  def initial_push_to_github(ssh_url)
+  def push_to_github(ssh_url)
     target = find_directory
 
     Dir.chdir(target) do
@@ -54,20 +54,7 @@ class Jem < ActiveRecord::Base
       g.add
       g.commit('Initial Commit')
       g.add_remote(self.name, ssh_url)
-      g.push(g.remote(self.name))
-      g.remote(self.name).remove
-    end
-  end
-
-  def update_push_to_github(ssh_url)
-    target = find_directory
-
-    Dir.chdir(target) do
-      g = Git.open('.', :log => Logger.new(STDOUT))
-      g.add
-      g.commit(self.commit_message)
-      g.add_remote(self.name, ssh_url)
-      g.push(g.remote(self.name))
+      g.push(g.remote(self.name), 'master', :force => true)
       g.remote(self.name).remove
     end
   end

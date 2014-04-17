@@ -50,11 +50,13 @@ $(document).ready () ->
     console.log 'Update version button clicked'
     new_version_number = $('#new_version_number').val()
     jem_id = $('#jem_id').text()
+    new_commit_message = $('#new_commit_message').val()
     $.ajax({
       url: '/update_version'
       type: "POST"
       data:
         new_jem_version: new_version_number
+        new_commit_message: new_commit_message
         id: jem_id
       success: (data) ->
         #activate generate button
@@ -62,6 +64,10 @@ $(document).ready () ->
       error: (data) ->
         alert('failed to update!')
     })
+  )
+
+  $('#generate-gem-button').click( () ->
+    $('#generate-gem-button').modal('hide')
   )
 
 
