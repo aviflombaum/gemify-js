@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ilovejs
 
 ## Description
@@ -57,6 +58,9 @@ My Spiffy App is MIT Licensed. See LICENSE for details.
 =======
 # this-is-the-last-test-i-hope112fsjadf
 >>>>>>> 6b0296aa0f6fe48e9083c639b2af1893cfd40367
+=======
+# this-is-tfSADSFA
+>>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
 
 This is a test gem for the testjs jquery plugin.
 
@@ -64,6 +68,7 @@ This is a test gem for the testjs jquery plugin.
 
 Add this line to your application's Gemfile:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -81,6 +86,9 @@ Add this line to your application's Gemfile:
 =======
     gem 'this-is-the-last-test-i-hope112fsjadf'
 >>>>>>> 6b0296aa0f6fe48e9083c639b2af1893cfd40367
+=======
+    gem 'this-is-tfSADSFA'
+>>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
 
 And then execute:
 
@@ -88,6 +96,7 @@ And then execute:
 
 Or install it yourself as:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -105,11 +114,15 @@ Or install it yourself as:
 =======
     $ gem install this-is-the-last-test-i-hope112fsjadf
 >>>>>>> 6b0296aa0f6fe48e9083c639b2af1893cfd40367
+=======
+    $ gem install this-is-tfSADSFA
+>>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
 
 ## Usage
 
 Add this line to your `application.js` file:
   
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -129,6 +142,9 @@ Add this line to your `application.js` file:
 =======
     //= require asdgasdg_2.png
 >>>>>>> 6b0296aa0f6fe48e9083c639b2af1893cfd40367
+=======
+    //= require asdgasdg.js
+>>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9
   
 
 ## Contributing
@@ -142,6 +158,7 @@ Add this line to your `application.js` file:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> a9678b9d7308bb691e3caf5c77f0db8db84eafb0
 =======
 >>>>>>> cc3a09696a0b44e3b8c2005865a4376ba7d7b533
@@ -151,3 +168,5 @@ Add this line to your `application.js` file:
 >>>>>>> 3b18601cd764508621c44f6def0e33476e2676a3
 =======
 >>>>>>> 6b0296aa0f6fe48e9083c639b2af1893cfd40367
+=======
+>>>>>>> aa64c413d0b358c38446480cfc0061aece1aaec9

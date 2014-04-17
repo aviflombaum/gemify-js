@@ -74,7 +74,8 @@ class Jem < ActiveRecord::Base
       puts "LINE 74 PWD IS #{Dir.pwd}"
       `git clone #{self.ssh_url} #{self.name}`
       puts "CLONED"
-      `cd #{self.name}`
+      sleep(4)
+      `cd #{self.name}/`
       puts "LINE 78 PWD IS #{Dir.pwd}"
       puts "MOVED TO #{self.name}"
       `git add .`
