@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ilovejs
 
 ## Description
@@ -49,6 +50,9 @@ My Spiffy App is MIT Licensed. See LICENSE for details.
 =======
 # this-is-the-last-test-i-hope112fs
 >>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
+=======
+# this-is-the-last-test-i-hope112fsj
+>>>>>>> 3b18601cd764508621c44f6def0e33476e2676a3
 
 This is a test gem for the testjs jquery plugin.
 
@@ -58,6 +62,7 @@ Add this line to your application's Gemfile:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     gem 'this-is-the-last-test-i-hope'
 =======
     gem 'this-is-the-last-test-i-hope112f'
@@ -65,6 +70,9 @@ Add this line to your application's Gemfile:
 =======
     gem 'this-is-the-last-test-i-hope112fs'
 >>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
+=======
+    gem 'this-is-the-last-test-i-hope112fsj'
+>>>>>>> 3b18601cd764508621c44f6def0e33476e2676a3
 
 And then execute:
 
@@ -74,6 +82,7 @@ Or install it yourself as:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     $ gem install this-is-the-last-test-i-hope
 =======
     $ gem install this-is-the-last-test-i-hope112f
@@ -81,11 +90,15 @@ Or install it yourself as:
 =======
     $ gem install this-is-the-last-test-i-hope112fs
 >>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
+=======
+    $ gem install this-is-the-last-test-i-hope112fsj
+>>>>>>> 3b18601cd764508621c44f6def0e33476e2676a3
 
 ## Usage
 
 Add this line to your `application.js` file:
   
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     //= require asdgasdg.js
@@ -97,6 +110,9 @@ Add this line to your `application.js` file:
   
     //= require asdgasdg_2.css
 >>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
+=======
+    //= require asdgasdg_2.png
+>>>>>>> 3b18601cd764508621c44f6def0e33476e2676a3
   
 
 ## Contributing
@@ -108,8 +124,11 @@ Add this line to your `application.js` file:
 5. Create new Pull Request
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> a9678b9d7308bb691e3caf5c77f0db8db84eafb0
 =======
 >>>>>>> cc3a09696a0b44e3b8c2005865a4376ba7d7b533
 =======
 >>>>>>> 8b1b799550bcca15d02ca7bba68693fac68a6314
+=======
+>>>>>>> 3b18601cd764508621c44f6def0e33476e2676a3

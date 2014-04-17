@@ -80,8 +80,12 @@ class Jem < ActiveRecord::Base
       `git remote add #{self.name} #{ssh_url}`
       `git pull #{self.name} master`
       puts "PULLED"
+      sleep(5)
       `rm -rf lib/`
+      puts "REMOVED LIB/"
       `rm -rf vendor/`
+      puts "REMOVED VENDOR/"
+      puts "PWD IS #{Dir.pwd}"
       `rm README.md`
       `rm #{self.name}.gemspec`
       `cd ../..`
