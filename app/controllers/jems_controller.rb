@@ -29,8 +29,8 @@ class JemsController < ApplicationController
 
   def gemify_jem
     @jem = Jem.find(params[:id].to_i)
-
-    if @jem.has_repo? == false
+    ## checks if repo already exists
+    if @jem.has_repo? == false && @jem.has_rubygems? == false
       @activity = track_activity(@jem, @jem, current_user)
       if @jem.has_files?
         @job_id = JemWorker.perform_async(@jem.id)
@@ -40,10 +40,9 @@ class JemsController < ApplicationController
       end
     else
       respond_to do |format|
+          #render error message
           format.js {render :partial => 'error'}
       end
-      # raise "error"
-
     end
   end
 
