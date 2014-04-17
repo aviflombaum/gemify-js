@@ -20,11 +20,14 @@
   <div class="col-md-3" id="info-panel">
     <div class="panel panel-default">
       <div class="panel-body no-padding">
-        <div class="gem-name">
-          <%= @jem.name.upcase %>
-        </div>
 
         <div class="panel-padding">
+          <% if @jem.user_id == current_user.id %>
+            <div class="info-item">
+              <%= link_to 'Edit Gem', edit_jem_path(@jem), class: "btn btn-success full-width-button" %>
+            </div>
+          <% end %>
+
           <div class="info-item">
             <span class="info-title"><i class="fa fa-user"></i> Author:</span>
             <span><%= @jem.author %></span>
@@ -62,12 +65,13 @@
 
           <div class="info-item">
             <span class="info-title"><i class="fa fa-clock-o"></i> Created:</span>
-            <span><%= @jem.created_at %></span>
+            <span><%= @jem.created_at.strftime('%F') %></span>
+
           </div>
 
           <div class="info-item">
-            <span class="info-title"><i class="fa fa-arrow-up"></i> Update:</span>
-            <span><%= @jem.updated_at %></span>
+            <span class="info-title"><i class="fa fa-arrow-up"></i> Updated:</span>
+            <span><%= @jem.updated_at.strftime('%F') %></span>
           </div>
 
           <% if @jem.rubygem_link %>
@@ -86,11 +90,6 @@
 
           <div class="hidden info-item" id="jem_id"><%= @jem.id %></div>
 
-          <% if @jem.user_id == current_user.id %>
-            <div class="info-item">
-              <%= link_to 'Edit Gem', edit_jem_path(@jem), class: "btn btn-success full-width-button" %>
-            </div>
-          <% end %>
         </div>
       </div>
     </div>
@@ -98,8 +97,6 @@
 
 
   <div class="col-md-9">
-  <%# @jem.log_rubygems %>
-  <%#= Gems.downloads @jem.name, @jem.version_number %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2><i class="fa fa-files-o"></i><span class="break"></span>Gem Files</h2>

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,9 +10,9 @@
         <span class="icon-bar"></span>
       </button>
       <% if user_signed_in? %>
-        <%= link_to 'Gemify Corgi', jems_path, class: 'brand' %>
+        <%= link_to 'Gemify Corgi', jems_path, class: 'navbar-brand' %>
       <% else %>
-        <%= link_to 'Gemify Corgi', root_path, class: 'brand' %>
+        <%= link_to 'Gemify Corgi', root_path, class: 'navbar-brand' %>
       <% end %>
     </div>
 

@@ -58,3 +58,4 @@ gem 'sidekiq_status'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'jquery-ui-rails'
 gem "font-awesome-rails"
+gem 'jquery-datatables-rails', git: 'https://github.com/wontaeyang/jquery-datatables-rails.git'

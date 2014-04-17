@@ -21,6 +21,14 @@ GIT
       rails (>= 3, < 5)
       thor (~> 0.14)
 
+GIT
+  remote: https://github.com/wontaeyang/jquery-datatables-rails.git
+  revision: a41f000e8da2e8a524732acec64fda16169d5b08
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -293,6 +301,7 @@ DEPENDENCIES
   git
   google-analytics-rails
   jbuilder (~> 2.0)
+  jquery-datatables-rails!
   jquery-fileupload-rails!
   jquery-rails
   jquery-ui-rails
