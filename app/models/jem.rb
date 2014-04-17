@@ -90,9 +90,9 @@ class Jem < ActiveRecord::Base
   end
 
   def has_rubygems?
-    if Gems.info '#{self.name}' == "This rubygem could not be found."
+    if (Gems.info self.name).class == String
       return false
-    else
+    elsif (Gems.info self.name).class == Hash
       return true
     end
   end
