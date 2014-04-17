@@ -105,6 +105,14 @@ class Jem < ActiveRecord::Base
     client.repository?("gemify-js/#{self.name}")
   end
 
+  def has_rubygems?
+    if Gems.info '#{self.name}' == "This rubygem could not be found."
+      return false
+    else
+      return true
+    end
+  end
+
   def github_login
     Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
   end
