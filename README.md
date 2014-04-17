@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ilovejs
 
 ## Description
@@ -69,6 +70,9 @@ My Spiffy App is MIT Licensed. See LICENSE for details.
 =======
 # this-is-tfSADSsdfAdf
 >>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
+=======
+# this-is-tfSADSsdfAdfasd
+>>>>>>> 110cf128e9a283cca9eb2333e694480b903c51e0
 
 This is a test gem for the testjs jquery plugin.
 
@@ -76,6 +80,7 @@ This is a test gem for the testjs jquery plugin.
 
 Add this line to your application's Gemfile:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -105,6 +110,9 @@ Add this line to your application's Gemfile:
 =======
     gem 'this-is-tfSADSsdfAdf'
 >>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
+=======
+    gem 'this-is-tfSADSsdfAdfasd'
+>>>>>>> 110cf128e9a283cca9eb2333e694480b903c51e0
 
 And then execute:
 
@@ -112,6 +120,7 @@ And then execute:
 
 Or install it yourself as:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -141,11 +150,15 @@ Or install it yourself as:
 =======
     $ gem install this-is-tfSADSsdfAdf
 >>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
+=======
+    $ gem install this-is-tfSADSsdfAdfasd
+>>>>>>> 110cf128e9a283cca9eb2333e694480b903c51e0
 
 ## Usage
 
 Add this line to your `application.js` file:
   
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -177,6 +190,9 @@ Add this line to your `application.js` file:
 =======
     //= require asdgasdg.js
 >>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
+=======
+    //= require asdgasdg_2.png
+>>>>>>> 110cf128e9a283cca9eb2333e694480b903c51e0
   
 
 ## Contributing
@@ -186,6 +202,7 @@ Add this line to your `application.js` file:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -208,3 +225,5 @@ Add this line to your `application.js` file:
 >>>>>>> 581f039135e671d121c1d20fafe76765e59d6a6a
 =======
 >>>>>>> bccc0efe5d50b23cb381f50736d7549424314fae
+=======
+>>>>>>> 110cf128e9a283cca9eb2333e694480b903c51e0

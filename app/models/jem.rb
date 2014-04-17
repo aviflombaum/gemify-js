@@ -70,10 +70,14 @@ class Jem < ActiveRecord::Base
   def clone_remove_and_regenerate_files
     copy_target = File.join(Dir.pwd, "jems_tmp/")
     paste_target = File.join(Dir.pwd, "jems_tmp/#{self.name}")
+
     Dir.chdir(copy_target) do
       puts "LINE 74 PWD IS #{Dir.pwd}"
       `git clone #{self.ssh_url} #{self.name}`
+      sleep(4)
     end
+
+    puts "BETWEEN TWO DIRCHDIR"
 
     Dir.chdir(paste_target) do
       puts "LINE 78 PWD IS #{Dir.pwd}"
