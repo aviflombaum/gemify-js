@@ -47,11 +47,11 @@ class Jem < ActiveRecord::Base
   def initial_push_to_github(ssh_url)
     target = find_directory
     Dir.chdir(target) do
-      `git init .`
+      `git init`
       `git add .`
-      `git commit -am "#{self.commit_message}"`
+      `git commit -am "Initial Commit"`
       `git remote add #{self.name} #{ssh_url}`
-      `git push #{self.name} master --force`
+      `git push #{self.name} master`
       `git remote remove #{self.name}`
     end
   end
