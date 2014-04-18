@@ -41,8 +41,7 @@ class JemsController < ApplicationController
       end
     else
       respond_to do |format|
-          #render error message
-          format.js {render :partial => 'error'}
+        format.js {render :partial => 'error'}
       end
     end
   end
@@ -100,6 +99,8 @@ class JemsController < ApplicationController
 
     jem.version_number = params[:new_jem_version]
     jem.commit_message = params[:new_commit_message]
+
+    @version = jem.version_number
     
     if jem.save
       @version = jem.version_number

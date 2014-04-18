@@ -136,16 +136,16 @@
         <div class="submit-container">
           <% if @jem.rubygem_link && @jem.gem_repo %>
 
-              <input type="submit" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#versionModal" value="Update Gem"/>
+              <input type="submit" class="btn btn-primary btn-sm pull-right make-gem-button" data-toggle="modal" data-target="#versionModal" value="Update Gem"/>
 
             <% else %>
 
-              <%= form_tag '/create_gem', :method => :post, :remote => :true do %>
+              <%= form_tag '/create_gem', :method => :post, :remote => :true, :id => "generate-gem-form" do %>
                 <input type="hidden" name="id" value="<%= @jem.id %>"/>
-                <%= submit_tag 'Generate Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
-              <% end %>
-
+                <%= submit_tag 'Generate Gem', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "generate-gem-button" %>
             <% end %>
+
+          <% end %>
 
             <form action="/jems/<%= @jem.id %>/scripts" id="new-script" class="" enctype="multipart/form-data" method="post" >
               <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
@@ -165,7 +165,7 @@
                     <h4 class="modal-title" id="myModalLabel">Update Version Number</h4>
                   </div>
                   <div class="modal-body">
-                    <h3>Old Version: <%= @jem.version_number %></h3>
+                    <h3>Old Version: <span id="version_number"><%= @jem.version_number %></span></h3>
                     <label>New Version Number: </label>
                     <input id="new_version_number" name="new_jem_version", class="form-control" type="text" placeholder="<%= @jem.version_number %>"/><br>
                     <label>New Commit Message</label>
@@ -176,10 +176,9 @@
                       <%= form_tag '/update_gem', :method => :post, :remote => true do %>
                         <%= token_tag %>
                         <input type="hidden" name="id" value="<%= @jem.id %>"/>
-                        <%= submit_tag 'Update Gem', class: "btn btn-primary btn-sm pull-right", id: "generate-gem-button" %>
+                        <%= submit_tag 'Update Gem', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "update-gem-button" %>
                       <% end %>
 
-                      <input id="update_version" type="submit" class="btn btn-primary btn-sm pull-right" value="Update Version"/>
                     </div>
                   </div>
                 </div>
