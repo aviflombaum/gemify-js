@@ -1,13 +1,18 @@
-$navbar-height: 70px;
-$navbar-default-bg: #fff;
+$navbar-height: 80px;
+$navbar-default-bg: #1abc9c;
 $navbar-border-radius: 0px;
-$navbar-default-brand-color: #777;
-$navbar-default-border: #dedede;
-$navbar-default-color: #777;
-$navbar-default-link-color: #777;
+$navbar-default-brand-color: #fff;
+$navbar-default-border: #fff;
+$navbar-default-color: #fff;
+$navbar-default-link-color: #fff;
+$navbar-default-link-hover-color: #fff;
+$navbar-default-brand-hover-color: #fff;
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+$font-family-sans-serif: 'Lato', sans-serif;
+$brand-primary: #1abc9c;
 
 @import 'bootstrap';
-@import 'theme/style';
+
 body {
   // padding-top: 70px;
   // padding-bottom: 30px;
@@ -18,6 +23,7 @@ body {
 }
 .navbar{
   margin-bottom: 30px;
+  font-weight: 300;
 }
 
 #job-progress {
@@ -130,7 +136,9 @@ div.field_with_errors {
 }
 
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  font-weight: 300;
   margin-left: 0px;
+  padding: 30px 15px 10px 15px;
 }
 
 .navbar{
@@ -141,4 +149,17 @@ div.field_with_errors {
 
 .index-title{
   margin-bottom: 20px;
+}
+
+.logo{
+  margin: 10px;
+}
+
+#main-slider ul li{
+  margin-top: 130px;
+}
+
+
+#hero .logo {
+margin-bottom: 30px;
 }
