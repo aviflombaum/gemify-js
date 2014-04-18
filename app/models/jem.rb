@@ -17,6 +17,7 @@ class Jem < ActiveRecord::Base
   validates :github, presence: true, url: true
 
   def create_gem_directory
+    puts "INSIDE CREATE GEM DIRECTORY"
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
   end
 
