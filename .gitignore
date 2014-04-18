@@ -21,5 +21,6 @@
 uploads/
 
 jems_tmp/
+coverage/
 vendor/
 /gemfile.lock

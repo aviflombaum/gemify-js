@@ -17,7 +17,6 @@ class Jem < ActiveRecord::Base
   validates :github, presence: true, url: true
 
   def create_gem_directory
-    puts "INSIDE CREATE GEM DIRECTORY"
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
   end
 
@@ -73,18 +72,16 @@ class Jem < ActiveRecord::Base
   end
 
   def clone_remove_and_regenerate_files
-    copy_target = File.join(Dir.pwd, "jems_tmp/")
-    paste_target = File.join(Dir.pwd, "jems_tmp/#{self.name}")
+    jems_tmp_folder = File.join(Dir.pwd, "jems_tmp/")
+    jems_tmp_gem_folder = File.join(Dir.pwd, "jems_tmp/#{self.name}")
 
-    Dir.chdir(copy_target) do
+    Dir.chdir(jems_tmp_folder) do
       puts "LINE 74 PWD IS #{Dir.pwd}"
       `git clone #{self.ssh_url} #{self.name}`
       sleep(4)
     end
 
-    puts "BETWEEN TWO DIRCHDIR"
-
-    Dir.chdir(paste_target) do
+    Dir.chdir(jems_tmp_gem_folder) do
       puts "LINE 78 PWD IS #{Dir.pwd}"
       puts "MOVED TO #{self.name}"
       `git add .`
