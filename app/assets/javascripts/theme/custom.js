@@ -34,11 +34,13 @@ $(document).ready(function($){
 
 		if (retina()) {
 
+			// $(".boxchart").sparkline('html', {
 			$(".boxchart").sparkline('html', {
+				
 			    type: 'bar',
 			    height: '60', // Double pixel number for retina display
-				barWidth: '8', // Double pixel number for retina display
-				barSpacing: '2', // Double pixel number for retina display
+					barWidth: '8', // Double pixel number for retina display
+					barSpacing: '2', // Double pixel number for retina display
 			    barColor: '#ffffff',
 			    negBarColor: '#eeeeee'}
 			);
@@ -62,8 +64,8 @@ $(document).ready(function($){
 			$(".boxchart").sparkline('html', {
 			    type: 'bar',
 			    height: '30',
-				barWidth: '4',
-				barSpacing: '1',
+					barWidth: '4',
+					barSpacing: '1',
 			    barColor: '#ffffff',
 			    negBarColor: '#eeeeee'}
 			);
@@ -77,7 +79,7 @@ $(document).ready(function($){
 		if (retina()) {
 
 			$(".linechart").sparkline('html', {
-			    width: '130',
+			  width: '130',
 				height: '60',
 				lineColor: '#ffffff',
 				fillColor: false,

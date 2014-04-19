@@ -19,7 +19,10 @@ class JemsController < ApplicationController
 
   def index
     @jems = Jem.all
+    @users_count = User.all.length
+    @scripts_count = Script.all.length
     @activities = Activity.all.order("created_at desc").limit(30)
+    @activities_count = Activity.all.length
   end
 
   def show
