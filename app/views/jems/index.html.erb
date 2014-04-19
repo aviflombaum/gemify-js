@@ -9,6 +9,17 @@
 <div class="row">
   <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
     <div class="smallstat">
+      <div class="info-graphic users">
+        <div class="boxchart"><%= image_tag 'user.png', size: "40x40" %></div>
+      </div>
+      <span class="value"><%= @users_count %></span>  
+      <span class="title">Users</span>
+    </div>
+  </div>
+
+
+  <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
+    <div class="smallstat">
       <div class="info-graphic primary">
         <div class="boxchart"><%= image_tag 'ruby.png', size: "40x40" %></div>
       </div>
@@ -19,8 +30,8 @@
 
   <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
     <div class="smallstat">
-      <div class="info-graphic primary">
-        <div class="boxchart"><%= image_tag 'ruby.png', size: "40x40" %></div>
+      <div class="info-graphic activity">
+        <div class="boxchart"><%= image_tag 'activity.png', size: "40x40" %></div>
       </div>
       <span class="value"><%= @activities_count %></span>  
       <span class="title">Activities</span>
@@ -29,21 +40,11 @@
 
   <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
     <div class="smallstat">
-      <div class="info-graphic primary">
-        <div class="boxchart"><%= image_tag 'ruby.png', size: "40x40" %></div>
+      <div class="info-graphic files">
+        <div class="boxchart"><%= image_tag 'files.png', size: "40x40" %></div>
       </div>
       <span class="value"><%= @scripts_count %></span>  
       <span class="title">Files Uploaded</span>
-    </div>
-  </div>
-
-  <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
-    <div class="smallstat">
-      <div class="info-graphic primary">
-        <div class="boxchart"><%= image_tag 'ruby.png', size: "40x40" %></div>
-      </div>
-      <span class="value"><%= @users_count %></span>  
-      <span class="title">Users</span>
     </div>
   </div>
 </div>
