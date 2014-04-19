@@ -24,6 +24,7 @@
             <%= javascript_include_tag 'front/owl-carousel/owl.carousel' %>
             <%= javascript_include_tag 'front/respond.min' %>
             <%= javascript_include_tag 'front/scripts' %>
+            <%= javascript_include_tag 'front/scroll' %>
 
             <%= csrf_meta_tags %>
             <%= analytics_init if Rails.env.production? %>
@@ -43,8 +44,8 @@
                                 <p class="lead">Found Javascript or theme templates that are not available as Rails Gems? Use Gemify-JS to create and maintain Gems for your front-end library!</p>
                                 <div class="buttons">
                                     <%= link_to user_omniauth_authorize_path(:github), class: "btn btn-1 btn-lg"  do %>
-                                    <i class="fa fa-sign-in"></i>
-                                    Sign in with Github
+                                        <i class="fa fa-sign-in"></i>
+                                        Sign in with Github
                                     <% end %>
                                     <a class="btn btn-link btn-lg" href="#features" id="learn-more"><i class="fa fa-arrow-circle-o-right"></i> Learn more</a>
                                 </div>
@@ -165,8 +166,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="overview">
-                                <h1>Our developers</h1>
-                                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h1>Made by two Yangs</h1>
+                                <p class="lead">Built with love @ Flatiron School.</p>
                             </div>
                         </div>
                     </div>
@@ -174,19 +175,19 @@
                         <div class="col-md-3 col-sm-6 col-md-offset-2 col-sm-offset-2 text-center">
                             <figure class="user">
                                 <div class="user-avatar">
-                                    <%= image_tag "user-lg.png", class: "img-responsive img-circle" %>
+                                    <%= image_tag "user-wontae.jpg", class: "img-responsive img-circle" %>
                                 </div>
                                 <h2>Wontae Yang</h2>
-                                <p class="lead">Bro #1</p>
+                                <p class="lead">Yang #1</p>
                             </figure>
                         </div>
                         <div class="col-md-3 col-sm-6 col-md-offset-2 col-sm-offset-2 text-center">
                             <figure class="user">
                                 <div class="user-avatar">
-                                    <%= image_tag "user-lg.png", class: "img-responsive img-circle" %>
+                                    <%= image_tag "user-sunwoo.jpg", class: "img-responsive img-circle" %>
                                 </div>
                                 <h2>Sunwoo Yang</h2>
-                                <p class="lead">Bro #2</p>
+                                <p class="lead">Yang #2</p>
                             </figure>
                         </div>
                     </div>

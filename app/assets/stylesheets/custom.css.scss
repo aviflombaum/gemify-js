@@ -163,3 +163,20 @@ div.field_with_errors {
 #hero .logo {
 margin-bottom: 30px;
 }
+
+.info-graphic {
+width: 80px;
+height: 68px;
+padding: 0;
+text-align: center;
+margin-right: 10px;
+float: left;
+overflow: hidden;
+  img{
+    margin-top: 15px;
+  }
+}
+
+.primary{
+  background-color: #1abc9c; 
+}
