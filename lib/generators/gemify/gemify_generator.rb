@@ -15,6 +15,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
     javascript_dir = File.join(target, "vendor/assets/javascripts")
     css_dir = File.join(target, "vendor/assets/stylesheets")
     image_dir = File.join(target, "vendor/assets/images")
+    
     empty_directory javascript_dir
     empty_directory css_dir
     empty_directory image_dir
