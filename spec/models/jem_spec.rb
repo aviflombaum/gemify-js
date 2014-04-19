@@ -13,7 +13,13 @@ describe Jem do
   }
   
   describe "#create_gem_directory" do
-    it "creates the correct folders" do
+    it "uses the correct gem id" do
+      jem_id = jem.create_gem_directory
+      jem.delete_jem_from_directory
+      expect(jem_id).to eq(jem.id)
+    end
+
+    it "creates a folder in the jems_tmp directory with the folder name being the name of the jem" do
       pending
     end
   end
@@ -22,6 +28,12 @@ describe Jem do
     it "should log into rubygem" do
       pending "don't know how to test this yet!"
       Jem.rubygem_login.should eq('wontae.yang@flatironschool.com')
+    end
+  end
+
+  describe "#create_github_repository" do
+    it "returns the correct ssh_url" do
+      pending
     end
   end
 

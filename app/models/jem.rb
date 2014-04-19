@@ -18,6 +18,7 @@ class Jem < ActiveRecord::Base
 
   def create_gem_directory
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
+    self.id
   end
 
   def create_github_repository
@@ -37,6 +38,11 @@ class Jem < ActiveRecord::Base
     self.save
 
     repository.ssh_url
+  end
+
+  def add_collaborator(repository)
+    client = github_login
+    client.add_collaborator(repository.full_name, ENV['COLLAB_NAME'])
   end
 
   def get_ssh_url

@@ -142,7 +142,7 @@
 
               <%= form_tag '/create_gem', :method => :post, :remote => :true, :id => "generate-gem-form" do %>
                 <input type="hidden" name="id" value="<%= @jem.id %>"/>
-                <%= submit_tag 'Generate Gem', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "generate-gem-button" %>
+                <%= submit_tag 'Gemify!', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "generate-gem-button" %>
             <% end %>
 
           <% end %>
@@ -176,7 +176,7 @@
                       <%= form_tag '/update_gem', :method => :post, :remote => true do %>
                         <%= token_tag %>
                         <input type="hidden" name="id" value="<%= @jem.id %>"/>
-                        <%= submit_tag 'Update Gem', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "update-gem-button" %>
+                        <%= submit_tag 'Gemify', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "update-gem-button" %>
                       <% end %>
 
                     </div>
