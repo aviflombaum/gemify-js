@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/rubygems/gems.git
+  revision: 7b303521ac9cdaad2cac54be2a3546c738b186e6
+  specs:
+    gems (0.8.3)
+      json (~> 1.8)
+
+GIT
   remote: https://github.com/wontaeyang/bootstrap-sass.git
   revision: 9b83c693be61aee2283faaa2ff2a7b7a4cbd5ee2
   specs:
@@ -130,8 +137,6 @@ GEM
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
-    gems (0.8.4)
-      json (~> 1.8)
     git (1.2.6)
     google-analytics-rails (0.0.5)
     hashie (2.1.1)
@@ -325,7 +330,7 @@ DEPENDENCIES
   factory_girl_rails
   fog
   font-awesome-rails
-  gems
+  gems!
   git
   google-analytics-rails
   jbuilder (~> 2.0)
