@@ -45,6 +45,7 @@ queryForPercentage = () ->
 swapGenerateForUpdateButton = () ->
   $('.submit-container #generate-gem-form').remove()
   $('.update-modal-button').remove()
+  $('#update-modal-button').remove()
   $('.submit-container').prepend('<input type="submit" class="btn btn-primary btn-sm pull-right update-modal-button" data-toggle="modal" data-target="#versionModal" value="Update Gem">')
   
 updateVersion = () ->
