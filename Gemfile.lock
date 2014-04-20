@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:sunwooz/gems.git
+  remote: https://github.com/sunwooz/gems.git
   revision: c50cea40b35364582605f2863781994c855e2c33
   specs:
     gems (0.8.3)
