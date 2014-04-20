@@ -25,7 +25,8 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400);
 
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-/*!
+/*
+
 * Author: Łukasz Holeczek
 * Template: cleverAdmin - Bootstrap Admin Template
 * Version: 1.0.0
@@ -1049,7 +1050,7 @@ fieldset[disabled] .form-control {
   text-align: center;
 }
 select {
-  background: #ffffff url("../img/select.png") no-repeat !important;
+/*  background: #ffffff url("../img/select.png") no-repeat !important;*/
   background-size: 24px 20px !important;
   background-position: right center !important;
   -webkit-border-radius: 2px !important;
@@ -3418,7 +3419,7 @@ table.table thead .sorting_asc_disabled,
 table.table thead .sorting_desc_disabled {
   cursor: pointer;
 }
-table.table thead .sorting {
+/*table.table thead .sorting {
   background: url('../img/sort_both.png') no-repeat center right;
 }
 table.table thead .sorting_asc {
@@ -3432,7 +3433,7 @@ table.table thead .sorting_asc_disabled {
 }
 table.table thead .sorting_desc_disabled {
   background: url('../img/sort_desc_disabled.png') no-repeat center right;
-}
+}*/
 table.dataTable th:active {
   outline: none;
 }

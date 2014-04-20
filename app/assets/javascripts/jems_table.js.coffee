@@ -12,7 +12,7 @@ jQuery ->
     },
     "iDisplayLength": 20,
     "bAutoWidth": false,
-    "aaSorting": [[2,'desc']],
+    "aaSorting": [[4,'desc']],
 
     "fnInitComplete": () ->
         $("#table_filter input").addClass("form-control")
