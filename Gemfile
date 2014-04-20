@@ -60,4 +60,5 @@ gem "font-awesome-rails"
 gem 'jquery-datatables-rails', git: 'https://github.com/wontaeyang/jquery-datatables-rails.git'
 gem 'jquery-easing-rails'
 gem 'fog'
+gem 'capistrano', '2.15.5'
 
