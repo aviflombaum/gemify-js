@@ -9,6 +9,7 @@ set :deploy_to, "/home/#{ user }/#{ application }"
 set :use_sudo, false
 
 set :scm, :git
+set :default_shell, '/bin/bash -l'
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
