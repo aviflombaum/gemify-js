@@ -50,7 +50,8 @@ gem 'devise'
 gem "omniauth"
 gem "omniauth-github"
 gem 'git'
-gem 'gems', git: "https://github.com/rubygems/gems.git"
+# gem 'gems', git: "https://github.com/rubygems/gems.git"
+gem 'gems', git: "git@github.com:sunwooz/gems.git"
 gem 'sidekiq'
 gem 'sidekiq_status'
 gem 'sinatra', '>= 1.3.0', :require => nil
