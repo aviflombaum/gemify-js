@@ -10,6 +10,7 @@ $navbar-default-brand-hover-color: #fff;
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 $font-family-sans-serif: 'Lato', sans-serif;
 $brand-primary: #1abc9c;
+$navbar-default-border: #1abc9c;
 
 @import 'bootstrap';
 
@@ -205,3 +206,4 @@ overflow: hidden;
 .activity{
   background-color: #67c2ef;
 }
+
