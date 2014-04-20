@@ -18,19 +18,19 @@
 
 <div class="row">
 
-
-
   <div class="col-md-3" id="info-panel">
 
-    
       <div class="smallstat no-padding">
 
         <div class="info-graphic files">
           <div class="boxchart"><%= image_tag 'ruby.png', size: "40x40" %></div>
         </div>
-        <span class="value"><%= @jem.name %></span> 
+
+        <span id="jem_name" class="value"><%= @jem.name %></span>
         <span class="title">Gem</span>
+
       </div>
+
 
 
     <div class="panel panel-default">
@@ -110,9 +110,9 @@
             <div class="boxchart"><%= image_tag 'github.png', size: "40x40" %></div>
           </div>
            <% if @jem.gem_repo %>
-           <span class="value"><%= link_to "github/#{@jem.name}", @jem.gem_repo %></span> 
+           <span class="value"><%= link_to "github/#{@jem.name}", @jem.gem_repo, target: "_blank" %></span> 
           <% else %>
-            <span class="value">Not Available</span> 
+            <span class="value" id="github-repo-value">Not Available</span> 
           <% end %> 
           <span class="title">Gem Repository</span>
         </div>
@@ -127,7 +127,7 @@
           <% if @jem.rubygem_link %>            
             <span class="value"><%= link_to "Rubygem Link", @jem.rubygem_link, target: '_blank' %></span>
           <% else %>
-            <span class="value">Not Available</span> 
+            <span class="value" id="rubygem-value">Not Available</span> 
           <% end %>
           <span class="title">Ruby Gems</span>
         </div>

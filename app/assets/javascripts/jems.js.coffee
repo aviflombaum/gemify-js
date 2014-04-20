@@ -8,8 +8,20 @@ grabGemRepo = () ->
     success: (data) ->
       console.log('success grabGemRepo')
       console.log(data)
-      $('#gem_repo_link').html("<a target='_blank' href='" + data['gem_repo_link'] + "'>Gem Repository</a>")
-      $('#rubygem_link').html("<a target='_blank' href='" + data['rubygem_link'] + "'>Rubygem Link</a>")
+      jem_name = $('#jem_name').text()
+      github_link = $('<a></a>').attr('href', data['gem_repo_link'])
+                                .attr('target', '_blank')
+                                .addClass('github-repo-value')
+
+      $('#github-repo-value').text('').prepend(github_link)
+      $('.github-repo-value').text('github/' + jem_name)
+
+      rubygem_link = $('<a></a>').attr('href', data['rubygem_link'])
+                                 .attr('target', '_blank')
+                                 .addClass('rubygem-value')
+                                 
+      $('#rubygem-value').text('').prepend(rubygem_link)
+      $('.rubygem-value').text('Rubygem Link')
     error: (data) ->
       console.log 'error with grabGemRepo'
       console.log(data)
