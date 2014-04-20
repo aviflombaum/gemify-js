@@ -26,10 +26,19 @@ role :db,  "107.170.47.187", :primary => true # This is where Rails migrations w
 # these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
+after "deploy:update_code","deploy:config_symlink"
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+
+   task :config_symlink do
+    run "cp #{shared_path}/database.yml #{release_path}/config/database.yml"
+  end
+
 end
+
+
