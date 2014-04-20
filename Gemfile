@@ -43,10 +43,9 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "bootstrap-sass", git: "git@github.com:wontaeyang/bootstrap-sass.git"
+gem "bootstrap-sass", git: "https://github.com/wontaeyang/bootstrap-sass.git"
 gem "octokit"
-gem "figaro", git: "https://github.com/laserlemon/figaro.git"
-gem "jquery-fileupload-rails", git: "git@github.com:wontaeyang/jquery-fileupload-rails.git"
+gem "jquery-fileupload-rails", git: "https://github.com/wontaeyang/jquery-fileupload-rails.git"
 gem 'carrierwave'
 gem 'devise'
 gem "omniauth"

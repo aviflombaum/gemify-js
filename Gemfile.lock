@@ -1,25 +1,9 @@
 GIT
-  remote: git@github.com:wontaeyang/bootstrap-sass.git
+  remote: https://github.com/wontaeyang/bootstrap-sass.git
   revision: 9b83c693be61aee2283faaa2ff2a7b7a4cbd5ee2
   specs:
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
-
-GIT
-  remote: git@github.com:wontaeyang/jquery-fileupload-rails.git
-  revision: e89f7ea6daa3267517edbb75016522bc0bbe9637
-  specs:
-    jquery-fileupload-rails (0.4.1)
-      actionpack (>= 3.1)
-      railties (>= 3.1)
-
-GIT
-  remote: https://github.com/laserlemon/figaro.git
-  revision: 818045c96c053b3f1c8f16f50655d0afe040c783
-  specs:
-    figaro (1.0.0.rc1)
-      rails (>= 3, < 5)
-      thor (~> 0.14)
 
 GIT
   remote: https://github.com/wontaeyang/jquery-datatables-rails.git
@@ -28,6 +12,14 @@ GIT
     jquery-datatables-rails (1.12.2)
       jquery-rails
       sass-rails
+
+GIT
+  remote: https://github.com/wontaeyang/jquery-fileupload-rails.git
+  revision: e89f7ea6daa3267517edbb75016522bc0bbe9637
+  specs:
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
 
 GEM
   remote: http://rubygems.org/
@@ -127,7 +119,7 @@ GEM
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.2.0)
+    jquery-ui-rails (4.2.1)
       railties (>= 3.2.16)
     json (1.8.1)
     jwt (0.1.11)
@@ -150,7 +142,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    octokit (3.0.0)
+    octokit (3.1.0)
       sawyer (~> 0.5.3)
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
@@ -197,7 +189,7 @@ GEM
       activesupport (= 4.1.0.rc2)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.2.2)
+    rake (10.3.1)
     rdoc (4.1.1)
       json (~> 1.4)
     redis (3.0.7)
@@ -260,9 +252,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sprockets_better_errors (0.0.5)
-      actionpack (< 4.1)
-      activesupport (< 4.1)
+    sprockets_better_errors (0.0.4)
       sprockets-rails (>= 1.0.0)
     sqlite3 (1.3.9)
     thor (0.19.1)
@@ -296,7 +286,6 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
-  figaro!
   font-awesome-rails
   gems
   git
