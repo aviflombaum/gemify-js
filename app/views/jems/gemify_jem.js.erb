@@ -1,4 +1,4 @@
-$('#job-id-container').append('<p style="display: none;" id="job_id"><%= @job_id %></p>');
+$('#job-id-container #job_id').text("<%= @job_id %>")
 console.log('appendeds job_id');
 $('#progress-bar').show()
 $('html, body').animate({scrollTop:0}, 'slow')
