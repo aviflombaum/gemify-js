@@ -17,16 +17,25 @@
 </div>
 
 <div class="row">
+
+
+
   <div class="col-md-3" id="info-panel">
+
+    
+      <div class="smallstat no-padding">
+
+        <div class="info-graphic files">
+          <div class="boxchart"><%= image_tag 'ruby.png', size: "40x40" %></div>
+        </div>
+        <span class="value"><%= @jem.name %></span> 
+        <span class="title">Gem</span>
+      </div>
+
+
     <div class="panel panel-default">
       <div class="panel-body no-padding">
-
         <div class="panel-padding">
-          <% if @jem.user_id == current_user.id %>
-            <div class="info-item">
-              <%= link_to 'Edit Gem', edit_jem_path(@jem), class: "btn btn-success full-width-button" %>
-            </div>
-          <% end %>
 
           <div class="info-item">
             <span class="info-title"><i class="fa fa-user"></i> Author:</span>
@@ -72,31 +81,59 @@
           <div class="info-item">
             <span class="info-title"><i class="fa fa-arrow-up"></i> Updated:</span>
             <span><%= @jem.updated_at.strftime('%F') %></span>
-          </div>
+          </div>         
 
-          <% if @jem.rubygem_link %>
-          <div id="rubygem_link_container" class="left-panel info-item">
-            <span class="info-title"><i class="fa fa-gittip"></i> Rubygems:</span>
-            <span id="rubygem_link"><%= link_to "Rubygem Link", @jem.rubygem_link, target: '_blank' %></span>
+          </br>
+          <div class="info-item">
+            <% if @jem.user_id == current_user.id %>
+              <%= link_to "Edit", edit_jem_path(@jem), class: "btn btn-success" %>
+              <%= link_to 'Remove', delete_jem_path(@jem), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger" %>
+            <% end %>
           </div>
-          <% end %>
-
-          <% if @jem.gem_repo %>
-          <div id="gem_repo_container" class="left-panel info-item">
-            <span class="info-title"><i class="fa fa-github"></i> Gem Repository:</span>
-            <span id="gem_repo_link"><%= link_to "Gem Repository", @jem.gem_repo, target: '_blank' %></span>
-          </div>
-          <% end %>
 
           <div class="hidden info-item" id="jem_id"><%= @jem.id %></div>
 
         </div>
       </div>
-    </div>
+    </div> <!-- end of panel -->
+
+
   </div>
 
 
   <div class="col-md-9">
+
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12">
+        <div class="smallstat">
+          <div class="info-graphic activity">
+            <div class="boxchart"><%= image_tag 'github.png', size: "40x40" %></div>
+          </div>
+           <% if @jem.gem_repo %>
+           <span class="value"><%= link_to "github/#{@jem.name}", @jem.gem_repo %></span> 
+          <% else %>
+            <span class="value">Not Available</span> 
+          <% end %> 
+          <span class="title">Gem Repository</span>
+        </div>
+      </div>
+
+
+      <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12">
+        <div class="smallstat">
+          <div class="info-graphic primary">
+            <div class="boxchart"><%= image_tag 'files.png', size: "40x40" %></div>
+          </div>
+          <% if @jem.rubygem_link %>            
+            <span class="value"><%= link_to "Rubygem Link", @jem.rubygem_link, target: '_blank' %></span>
+          <% else %>
+            <span class="value">Not Available</span> 
+          <% end %>
+          <span class="title">Ruby Gems</span>
+        </div>
+      </div>
+    </div>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2><i class="fa fa-files-o"></i><span class="break"></span>Gem Files</h2>

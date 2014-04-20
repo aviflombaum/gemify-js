@@ -13,3 +13,13 @@ task :yank_all_gems => :environment do
     `gem yank #{jem.first} -v #{jem.last}`
   end
 end
+
+task :yank_all_versions, :jem_name do |t, args|
+  puts args
+  versions = Gems.versions args[:jem_name]
+  version_numbers = versions.map{|version| version["number"]}
+  version_numbers.each do |version|
+    `gem yank #{args.jem_name} -v #{version}`
+    puts "yanked #{args.jem_name}, #{version}"
+  end
+end

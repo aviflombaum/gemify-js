@@ -125,7 +125,18 @@ class JemsController < ApplicationController
 
   def edit
     @jem = Jem.find(params[:id])
+  end
 
+  def destroy
+    @jem = Jem.find(params[:id])
+    @jem.delete_jem_repo if @jem.has_repo?
+    @jem.delete_jem_rubygem if @jem.has_rubygems?
+    
+    if @jem.destroy
+      redirect_to jems_path
+    else
+      redirect_to jem_path(@jem)
+    end
   end
 
   private

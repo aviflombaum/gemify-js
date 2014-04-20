@@ -2,8 +2,8 @@ require_relative '../validators/url_validator'
 require_relative '../validators/version_validator'
 
 class Jem < ActiveRecord::Base
-  has_many :scripts
-  has_many :activities
+  has_many :scripts, dependent: :destroy
+  has_many :activities, dependent: :destroy
   belongs_to :user
 
   validates :name, presence: true, uniqueness: true
@@ -127,6 +127,15 @@ class Jem < ActiveRecord::Base
     Dir.chdir(target) do
       `rm -rf #{self.name}`
     end
+  end
+
+  def delete_jem_repo
+    client = github_login
+    client.delete_repository("#{self.name}")
+  end
+
+  def delete_jem_rubygem
+    `rake yank_all_versions["#{self.name}"]`
   end
 
   def has_files?
