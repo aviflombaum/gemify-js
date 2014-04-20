@@ -331,6 +331,7 @@ DEPENDENCIES
   jquery-fileupload-rails!
   jquery-rails
   jquery-ui-rails
+  net-ssh (~> 2.8.0)
   octokit
   omniauth
   omniauth-github

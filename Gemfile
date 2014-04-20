@@ -61,4 +61,5 @@ gem 'jquery-datatables-rails', git: 'https://github.com/wontaeyang/jquery-datata
 gem 'jquery-easing-rails'
 gem 'fog'
 gem 'capistrano', '2.15.5'
+gem 'net-ssh', '~> 2.8.0'
 
