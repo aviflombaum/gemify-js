@@ -102,11 +102,7 @@
                 <% elsif activity.action == "gemify_jem" %>
                   <i class="fa fa-heart" style="color: #e84c8a;"></i> <%= User.find(activity.user_id).name.upcase %> gemmed
                 <% end %>
-                <% if activity.trackable_type == "Jem" %>
-                  <%= Jem.find(activity.trackable_id) %>
-                <% else %>
-                  <%= activity.trackable_name %>
-                <% end %>
+                <%= activity.trackable_name %>
                 <%= time_ago_in_words(activity.created_at) %> ago
               </li>
             <% end %>

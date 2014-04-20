@@ -177,9 +177,9 @@
 
             <% else %>
 
-              <%= form_tag '/create_gem', :method => :post, :remote => :true, :id => "generate-gem-form" do %>
-                <input type="hidden" name="id" value="<%= @jem.id %>"/>
-                <%= submit_tag 'Gemify!', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "generate-gem-button" %>
+            <%= form_tag '/create_gem', :method => :post, :remote => :true, :id => "generate-gem-form" do %>
+              <input type="hidden" name="id" value="<%= @jem.id %>"/>
+              <%= submit_tag 'Gemify!', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "generate-gem-button" %>
             <% end %>
 
           <% end %>
@@ -245,11 +245,7 @@
           <% elsif activity.action == "gemify_jem" %>
             <i class="fa fa-heart" style="color: #e84c8a;"></i> <%= User.find(activity.user_id).name.upcase %> gemmed
           <% end %>
-          <% if activity.trackable_type == "Jem" %>
-            <%= @jem.name %>
-          <% else %>
-            <%= activity.trackable_name %>
-          <% end %>
+          <%= activity.trackable_name %>
           <%= time_ago_in_words(activity.created_at) %> ago
         </li>
         <% end %>
