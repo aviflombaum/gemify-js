@@ -5,7 +5,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
 
   def generate_files
     @jem = Jem.find(name.to_i)
-    
+
     empty_directory File.join(Dir.pwd, jem.name)
 
     target = File.join(Dir.pwd, "jems_tmp/#{@jem.name}")
@@ -52,7 +52,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
 
   def download_file(download_url, target)
     File.open(target, "wb") do |saved_file|
-      open(download_url), "rb") do |read_file|
+      open(download_url, "rb") do |read_file|
         saved_file.write(read_file.read)
       end
     end
