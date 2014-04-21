@@ -134,6 +134,17 @@
       </div>
     </div>
 
+
+      <% if @jem.scripts.count == 0 %>
+        <div class="panel panel-default ">
+          <div class="sub-title no-gems-padding">
+            <h2 class="text-center">Configure your gem</h2></br>
+            <p class="text-center">You can drag and drop files anywhere in the screen to upload.</p>
+            <p class="text-center">Click on 'Gemify' after adding some asset files to deploy your gem to Github and Rubygems.</p>
+          </div>
+        </div>
+      <% end %>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2><i class="fa fa-files-o"></i><span class="break"></span>Dashboard</h2>
@@ -256,6 +267,6 @@
 </div>
 
 <div id="job-id-container"><p class="hidden" id="job_id"></p></div>
-
+</div>
 
 
