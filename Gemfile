@@ -49,7 +49,6 @@ gem 'carrierwave'
 gem 'devise'
 gem "omniauth"
 gem "omniauth-github"
-gem 'git'
 gem 'gems', git: "https://github.com/sunwooz/gems.git"
 gem 'sidekiq'
 gem 'sidekiq_status'

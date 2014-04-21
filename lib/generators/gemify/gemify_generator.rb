@@ -7,7 +7,6 @@ class GemifyGenerator < Rails::Generators::NamedBase
     @jem = Jem.find(name.to_i)
 
     target = File.join(Dir.pwd, "jems_tmp/#{@jem.name}")
-    puts target
 
     template "engine.rb.erb", File.join(target, "lib/#{@jem.name}/engine.rb")
     template "version.rb.erb", File.join(target, "lib/#{@jem.name}/version.rb")
@@ -19,14 +18,19 @@ class GemifyGenerator < Rails::Generators::NamedBase
     javascript_dir = File.join(target, "vendor/assets/javascripts")
     css_dir = File.join(target, "vendor/assets/stylesheets")
     image_dir = File.join(target, "vendor/assets/images")
-
-    puts javascript_dir
-    puts css_dir
-    puts image_dir
     
     empty_directory javascript_dir
     empty_directory css_dir
     empty_directory image_dir
+
+    #set empty directories for all the javascript and css files
+    javascript_all_dir = javascript_dir + "/#{@jem.name}"
+    css_all_dir = css_dir + "/#{@jem.name}"
+    empty_directory javascript_all_dir
+    empty_directory css_all_dir
+
+    template "javascriptloader.rb.erb", File.join(javascript_dir, "/#{@jem.name}.js")
+    template "cssloader.rb.erb", File.join(css_dir, "/#{@jem.name}.css")
 
     @jem.scripts.each do |script|
       script_url = script.file_url
@@ -36,11 +40,11 @@ class GemifyGenerator < Rails::Generators::NamedBase
       puts "extension is: " + script_url
      
       if extension == 'js'
-        target_path = javascript_dir + "/" + File.basename(script_url)
+        target_path = javascript_all_dir + "/" + File.basename(script_url)
         puts "js target location: " + target
         download_file(script_url, target_path)
       elsif extension == 'css'
-        target_path = css_dir + "/" + File.basename(script_url)
+        target_path = css_all_dir + "/" + File.basename(script_url)
         puts "css target location: " + target
         download_file(script_url, target_path)
       else

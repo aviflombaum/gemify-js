@@ -20,6 +20,6 @@
 
 uploads/
 
-jems_tmp/
+jems_tmp/*
 coverage/
 vendor/

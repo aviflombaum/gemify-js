@@ -6,7 +6,9 @@
 
 Add this line to your application's Gemfile:
 
-    gem '<%= @jem.name %>'
+```ruby
+gem '<%= @jem.name %>'
+```
 
 And then execute:
 
@@ -14,14 +16,15 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install <%= @jem.name %>
+$ gem install <%= @jem.name %>
 
 ## Usage
 
 Add this line to your `application.js` file:
-  <% @jem.scripts.each do |script| %>
-    //= require <%= File.basename(script.file.url)  %>
-  <% end %>
+<%= "//= require #{@jem.name}" %>
+
+Add this line to your 'application.css' file:
+<%= "*= require #{@jem.name}.css" %>
 
 ## Contributing
 

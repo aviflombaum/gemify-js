@@ -94,7 +94,7 @@ $(document).ready () ->
   $('#new-script').fileupload
     dataType: "script"
     add: (e, data) ->
-      types = /(\.|\/)(js|css|jpe?g|png|gif)$/i
+      types = /(\.|\/)(js|coffee|css|scss|jpe?g|png|gif)$/i
       file = data.files[0]
       if types.test(file.type) || types.test(file.name)
         $('#new-script').append(data.context)
