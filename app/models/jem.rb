@@ -13,7 +13,7 @@ class Jem < ActiveRecord::Base
   validates :description, presence: true
   validates :email, format:{with: /@/}
   validates :summary, presence: true
-  validates :homepage, url: true, default: 
+  validates :homepage, url: true
   validates :github, url: true
 
   def create_gem_directory
@@ -217,5 +217,6 @@ class Jem < ActiveRecord::Base
      self.homepage = "http://gemifyjs.com" unless self.homepage
      self.github = "https://github.com/gemify-js" unless self.github
      self.email = "no@email.com" unless self.email
+     self.save
    end
 end

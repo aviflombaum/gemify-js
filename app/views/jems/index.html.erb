@@ -1,8 +1,8 @@
 
 <div class="row">
   <div class="col-md-12 index-title">
-    <h1 style="display: inline;">Gem Files</h1>
-    <%= link_to 'Create Gem', new_jem_path, class: "btn btn-primary pull-right" %>
+    <h1 style="display: inline;">Dashboard</h1>
+    <%= link_to 'Create Gem', new_jem_path, class: "btn btn-danger pull-right" %>
   </div>
 </div>
 
@@ -13,7 +13,7 @@
         <div class="boxchart"><%= image_tag 'user.png', size: "40x40" %></div>
       </div>
       <span class="value"><%= @users_count %></span>  
-      <span class="title">Users</span>
+      <span class="title">Users Total</span>
     </div>
   </div>
 
@@ -24,7 +24,7 @@
         <div class="boxchart"><%= image_tag 'ruby.png', size: "40x40" %></div>
       </div>
       <span class="value"><%= @jems.size %></span>  
-      <span class="title">Active Gems</span>
+      <span class="title">Gemmified Gems</span>
     </div>
   </div>
 
@@ -49,3 +49,86 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="panel panel-default ">
+        <% if @jems.count == 0 %>
+          <div class="sub-title no-gems-padding">
+            <h2 class="text-center">Lets create your first gem on Gemify-JS</h2></br>
+            <p class="text-center">Click on 'Create Gem' button to generate your first ruby gem from asset files!</p>
+            <div class="centered">
+              <%= link_to 'Create Gem', new_jem_path, class: "btn btn-danger btn-lg" %>
+            </div>
+          </div>
+        <% else %>
+          <div class="panel-heading">
+            <h2><i class="fa fa-files-o"></i><span class="break"></span>Your Gem list</h2>
+            <ul class="nav nav-tabs" id="index-tab">
+              <li class="active"><a href="#gems" data-toggle="tab" >Your Gems</a></li>
+              <li class=""><a href="#all-gems" data-toggle="tab" >All Gems</a></li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane active" id="gems">
+              <div class="panel-body">
+                <table id="jems-table" class="table datatable table-striped bootstrap-datatable" style="display: none;">
+                  <thead>
+                    <tr>
+                      <th>GEM NAME</th>
+                      <th class="text-center">AUTHOR</th> 
+                      <th class="text-center">RUBYGEM</th> 
+                      <th class="text-center">UPDATE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @user_gems.each do |jem| %>
+                      <tr>
+                        <td><i class="fa fa-file-o"></i> <%= link_to jem.name, jem_path(jem) %></td>
+                        <td class="text-center"><%= jem.author %></td>
+                        <% if jem.rubygem_link == nil %>
+                          <td class="text-center">NA</td>
+                        <% else %>
+                          <td class="text-center"><%= jem.rubygem_link %></td>
+                        <% end %>
+                        <td class="text-center"><%= jem.updated_at.strftime('%F') %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="all-gems">
+              <div class="panel-body">
+                <table id="jems-table" class="table datatable table-striped bootstrap-datatable">
+                  <thead>
+                    <tr>
+                      <th>GEM NAME</th>
+                      <th class="text-center">AUTHOR</th> 
+                      <th class="text-center">RUBYGEM</th> 
+                      <th class="text-center">UPDATE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @jems.each do |jem| %>
+                      <tr>
+                        <td><i class="fa fa-file-o"></i> <%= link_to jem.name, jem_path(jem) %></td>
+                        <td class="text-center"><%= jem.author %></td>
+                        <% if jem.rubygem_link == nil %>
+                          <td class="text-center">NA</td>
+                        <% else %>
+                          <td class="text-center"><%= jem.rubygem_link %></td>
+                        <% end %>
+                        <td class="text-center"><%= jem.updated_at.strftime('%F') %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
