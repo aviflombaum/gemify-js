@@ -20,7 +20,6 @@ class GemifyGenerator < Rails::Generators::NamedBase
     css_dir = File.join(target, "vendor/assets/stylesheets")
     image_dir = File.join(target, "vendor/assets/images")
 
-    puts "directories for files are:"
     puts javascript_dir
     puts css_dir
     puts image_dir
