@@ -30,7 +30,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
     empty_directory javascript_all_dir
     empty_directory css_all_dir
 
-    template "javascriptloader.rb.erb", File.join(javascript_dir, "#{self.name}.js"
+    template "javascriptloader.rb.erb", File.join(javascript_dir, "#{self.name}.js")
 
     @jem.scripts.each do |script|
       script_url = script.file_url
