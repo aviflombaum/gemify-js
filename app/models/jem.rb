@@ -35,7 +35,7 @@ class Jem < ActiveRecord::Base
     repository
   end
 
-  def set_ssh_url
+  def set_ssh_url(repository)
     self.gem_repo = 'http://www.github.com/gemify-js/' + self.name
     self.save
 
