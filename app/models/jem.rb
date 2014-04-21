@@ -64,7 +64,7 @@ class Jem < ActiveRecord::Base
       `git commit -am "Initial Commit"`
       `git remote add #{self.name} #{ssh_url}`
       `git push #{self.name} master`
-      `git remote remove #{self.name}`
+      `git remote rm #{self.name}`
     end
   end
 
@@ -75,7 +75,7 @@ class Jem < ActiveRecord::Base
       `git commit -am "#{self.commit_message}"`
       # `git remote add #{self.name} #{ssh_url}`
       `git push #{self.name} master`
-      `git remote remove #{self.name}`
+      `git remote rm #{self.name}`
     end
   end
 
