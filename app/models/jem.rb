@@ -139,11 +139,27 @@ class Jem < ActiveRecord::Base
 
   def delete_jem_rubygem
     # `cd /home/gemify/gemify-js/current && bundle exec rake yank_all_versions["#{self.name}"]`
+    # versions = Gems.versions "#{self.name}"
+    # version_numbers = versions.map{|version| version["number"]}
+    # version_numbers.each do |version|
+    #   `gem yank #{self.name} -v #{version}`
+    #   puts "yanked #{self.name}, #{version}"
+    # end
+    name = self.name
     versions = Gems.versions "#{self.name}"
     version_numbers = versions.map{|version| version["number"]}
     version_numbers.each do |version|
-      `gem yank #{self.name} -v #{version}`
-      puts "yanked #{self.name}, #{version}"
+      request = Typhoeus::Request.new(
+        "https://rubygems.org/api/v1/gems/yank",
+        method: :delete,
+        body: "this is a request body",
+        params: { gem_name: "#{name}",
+                  version: "#{version}"},
+        headers: { Authorization: "07608ba71bc8526a4e424fba01bd04ba" }
+      )
+      puts name
+      puts version
+      request.run
     end
   end
 
