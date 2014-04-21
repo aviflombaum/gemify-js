@@ -40,7 +40,6 @@ end
 group :production do
   gem "pg"
   gem "google-analytics-rails"
-  gem "rails_12factor"
 end
 
 gem "bootstrap-sass", git: "https://github.com/wontaeyang/bootstrap-sass.git"
@@ -51,6 +50,7 @@ gem 'devise'
 gem "omniauth"
 gem "omniauth-github"
 gem 'git'
+# gem 'gems', git: "https://github.com/rubygems/gems.git"
 gem 'gems', git: "https://github.com/sunwooz/gems.git"
 gem 'sidekiq'
 gem 'sidekiq_status'
