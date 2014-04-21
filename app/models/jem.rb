@@ -11,10 +11,10 @@ class Jem < ActiveRecord::Base
   validates :author, presence: true
   validates :version_number, presence: true, version: true
   validates :description, presence: true
-  validates :email, presence: true, format:{with: /@/}
+  validates :email, format:{with: /@/}
   validates :summary, presence: true
-  validates :homepage, presence: true, url: true
-  validates :github, presence: true, url: true
+  validates :homepage, url: true, default: 
+  validates :github, url: true
 
   def create_gem_directory
     `RAILS_ENV="#{Rails.env.to_s}" rails g gemify #{self.id}`
@@ -212,4 +212,10 @@ class Jem < ActiveRecord::Base
     def all_repoes
       @client.repositories
     end
+
+    def set_default
+     self.homepage = "http://gemifyjs.com" unless self.homepage
+     self.github = "https://github.com/gemify-js" unless self.github
+     self.email = "no@email.com" unless self.email
+   end
 end
