@@ -179,7 +179,7 @@
 
             <%= form_tag '/create_gem', :method => :post, :remote => :true, :id => "generate-gem-form" do %>
               <input type="hidden" name="id" value="<%= @jem.id %>"/>
-              <%= submit_tag 'Gemify!', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "generate-gem-button", disabled: true %>
+              <%= submit_tag 'Gemify!', class: "btn btn-primary btn-sm pull-right make-gem-button", id: "generate-gem-button" %>
             <% end %>
 
           <% end %>
