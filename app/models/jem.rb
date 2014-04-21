@@ -206,7 +206,7 @@ class Jem < ActiveRecord::Base
   private
   
     def find_directory
-      File.join(Dir.pwd, "jems_tmp/#{self.name}")
+      Rails.root.to_s + "/jems_tmp/#{self.name}"
     end
 
     def all_repoes
