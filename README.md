@@ -1,6 +1,6 @@
 # Gemify JS
 
-## Description
+![alt tag](http://i.imgur.com/dcYxs0K.png)
 
 Add a short description of your app.
 
