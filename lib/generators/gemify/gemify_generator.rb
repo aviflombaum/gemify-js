@@ -39,11 +39,11 @@ class GemifyGenerator < Rails::Generators::NamedBase
       if extension == 'js'
         target_path = javascript_dir + "/" + File.basename(script_url)
         puts "js target location: " + target
-        download_file(script_url, target)
+        download_file(script_url, target_path)
       elsif extension == 'css'
         target_path = css_dir + "/" + File.basename(script_url)
         puts "css target location: " + target
-        download_file(script_url, target)
+        download_file(script_url, target_path)
       else
         target_path = image_dir + "/" + File.basename(script_url)
         puts "image target location: " + target
