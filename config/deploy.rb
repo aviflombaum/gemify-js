@@ -21,7 +21,7 @@ role :db,  "107.170.47.187", :primary => true # This is where Rails migrations w
 # role :db,  "your slave db-server here"
 
 # if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+after "deploy:restart", "deploy:cleanup"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
