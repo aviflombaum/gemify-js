@@ -87,7 +87,7 @@ class Jem < ActiveRecord::Base
     Dir.chdir(jems_tmp_folder) do
       puts "LINE 74 PWD IS #{Dir.pwd}"
       `git clone #{self.ssh_url} #{self.name}`
-      sleep(4)
+      # sleep(4)
     end
 
     Dir.chdir(jems_tmp_gem_folder) do
@@ -98,7 +98,7 @@ class Jem < ActiveRecord::Base
       `git remote add #{self.name} #{ssh_url}`
       `git pull #{self.name} master`
       puts "PULLED"
-      sleep(5)
+      # sleep(5)
       puts "LINE 86 PWD IS #{Dir.pwd}"
       `rm -rf lib/`
       puts "REMOVED LIB/"
