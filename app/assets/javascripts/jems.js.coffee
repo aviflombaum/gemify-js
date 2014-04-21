@@ -80,6 +80,15 @@ updateVersion = () ->
       alert('failed to update!')
   })
 
+disableGemButtons = () ->
+  if $('#file-list tbody tr').size() == 0
+    console.log('buttons disabled')
+    $('.make-gem-button').prop('disabled', true)
+
+enableGemButtons = () ->
+  console.log('buttons enabled')
+  $('.make-gem-button').prop('disabled', false)
+
 $(document).ready () ->
 
   $('#new-script').fileupload
@@ -89,12 +98,12 @@ $(document).ready () ->
       file = data.files[0]
       if types.test(file.type) || types.test(file.name)
         $('#new-script').append(data.context)
+        enableGemButtons()
         data.submit()
       else
         alert("#{file.name} is not a javascript, CSS, or image file")
 
-  if $('#file-list tbody tr').size() > 0
-    $('.make-gem-button').prop('disabled', false);
+  disableGemButtons()
 
   $('#job-id-container').bind('DOMSubtreeModified', queryForPercentage )
 
