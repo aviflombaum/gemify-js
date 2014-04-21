@@ -1,4 +1,3 @@
-load 'deploy/assets'
 require 'bundler/capistrano' #for bundler support
 
 set :application, "gemify-js"
