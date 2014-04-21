@@ -22,6 +22,7 @@ $ gem install <%= @jem.name %>
 
 Add this line to your `application.js` file:
   <% @jem.scripts.each do |script| %>
+    
     //= require <%= File.basename(script.file.url)  %>
   <% end %>
 
