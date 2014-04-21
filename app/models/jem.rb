@@ -151,7 +151,7 @@ class Jem < ActiveRecord::Base
     version_numbers.each do |version|
       request = Typhoeus::Request.new(
         "https://rubygems.org/api/v1/gems/yank",
-        method: :DELETE,
+        method: :delete,
         params: { gem_name: "#{name}",
                   version: "#{version}"},
         headers: { Authorization: "07608ba71bc8526a4e424fba01bd04ba" }
