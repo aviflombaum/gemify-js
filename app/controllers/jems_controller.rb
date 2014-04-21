@@ -131,11 +131,7 @@ class JemsController < ApplicationController
     @jem = Jem.find(params[:id])
     # @jem.delete_jem_repo if @jem.has_repo?
     # @jem.delete_jem_rubygem if @jem.has_rubygems?
-    puts @jem.has_repo?
-    puts @jem.has_rubygems?
-
-    @jem.delete_jem_repo if @jem.has_repo?
-    @jem.delete_jem_rubygem @jem.has_rubygems?
+    @job_id = DeleteJemWorker.perform_async(@jem.id)
 
     if @jem.destroy
       redirect_to jems_path
