@@ -138,7 +138,13 @@ class Jem < ActiveRecord::Base
   end
 
   def delete_jem_rubygem
-    `cd /home/gemify/gemify-js/current && bundle exec rake yank_all_versions["#{self.name}"]`
+    # `cd /home/gemify/gemify-js/current && bundle exec rake yank_all_versions["#{self.name}"]`
+    versions = Gems.versions "#{self.name}"
+    version_numbers = versions.map{|version| version["number"]}
+    version_numbers.each do |version|
+      `gem yank #{args.jem_name} -v #{version}`
+      puts "yanked #{args.jem_name}, #{version}"
+    end
   end
 
   def has_files?
