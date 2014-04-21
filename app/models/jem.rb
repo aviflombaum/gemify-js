@@ -217,5 +217,6 @@ class Jem < ActiveRecord::Base
      self.homepage = "http://gemifyjs.com" unless self.homepage
      self.github = "https://github.com/gemify-js" unless self.github
      self.email = "no@email.com" unless self.email
+     self.save
    end
 end

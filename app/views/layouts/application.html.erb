@@ -8,19 +8,10 @@
   <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
-<% if flash[ :alert ] %>
-    <% content_for :head do %>
-        <script type="text/javascript">
-            document.observe('dom:loaded', function() {
-                alert("<%= flash[ :alert ] %>");
-            });
-        </script>
-    <% end %>
-<% end %>
 <%= render 'layouts/nav' %>
-<div class="container">
-  <%= render 'layouts/error' %>
+<div class="container body-container">
   <%= yield %>
 </div>
+<%= render 'layouts/footer' %>
 </body>
 </html>

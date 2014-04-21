@@ -18,6 +18,7 @@ class JemsController < ApplicationController
   end
 
   def index
+    @user_gems = current_user.jems
     @jems = Jem.all
     @users_count = User.all.length
     @scripts_count = Script.all.length
