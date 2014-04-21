@@ -1,12 +1,8 @@
-# Gemify JS
+# Gemify JS ![alt tag](http://i.imgur.com/uMMi1wg.png?1?6573)
 
-## Description
+![alt tag](http://i.imgur.com/dcYxs0K.png)
 
 Add a short description of your app.
-
-## Screenshots
-
-Add some spiffy screenshots of your app here.
 
 ## Background
 

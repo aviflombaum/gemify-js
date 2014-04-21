@@ -6,7 +6,7 @@ class Jem < ActiveRecord::Base
   has_many :activities, dependent: :destroy
   belongs_to :user
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, format: { without: /\s/ }
   # validates :github, :presence: true
   validates :author, presence: true
   validates :version_number, presence: true, version: true
