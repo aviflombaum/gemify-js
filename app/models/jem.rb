@@ -134,7 +134,7 @@ class Jem < ActiveRecord::Base
 
   def delete_jem_repo
     client = github_login
-    client.delete_repository("#{self.name}")
+    client.delete_repository("gemify-js/#{self.name}")
   end
 
   def delete_jem_rubygem

@@ -1,5 +1,13 @@
 load 'deploy/assets'
 require 'bundler/capistrano' #for bundler support
+require 'sidekiq/capistrano'
+
+set(:sidekiq_cmd) { "bundle exec sidekiq" }
+set(:sidekiqctl_cmd) { "bundle exec sidekiqctl" }
+set(:sidekiq_timeout) { 10 }
+set(:sidekiq_role) { :app }
+set(:sidekiq_pid) { "#{current_path}/tmp/pids/sidekiq.pid" }
+set(:sidekiq_processes) { 1 }
 
 set :application, "gemify-js"
 set :repository,  "git@github.com:wontaeyang/ilovejs.git"
