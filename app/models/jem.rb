@@ -13,7 +13,7 @@ class Jem < ActiveRecord::Base
   validates :description, presence: true
   validates :email, format:{with: /@/}
   validates :summary, presence: true
-  validates :homepage, url: true, default: 
+  validates :homepage, url: true
   validates :github, url: true
 
   def create_gem_directory
