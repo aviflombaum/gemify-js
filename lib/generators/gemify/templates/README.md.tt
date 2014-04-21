@@ -6,7 +6,9 @@
 
 Add this line to your application's Gemfile:
 
-    gem '<%= @jem.name %>'
+```ruby
+gem '<%= @jem.name %>'
+```
 
 And then execute:
 
@@ -14,9 +16,9 @@ And then execute:
 
 Or install it yourself as:
 
-    ```ruby
-    $ gem install <%= @jem.name %>
-    ```
+```ruby
+$ gem install <%= @jem.name %>
+```
 
 ## Usage
 
