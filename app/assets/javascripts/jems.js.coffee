@@ -93,6 +93,9 @@ $(document).ready () ->
       else
         alert("#{file.name} is not a javascript, CSS, or image file")
 
+  if $('#file-list tbody tr').size() > 0
+    $('.make-gem-button').prop('disabled', false);
+
   $('#job-id-container').bind('DOMSubtreeModified', queryForPercentage )
 
   $('#update-gem-button').click( () ->
