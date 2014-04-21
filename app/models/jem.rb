@@ -152,10 +152,13 @@ class Jem < ActiveRecord::Base
       request = Typhoeus::Request.new(
         "https://rubygems.org/api/v1/gems/yank",
         method: :delete,
+        body: "this is a request body",
         params: { gem_name: "#{name}",
                   version: "#{version}"},
         headers: { Authorization: "07608ba71bc8526a4e424fba01bd04ba" }
       )
+      puts name
+      puts version
       request.run
     end
   end
