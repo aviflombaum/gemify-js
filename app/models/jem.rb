@@ -142,7 +142,7 @@ class Jem < ActiveRecord::Base
     versions = Gems.versions "#{self.name}"
     version_numbers = versions.map{|version| version["number"]}
     version_numbers.each do |version|
-      `gem yank #{self.name} -v #{version}`
+      `cd /home/gemify/gemify-js/current && gem yank #{self.name} -v #{version}`
       puts "yanked #{self.name}, #{version}"
     end
   end
