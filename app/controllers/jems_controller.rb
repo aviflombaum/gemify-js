@@ -135,7 +135,7 @@ class JemsController < ApplicationController
     puts @jem.has_rubygems?
 
     @jem.delete_jem_repo if @jem.has_repo?
-    @jem.delete_jem_rubygem
+    @jem.delete_jem_rubygem @jem.has_rubygems?
 
     if @jem.destroy
       redirect_to jems_path
