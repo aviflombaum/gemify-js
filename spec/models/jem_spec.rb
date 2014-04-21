@@ -32,7 +32,10 @@ describe Jem do
   end
 
   describe "#create_github_repository" do
-    it "returns the correct ssh_url" do
+    it "returns the correct repository" do
+      repository = jem.create_github_repository
+      expect(repository.full_name).to eq("gemify-js/#{jem.name}")
+      #delete repository
       pending
     end
   end

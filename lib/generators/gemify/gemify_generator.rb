@@ -7,6 +7,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
     @jem = Jem.find(name.to_i)
 
     target = File.join(Dir.pwd, "jems_tmp/#{@jem.name}")
+    puts target
 
     template "engine.rb.erb", File.join(target, "lib/#{@jem.name}/engine.rb")
     template "version.rb.erb", File.join(target, "lib/#{@jem.name}/version.rb")

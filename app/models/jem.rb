@@ -32,8 +32,10 @@ class Jem < ActiveRecord::Base
       :has_downloads => true
     })
 
-    client.add_collaborator(repository.full_name, ENV['COLLAB_NAME'])
+    repository
+  end
 
+  def set_ssh_url
     self.gem_repo = 'http://www.github.com/gemify-js/' + self.name
     self.save
 

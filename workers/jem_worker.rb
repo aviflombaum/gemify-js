@@ -8,7 +8,11 @@ class JemWorker
     at 0
     jem = Jem.find(jem_id)
     at 5
-    ssh_url = jem.create_github_repository
+    repository = jem.create_github_repository
+    at 10
+    jem.add_collaborator(repository)
+    at 20
+    ssh_url = jem.set_ssh_url
     at 30
     jem.create_gem_directory
     at 45
