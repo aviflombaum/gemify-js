@@ -7,7 +7,6 @@ class GemifyGenerator < Rails::Generators::NamedBase
     @jem = Jem.find(name.to_i)
 
     target = File.join(Dir.pwd, "jems_tmp/#{@jem.name}")
-    puts target
 
     template "engine.rb.erb", File.join(target, "lib/#{@jem.name}/engine.rb")
     template "version.rb.erb", File.join(target, "lib/#{@jem.name}/version.rb")
@@ -25,12 +24,13 @@ class GemifyGenerator < Rails::Generators::NamedBase
     empty_directory image_dir
 
     #set empty directories for all the javascript and css files
-    javascript_all_dir = javascript_dir + "/#{self.name}"
-    css_all_dir = css_dir + "/#{self.name}"
+    javascript_all_dir = javascript_dir + "/#{@jem.name}"
+    css_all_dir = css_dir + "/#{@jem.name}"
     empty_directory javascript_all_dir
     empty_directory css_all_dir
 
-    template "javascriptloader.rb.erb", File.join(javascript_dir, "#{self.name}.js")
+    template "javascriptloader.rb.erb", File.join(javascript_dir, "/#{@jem.name}.js")
+    template "cssloader.rb.erb", File.join(css_dir, "/#{@jem.name}.css")
 
     @jem.scripts.each do |script|
       script_url = script.file_url
