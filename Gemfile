@@ -62,4 +62,5 @@ gem 'jquery-easing-rails'
 gem 'fog'
 gem 'capistrano', '2.15.5'
 gem 'net-ssh', '2.7.0'
+gem 'rake', '10.3.1'
 
