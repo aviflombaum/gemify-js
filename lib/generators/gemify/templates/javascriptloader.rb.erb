@@ -1,0 +1,7 @@
+<% @jem.scripts.each do |script| %>
+	<% if script.file.file.extension == 'js' %>
+
+//= require <%= @jem.name %>/<%= File.basename(script.file_url) %>
+	
+  <% end %>
+<% end %>
