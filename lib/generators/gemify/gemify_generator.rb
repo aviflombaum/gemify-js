@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class GemifyGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 
@@ -21,15 +23,20 @@ class GemifyGenerator < Rails::Generators::NamedBase
     empty_directory image_dir
 
     @jem.scripts.each do |script|
-      script_url = script.file.url
+      script_url = script.file_url
       extension = script.file.file.extension
+     
       if extension == 'js'
-        copy_file(File.join(script_target, "#{script_url}"), javascript_dir + "/" + File.basename(script_url))
+        target = javascript_dir + "/" + File.basename(script_url)
+        download_file(script_url, target)
       elsif extension == 'css'
-        copy_file(File.join(script_target, "#{script_url}"), css_dir + "/" + File.basename(script_url))
+        target = css_dir + "/" + File.basename(script_url)
+        download_file(script_url, target)
       else
-        copy_file(File.join(script_target, "#{script_url}"), image_dir + "/" + File.basename(script_url))
+        target = image_dir + "/" + File.basename(script_url)
+        download_file(script_url, target)
       end
+      
     end
   end
 
@@ -38,6 +45,14 @@ class GemifyGenerator < Rails::Generators::NamedBase
   def module_name
     @jem = Jem.find(name.to_i)
     @jem.name.gsub(/-|_/, '').capitalize
+  end
+
+  def download_file(download_url, target)
+    File.open(target, "wb") do |saved_file|
+      open(download_url), "rb") do |read_file|
+        saved_file.write(read_file.read)
+      end
+    end
   end
   
 end
