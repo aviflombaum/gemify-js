@@ -21,10 +21,10 @@ $ gem install <%= @jem.name %>
 ## Usage
 
 Add this line to your `application.js` file:
-  <% @jem.scripts.each do |script| %>
-    
-    //= require <%= File.basename(script.file.url)  %>
-  <% end %>
+<%= "//= require #{@jem.name}" %>
+
+Add this line to your 'application.css' file:
+<%= "*= require #{@jem.name}.css" %>
 
 ## Contributing
 

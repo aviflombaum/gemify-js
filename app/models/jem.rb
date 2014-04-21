@@ -81,8 +81,8 @@ class Jem < ActiveRecord::Base
   end
 
   def clone_remove_and_regenerate_files
-    jems_tmp_folder = File.join(Dir.pwd, "jems_tmp/")
-    jems_tmp_gem_folder = File.join(Dir.pwd, "jems_tmp/#{self.name}")
+    jems_tmp_folder = File.join(Rails.root.to_s, "/jems_tmp/")
+    jems_tmp_gem_folder = File.join(Rails.root.to_s, "/jems_tmp/#{self.name}")
 
     Dir.chdir(jems_tmp_folder) do
       puts "LINE 74 PWD IS #{Dir.pwd}"
