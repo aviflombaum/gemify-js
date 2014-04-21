@@ -30,7 +30,7 @@ class GemifyGenerator < Rails::Generators::NamedBase
     empty_directory css_all_dir
 
     template "javascriptloader.rb.erb", File.join(javascript_dir, "/#{@jem.name}.js")
-    template "cssloader.rb.erb", File.join(css_dir, "/#{@jem.name}.css")
+    template "cssloader.rb.erb", File.join(css_dir, "/#{@jem.name}.css.scss")
 
     @jem.scripts.each do |script|
       script_url = script.file_url
@@ -44,7 +44,11 @@ class GemifyGenerator < Rails::Generators::NamedBase
         puts "js target location: " + target
         download_file(script_url, target_path)
       elsif extension == 'css'
-        target_path = css_all_dir + "/" + File.basename(script_url)
+        target_path = css_all_dir + "/_" + File.basename(script_url) + ".scss"
+        puts "css target location: " + target
+        download_file(script_url, target_path)
+      elsif extension == "scss"
+        target_path = css_all_dir + "/_" + File.basename(script_url)
         puts "css target location: " + target
         download_file(script_url, target_path)
       else
