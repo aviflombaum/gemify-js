@@ -145,10 +145,12 @@ class Jem < ActiveRecord::Base
     #   `gem yank #{self.name} -v #{version}`
     #   puts "yanked #{self.name}, #{version}"
     # end
+    puts "inside delete jem rubygem"
     name = self.name
-    versions = Gems.versions "#{self.name}"
+    versions = Gems.versions "#{name}"
     version_numbers = versions.map{|version| version["number"]}
     version_numbers.each do |version|
+      puts version
       request = Typhoeus::Request.new(
         "https://rubygems.org/api/v1/gems/yank",
         method: :delete,
