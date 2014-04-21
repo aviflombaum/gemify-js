@@ -37,17 +37,17 @@ class GemifyGenerator < Rails::Generators::NamedBase
       puts "extension is: " + script_url
      
       if extension == 'js'
-        target = javascript_dir + "/" + File.basename(script_url)
+        target_path = javascript_dir + "/" + File.basename(script_url)
         puts "js target location: " + target
         download_file(script_url, target)
       elsif extension == 'css'
-        target = css_dir + "/" + File.basename(script_url)
+        target_path = css_dir + "/" + File.basename(script_url)
         puts "css target location: " + target
         download_file(script_url, target)
       else
-        target = image_dir + "/" + File.basename(script_url)
+        target_path = image_dir + "/" + File.basename(script_url)
         puts "image target location: " + target
-        download_file(script_url, target)
+        download_file(script_url, target_path)
       end
 
     end
@@ -60,8 +60,8 @@ class GemifyGenerator < Rails::Generators::NamedBase
     @jem.name.gsub(/-|_/, '').capitalize
   end
 
-  def download_file(download_url, target)
-    File.open(target, "wb") do |saved_file|
+  def download_file(download_url, target_path)
+    File.open(target_path, "wb") do |saved_file|
       open(download_url, "rb") do |read_file|
         saved_file.write(read_file.read)
       end
