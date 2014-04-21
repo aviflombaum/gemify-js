@@ -51,7 +51,7 @@ gem 'devise'
 gem "omniauth"
 gem "omniauth-github"
 gem 'git'
-gem 'gems', git: "https://github.com/rubygems/gems.git"
+gem 'gems', git: "https://github.com/sunwooz/gems.git"
 gem 'sidekiq'
 gem 'sidekiq_status'
 gem 'sinatra', '>= 1.3.0', :require => nil
@@ -62,4 +62,4 @@ gem 'jquery-easing-rails'
 gem 'fog'
 gem 'capistrano', '2.15.5'
 gem 'net-ssh', '2.7.0'
-gem 'json', '1.8.1'
+
