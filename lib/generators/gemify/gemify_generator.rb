@@ -19,14 +19,18 @@ class GemifyGenerator < Rails::Generators::NamedBase
     javascript_dir = File.join(target, "vendor/assets/javascripts")
     css_dir = File.join(target, "vendor/assets/stylesheets")
     image_dir = File.join(target, "vendor/assets/images")
-
-    puts javascript_dir
-    puts css_dir
-    puts image_dir
     
     empty_directory javascript_dir
     empty_directory css_dir
     empty_directory image_dir
+
+    #set empty directories for all the javascript and css files
+    javascript_all_dir = javascript_dir + "/#{self.name}"
+    css_all_dir = css_dir + "/#{self.name}"
+    empty_directory javascript_all_dir
+    empty_directory css_all_dir
+
+    template "javascriptloader.rb.erb", File.join(javascript_dir, "#{self.name}.js"
 
     @jem.scripts.each do |script|
       script_url = script.file_url
