@@ -142,8 +142,8 @@ class Jem < ActiveRecord::Base
     versions = Gems.versions "#{self.name}"
     version_numbers = versions.map{|version| version["number"]}
     version_numbers.each do |version|
-      `gem yank #{args.jem_name} -v #{version}`
-      puts "yanked #{args.jem_name}, #{version}"
+      `gem yank #{self.name} -v #{version}`
+      puts "yanked #{self.name}, #{version}"
     end
   end
 
