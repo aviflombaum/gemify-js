@@ -7,23 +7,19 @@
 
       <%= form_for @jem do |f| %>
         <%= render 'shared/error_messages' %>
-        <%= f.label :author, 'Author' %></br>
-        <%= f.text_field :author, class: "form-control"  %></br>
-
-        <%= f.label :description, 'Description' %></br>
-        <%= f.text_field :description, class: "form-control"  %></br>
-
-
-        <%= f.label :summary, 'Gem Summary' %></br>
-        <%= f.text_field :summary, class: "form-control"  %></br>
-
-        <%= f.label :homepage, 'Homepage' %></br>
-        <%= f.text_field :homepage, class: "form-control"  %></br>
-
-        <%= f.label :email, 'Email Address' %></br>
+        <%= f.label :email, 'Your Email Address' %></br>
         <%= f.text_field :email, class: "form-control"  %></br>
 
-        <%= f.label :github, 'Github Repository' %></br>
+        <%= f.label :author, 'Author of Asset Library' %></br>
+        <%= f.text_field :author, class: "form-control"  %></br>
+
+        <%= f.label :description, 'Subtitle of Your Gem' %></br>
+        <%= f.text_field :description, class: "form-control"  %></br>
+
+        <%= f.label :summary, 'Short Summary of Gem' %></br>
+        <%= f.text_field :summary, class: "form-control"  %></br>
+
+        <%= f.label :github, 'Github Repository of Asset Library' %></br>
         <%= f.text_field :github, class: "form-control"  %></br>
 
         <%= f.submit 'Update Gem', :class => 'btn btn-primary full-width-button' %>

@@ -8,30 +8,27 @@
       <%= form_for @jem do |f| %>
         <small>* is required</small><br><br>
         <%= render 'shared/error_messages' %>
-        <%= f.label :name, 'Name of Gem*' %></br>
-        <%= f.text_field :name, class: "form-control", placeholder: "example-gem-js-rails" %>
-        </br>
+
+        <%= f.label :email, 'Your Email Address' %></br>
+        <%= f.text_field :email, class: "form-control", placeholder: "example-email@gmail.com"  %></br>
+
+        <%= f.label :name, 'Name of Gem' %></br>
+        <%= f.text_field :name, class: "form-control", placeholder: "example-gem-js-rails" %></br>
       
-        <%= f.label :author, 'Author' %> <small>Name of Library's Author</small></br>
+        <%= f.label :author, 'Author of Asset Library' %></br>
         <%= f.text_field :author, class: "form-control"  %></br>
       
-        <%= f.label :version_number, 'Version Number*' %></br>
-        <%= f.text_field :version_number, :placeholder => '0.0.1', class: "form-control"  %></br>
+        <%= f.label :github, 'Github Repository of Asset Library' %></br>
+        <%= f.text_field :github,:placeholder => 'http://', class: "form-control", value: "http://"  %></br>
+
+        <%= f.label :version_number, 'Initial Version Number of Gem' %></br>
+        <%= f.text_field :version_number, value: '0.0.1', class: "form-control"  %></br>
       
-        <%= f.label :description, 'Description of Library*' %></br>
+        <%= f.label :description, 'Subtitle of Your Gem' %></br>
         <%= f.text_field :description, class: "form-control"  %></br>
       
-        <%= f.label :summary, 'Short Summary of Gem*' %></br>
+        <%= f.label :summary, 'Short Summary of Gem' %></br>
         <%= f.text_field :summary, class: "form-control"  %></br>
-      
-        <%= f.label :homepage, 'Homepage of Library' %></br>
-        <%= f.text_field :homepage,:placeholder => 'http://', class: "form-control", value: "http://" %></br>
-
-        <%= f.label :github, 'Github Repository' %></br>
-        <%= f.text_field :github,:placeholder => 'http://', class: "form-control", value: "http://"  %></br>
-      
-        <%= f.label :email, 'Email Address' %></br>
-        <%= f.text_field :email, class: "form-control", placeholder: "example-email@gmail.com"  %></br>
       
         <%= f.submit 'Create Gem', :class => 'btn btn-primary full-width-button' %>
       <% end %>
