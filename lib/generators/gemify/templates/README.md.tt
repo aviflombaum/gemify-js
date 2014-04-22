@@ -21,10 +21,14 @@ $ gem install <%= @jem.name %>
 ## Usage
 
 Add this line to your `application.js` file:
+```css
 <%= "//= require #{@jem.name}" %>
+```
 
 Add this line to your 'application.css' file:
-<%= "*= require #{@jem.name}.css" %>
+```css
+<%= "*= require #{@jem.name}" %>
+```
 
 ## Contributing
 
