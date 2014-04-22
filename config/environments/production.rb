@@ -1,5 +1,5 @@
 Rails.application.configure do
-  GA.tracker = Rails.application.secrets.google_analytics_code
+  GA.tracker = ENV['G_ANALYTICS']
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
