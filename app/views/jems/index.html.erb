@@ -55,8 +55,8 @@
     <% if @user_gems.count == 1 %>
       <div class="panel panel-default ">
         <div class="sub-title no-gems-padding">
-          <h2 class="text-center">This is list of your gems!</h2></br>
-          <p class="text-center">Also checkout 'All Gems' tab in the top right of table to see gems other users created </p>
+          <h2 class="text-center">This is a list of your gems!</h2></br>
+          <p class="text-center">Also check out the 'All Gems' tab on the top right of the table to see gems other users have created </p>
         </div>
       </div>
     <% end %>
@@ -64,7 +64,7 @@
         <% if @user_gems.count == 0 %>
           <div class="sub-title no-gems-padding">
             <h2 class="text-center">Lets create your first gem on Gemify-JS</h2></br>
-            <p class="text-center">Click on 'Create Gem' button to generate your first ruby gem from asset files!</p>
+            <p class="text-center">Click on the 'Create Gem' button to generate your first ruby gem from asset files!</p>
             <div class="centered">
               <%= link_to 'Create Gem', new_jem_path, class: "btn btn-danger btn-lg" %>
             </div>
