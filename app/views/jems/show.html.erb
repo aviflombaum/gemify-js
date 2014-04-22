@@ -135,7 +135,7 @@
     </div>
 
 
-      <% if @jem.scripts.count == 0 %>
+      <% if @jem.scripts.count == 0 && @jem.user_id == current_user.id %>
         <div class="panel panel-default no-gems-panel">
           <div class="sub-title no-gems-padding">
             <h2 class="text-center">Configure your gem</h2></br>
