@@ -1,4 +1,4 @@
-<% extension_array = ["css", "scss", "js", "coffee"] %><% @jem.scripts.each do |script| %><% if !script.file.extension.include?(extension_array) %>//= depend_on_asset "<%= script.file_url%>"
+<% extension_array = ["css", "scss", "js", "coffee"] %><% @jem.scripts.each do |script| %><% if !script.file.file.extension.include?(extension_array) %>//= depend_on_asset "<%= script.file_url%>"
 <% end %><% end %>
 
 <% @jem.scripts.each do |script| %><% if script.file.file.extension == 'css' %>@import "<%= @jem.name %>/<%= File.basename(script.file_url).split('.').first %>";
