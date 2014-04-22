@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sunwooz/gems.git
-  revision: c50cea40b35364582605f2863781994c855e2c33
+  revision: f1c59b49a77489f0ad3b69bcb0adc001c32f2a29
   specs:
     gems (0.8.3)
       json (~> 1.8)
