@@ -99,6 +99,7 @@ $(document).ready () ->
       if types.test(file.type) || types.test(file.name)
         $('#new-script').append(data.context)
         enableGemButtons()
+        $('.no-gems-panel').fadeOut()
         data.submit()
       else
         alert("#{file.name} is not a javascript, CSS, or image file")
