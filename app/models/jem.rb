@@ -173,13 +173,20 @@ class Jem < ActiveRecord::Base
 
   def has_repo?
     client = github_login
-    client.repository?("gemify-js/#{self.name}")
+    result = client.repository?("gemify-js/#{self.name}")
+    if result == true
+      errors.add(:name, "already exists on Github")
+      return result
+    else
+      return result
+    end
   end
 
   def has_rubygems?
     if (Gems.info self.name).class == String
       return false
     elsif (Gems.info self.name).class == Hash
+      errors.add(:name, "already exists on Rubygems")
       return true
     end
   end

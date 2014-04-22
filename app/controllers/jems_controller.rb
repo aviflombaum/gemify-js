@@ -7,10 +7,17 @@ class JemsController < ApplicationController
   def create
     @jem = Jem.new(jem_params)
     @jem.user_id = current_user.id
+    repo_validation = @jem.has_repo?
+    rubygems_validation = @jem.has_rubygems?
+
     respond_to do |format|
-      if @jem.save
-        track_activity(@jem, @jem, current_user)
-        format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
+      if repo_validation == false && rubygems_validation == false
+        if@jem.save
+          track_activity(@jem, @jem, current_user)
+          format.html { redirect_to @jem, notice: 'Jem was successfully created.' }
+        else
+          format.html { render action: 'new' }
+        end
       else
         format.html { render action: 'new' }
       end
