@@ -13,7 +13,6 @@ class Jem < ActiveRecord::Base
   validates :description, presence: true
   validates :email, format:{with: /@/}
   validates :summary, presence: true
-  validates :homepage, url: true
   validates :github, url: true
 
   def create_gem_directory
@@ -31,6 +30,9 @@ class Jem < ActiveRecord::Base
       :has_wiki => true,
       :has_downloads => true
     })
+
+    self.homepage = repository.html_url
+    self.save
 
     repository
   end
