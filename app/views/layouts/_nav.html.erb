@@ -22,6 +22,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><a href="#">Hi, <%= current_user.name %>!</a></li>
+          <li><%= link_to 'Dashboard', jems_path %> </li>
           <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %> </li>
         <% else %>
           <li><%= link_to 'Please sign in', user_omniauth_authorize_path(:github) %></li>
