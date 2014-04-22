@@ -11,7 +11,7 @@ class Jem < ActiveRecord::Base
   validates :author, presence: true
   validates :version_number, presence: true, version: true
   validates :description, presence: true
-  validates :email, format:{with: /@/}
+  validates :email, format: { with: /@/ }
   validates :summary, presence: true
   validates :github, url: true
 
@@ -37,6 +37,12 @@ class Jem < ActiveRecord::Base
     repository
   end
 
+  def delete_github_repository
+    client = github_login
+    client.delete_repository("gemify-js/#{self.name}")
+  end
+
+
   def set_ssh_url(repository)
     self.gem_repo = 'http://www.github.com/gemify-js/' + self.name
     self.ssh_url = repository.ssh_url
@@ -45,9 +51,11 @@ class Jem < ActiveRecord::Base
     self.ssh_url
   end
 
-  def add_collaborator(repository)
+  def add_collaborator(repository, collab_name=nil)
     client = github_login
-    client.add_collaborator(repository.full_name, ENV['COLLAB_NAME'])
+    collab_name.nil? ? collab = ENV['COLLAB_NAME'] : collab = collab_name
+
+    client.add_collaborator(repository.full_name, collab)
   end
 
   def get_ssh_url
@@ -118,8 +126,6 @@ class Jem < ActiveRecord::Base
 
   def build_gem
     target = find_directory
-    
-    Jem.rubygem_login
 
     Dir.chdir(target) do
       `gem build #{self.name}.gemspec`
@@ -128,7 +134,7 @@ class Jem < ActiveRecord::Base
   end
 
   def delete_jem_from_directory
-    target = File.join(Dir.pwd, "jems_tmp")
+    target = File.join(Rails.root.to_s, "/jems_tmp")
     Dir.chdir(target) do
       `rm -rf #{self.name}`
     end
@@ -193,13 +199,6 @@ class Jem < ActiveRecord::Base
 
   def github_login
     Octokit::Client.new(:login => ENV["GITHUB_EMAIL"], :password => ENV["GITHUB_PASSWORD"])
-  end
-
-  def self.rubygem_login
-    Gems.configure do |config|
-      config.username = ENV['RUBYGEM_EMAIL']
-      config.password = ENV['RUBYGEM_PASSWORD']
-    end
   end
 
   def self.get_message(pct_complete)
