@@ -1,3 +1,7 @@
 $(document).ready(function() {
-  $(".alert").alert('close');
+
+  $('#checkout').on('click', function(){
+    $('#your-gem-tab').removeClass('active')
+    $('#all-gem-tab').addClass('active')
+  });
 });

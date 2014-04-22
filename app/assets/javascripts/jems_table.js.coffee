@@ -10,7 +10,7 @@ jQuery ->
         '<option value="-1">All</option>'+
         '</select> records'
     },
-    "iDisplayLength": 20,
+    "iDisplayLength": 50,
     "bAutoWidth": false,
     "aaSorting": [[4,'desc']],
 

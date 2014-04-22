@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'static#index'
+  get 'jems/all' => 'static#show', as: 'show_jem'
 
   get 'jems/new' => 'jems#new', as: 'new_jem'
   get 'jems/:id' => 'jems#show', as: 'jem'

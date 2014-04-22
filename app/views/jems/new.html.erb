@@ -6,17 +6,18 @@
     <div class="panel-body">
 
       <%= form_for @jem do |f| %>
-        <small>* is required</small><br><br>
+        <small>These fields are required for processing and generating gems automatically :)</small><br><br>
         <%= render 'shared/error_messages' %>
 
+        <%= f.label :author, 'Your Name' %></br>
+        <%= f.text_field :author, class: "form-control"  %></br>
+
         <%= f.label :email, 'Your Email Address' %></br>
-        <%= f.text_field :email, class: "form-control", placeholder: "example-email@gmail.com"  %></br>
+        <%= f.text_field :email, class: "form-control", placeholder: "ex: example-email@gmail.com"  %></br>
 
         <%= f.label :name, 'Name of Gem' %></br>
-        <%= f.text_field :name, class: "form-control", placeholder: "example-gem-js-rails" %></br>
+        <%= f.text_field :name, class: "form-control", placeholder: "ex: example-gem-js-rails" %></br>
       
-        <%= f.label :author, 'Author of Asset Library' %></br>
-        <%= f.text_field :author, class: "form-control"  %></br>
       
         <%= f.label :github, 'Github Repository of Asset Library' %></br>
         <%= f.text_field :github,:placeholder => 'http://', class: "form-control", value: "http://"  %></br>
@@ -25,10 +26,10 @@
         <%= f.text_field :version_number, value: '0.0.1', class: "form-control"  %></br>
       
         <%= f.label :description, 'Subtitle of Your Gem' %></br>
-        <%= f.text_field :description, class: "form-control"  %></br>
+        <%= f.text_field :description, class: "form-control", placeholder: "one line description of gem"  %></br>
       
         <%= f.label :summary, 'Short Summary of Gem' %></br>
-        <%= f.text_field :summary, class: "form-control"  %></br>
+        <%= f.text_field :summary, class: "form-control", placeholder: "short summary of what it does"  %></br>
       
         <%= f.submit 'Create Gem', :class => 'btn btn-primary full-width-button' %>
       <% end %>
